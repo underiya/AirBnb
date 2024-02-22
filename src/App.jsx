@@ -3,7 +3,6 @@ import SideNavbar from './Admin/SideNavbar'
 import './App.css'
 
 function App() {
- 
   return (
   <div className='App'>
    <SideNavbar/>
@@ -11,4 +10,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
