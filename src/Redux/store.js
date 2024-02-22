@@ -6,14 +6,14 @@ import {
 } from "redux";
 
 import { thunk } from "redux-thunk";
-import { cardReducer, locationReducer, wishlistReducer } from "./reducer";
+import { cartReducer, locationReducer, wishlistReducer } from "./reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   locations: locationReducer,
   wishlist: wishlistReducer,
-  card: cardReducer,
+  cart: cartReducer,
 });
 
 const store = legacy_createStore(
