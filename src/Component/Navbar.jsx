@@ -1,6 +1,5 @@
-
 import "boxicons/css/boxicons.min.css";
-import Login from "./Login";
+import Login from "./Signup";
 
 const Navbar = () => {
   return (
