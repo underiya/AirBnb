@@ -1,3 +1,4 @@
+
 import "boxicons/css/boxicons.min.css";
 
 const Navbar = () => {
