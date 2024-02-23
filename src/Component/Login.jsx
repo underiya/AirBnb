@@ -12,37 +12,84 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useState } from "react";
+
+async function PostUsers(url, cred) {
+  try {
+    let res = await axios.post(url, cred);
+    console.log(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const Login = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  //   console.log(form);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    PostUsers("https://backend-airbnb-stqx.onrender.com/api/users", form);
+    console.log(form);
+  };
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button onClick={onOpen}>Login</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Login</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <FormControl>
+          <FormControl>
+            <ModalBody>
               <FormLabel>First name</FormLabel>
-              <Input ref={initialRef} placeholder="First name" />
+              <Input
+                placeholder="First name"
+                onChange={(e) =>
+                  setForm({ ...form, firstName: e.target.value })
+                }
+              />
               <FormLabel>Last name</FormLabel>
-              <Input ref={initialRef} placeholder="Last name" />
+              <Input
+                placeholder="Last name"
+                onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+              />
               <FormLabel>Email</FormLabel>
-              <Input ref={initialRef} placeholder="Email" />
+              <Input
+                type="email"
+                placeholder="Email"
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+              />
               <FormLabel>Password</FormLabel>
-              <Input ref={initialRef} placeholder="Password" />
-            </FormControl>
-          </ModalBody>
+              <Input
+                placeholder="Password"
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+              />
+            </ModalBody>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Save</Button>
-          </ModalFooter>
+            <ModalFooter>
+              <Button onClick={handleLogin} bg="#ff5733" color="white">
+                Login
+              </Button>
+              <Button
+                colorScheme="black"
+                variant="ghost"
+                mr={3}
+                onClick={onClose}
+              >
+                Close
+              </Button>
+            </ModalFooter>
+          </FormControl>
         </ModalContent>
       </Modal>
     </>
