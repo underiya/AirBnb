@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Dashboard from "./Dashboard";
+import Inbox from "./Inbox";
+import Analytics from "./Analytic";
+
 
 const SideNavbar = () => {
   const [open, setOpen] = useState(true);
@@ -11,7 +14,7 @@ const SideNavbar = () => {
     { title: "Accounts", src: "User", gap: true, component: <Accounts /> },
     { title: "Schedule ", src: "Calendar", component: <Schedule /> },
     { title: "Search", src: "Search", component: <Search /> },
-    { title: "Analytics", src: "Chart", component: <Analytics /> },
+    { title: "Analytics", src: "Chart", component:<Analytics/>  },
     { title: "Files ", src: "Folder", gap: true, component: <Files /> },
     { title: "Setting", src: "Setting", component: <Setting /> },
   ];
@@ -74,11 +77,11 @@ const SideNavbar = () => {
 };
 
 
-const Inbox = () => <h1>Inbox Component</h1>;
+// const Inbox = () => <h1>Inbox Component</h1>;
 const Accounts = () => <h1>Accounts Component</h1>;
 const Schedule = () => <h1>Schedule Component</h1>;
 const Search = () => <h1>Search Component</h1>;
-const Analytics = () => <h1>Analytics Component</h1>;
+// const Analytics = () => <h1>Analytics Component</h1>;
 const Files = () => <h1>Files Component</h1>;
 const Setting = () => <h1>Setting Component</h1>;
 
