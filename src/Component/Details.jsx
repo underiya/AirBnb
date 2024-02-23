@@ -5,7 +5,6 @@ const Details = () => {
         Wadi Rum Cave Camping
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 h-80 w-3/4 m-auto">
-        {/* Single Image for Mobile */}
         <div className="overflow-hidden rounded-lg md:hidden">
           <img
             className="w-full h-full object-cover"
@@ -13,7 +12,7 @@ const Details = () => {
             alt="First Image"
           />
         </div>
-        {/* First Image takes 2 rows on Medium Screens and above */}
+
         <div className="overflow-hidden disabled rounded-lg md:row-span-2 md:col-span-2">
           <img
             className="w-full h-full object-cover"
@@ -21,7 +20,7 @@ const Details = () => {
             alt="First Image"
           />
         </div>
-        {/* Remaining Images */}
+
         <div className="overflow-hidden rounded-lg">
           <img
             className="w-full h-full object-cover"
@@ -43,7 +42,7 @@ const Details = () => {
             alt="Fourth Image"
           />
         </div>
-        {/* "Show more" Button */}
+
         <div className="overflow-hidden rounded-lg relative">
           <img
             className="w-full h-full object-cover"
@@ -62,7 +61,6 @@ const Details = () => {
         <li>10 beds</li>
         <li>Toilet with sink</li>
       </ul>
-
     </div>
   );
 };
