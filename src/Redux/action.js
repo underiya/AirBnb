@@ -17,7 +17,7 @@ export const getLocation = () => async (dispatch) => {
       `https://backend-airbnb-stqx.onrender.com/api/locations`
     );
 
-    const data = res.data.data;
+    const data = res.data;
     dispatch({ type: GET_LOCATIONS_SUCCESS, payload: data });
     console.log(data);
   } catch (error) {

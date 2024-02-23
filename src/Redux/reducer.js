@@ -9,7 +9,7 @@ import {
 const initialState = {
   isLoading: false,
   isError: false,
-  products: [],
+  locations: [],
 };
 
 export const locationReducer = (state = initialState, action) => {
@@ -19,7 +19,7 @@ export const locationReducer = (state = initialState, action) => {
     case GET_LOCATIONS_FAILURE:
       return { ...state, isLoading: false, isError: true };
     case GET_LOCATIONS_SUCCESS:
-      return { ...state, isLoading: false, products: action.payload };
+      return { ...state, isLoading: false, locations: action.payload };
     default:
       return state;
   }
