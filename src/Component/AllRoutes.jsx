@@ -3,7 +3,7 @@ import Details from "./Details";
 const AllRoutes = () => {
   return (
     <Routes>
-      {/* <Router path={"/"} /> */}
+      {/* <Route path={"/"} element={} /> */}
       <Route path={"/details"} element={<Details />} />
     </Routes>
   );

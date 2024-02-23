@@ -24,7 +24,7 @@ async function PostUsers(url, cred) {
   }
 }
 
-const Login = () => {
+const Signup = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [form, setForm] = useState({
@@ -35,19 +35,19 @@ const Login = () => {
   });
 
   //   console.log(form);
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     PostUsers("https://backend-airbnb-stqx.onrender.com/api/users", form);
     console.log(form);
   };
   return (
     <>
-      <Button onClick={onOpen}>Login</Button>
+      <Button onClick={onOpen}>Signup</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Login</ModalHeader>
+          <ModalHeader>Signup</ModalHeader>
           <ModalCloseButton />
           <FormControl>
             <ModalBody>
@@ -77,8 +77,8 @@ const Login = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={handleLogin} bg="#ff5733" color="white">
-                Login
+              <Button onClick={handleSignup} bg="#ff5733" color="white">
+                Signup
               </Button>
               <Button
                 colorScheme="black"
@@ -96,4 +96,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
