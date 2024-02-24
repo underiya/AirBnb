@@ -1,4 +1,6 @@
 import "boxicons/css/boxicons.min.css";
+import Login from "./Login";
+import Signup from "./Signup";
 
 const Navbar = () => {
   return (
@@ -32,6 +34,8 @@ const Navbar = () => {
             <div className="flex justify-between border-2 gap-4 rounded-[50px] p-[10px] align-middle hover:shadow-md">
               <box-icon name="menu" size="42px"></box-icon>
               <box-icon name="user-circle" size="42px" type="solid"></box-icon>
+              <Login />
+              <Signup />
             </div>
           </div>
         </div>

@@ -4,12 +4,12 @@ import "boxicons";
 import "boxicons/css/boxicons.min.css";
 import Navbar from "./Component/Navbar";
 import CardCarousel from "./Component/CardCarousel";
-
+import AllRoutes from "./Component/AllRoutes";
 function App() {
   return (
     <>
       <Navbar />
-      <CardCarousel />
+      <AllRoutes />
       <Footer />
     </>
   );
