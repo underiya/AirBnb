@@ -45,7 +45,7 @@ function Header() {
                 <box-icon name="menu" size="42px"></box-icon>
               </a>
               {isMenuOpen && (
-                <div className="absolute top-full left-0 bg-white border rounded mt-[4px] p-[20px] ">
+                <div className="absolute top-full left-0 bg-white border rounded mt-[8px] p-[20px] ">
                   <p className="block text-gray-800">
                     <Login />
                   </p>
@@ -60,7 +60,7 @@ function Header() {
                   </a>
                 </div>
               )}
-              <a href="#" onClick={toggleUserMenu}>
+              <a href="/" onClick={toggleUserMenu}>
                 <box-icon
                   name="user-circle"
                   size="42px"
