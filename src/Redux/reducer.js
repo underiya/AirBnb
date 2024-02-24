@@ -1,29 +1,11 @@
 import {
   GET_CART_SUCCESS,
-  GET_LOCATIONS_FAILURE,
-  GET_LOCATIONS_REQUEST,
-  GET_LOCATIONS_SUCCESS,
   GET_WISHLIST_SUCCESS,
+  LOGIN_FAILURE,
+  LOGIN_SUCCESS,
+  LOGOUT,
 } from "./actionType";
 
-const initialState = {
-  isLoading: false,
-  isError: false,
-  locations: [],
-};
-
-export const locationReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case GET_LOCATIONS_REQUEST:
-      return { ...state, isLoading: true };
-    case GET_LOCATIONS_FAILURE:
-      return { ...state, isLoading: false, isError: true };
-    case GET_LOCATIONS_SUCCESS:
-      return { ...state, isLoading: false, locations: action.payload };
-    default:
-      return state;
-  }
-};
 export const wishlistReducer = (state = [], action) => {
   switch (action.type) {
     case GET_WISHLIST_SUCCESS:
@@ -42,18 +24,31 @@ export const cartReducer = (state = [], action) => {
   }
 };
 
-// const userInitialState = {
-//   isAuth: false,
-//   userDetails: {},
-// };
+const initialUserState = {
+  isLoggedIn: false,
+  user: null,
+  error: null,
+};
 
-// export userReducer=(state=userInitialState,action){
-//   switch(action.type){
-//     case "Login_Success":
-//       return {isAuth:true,userDetails:action.payload};
-//     case "Login_Failed":
-//       return {isAuth=false,userDetails:{}}
-//     default:
-//       return state
-//   }
-// }
+export const authReducer = (state = initialUserState, action) => {
+  switch (action.type) {
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: action.payload,
+        error: null,
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: null,
+        error: action.payload,
+      };
+    case LOGOUT:
+      return initialUserState;
+    default:
+      return state;
+  }
+};

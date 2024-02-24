@@ -6,14 +6,18 @@ import {
 } from "redux";
 
 import { thunk } from "redux-thunk";
-import { cartReducer, locationReducer, wishlistReducer } from "./reducer";
+import {
+  authReducer,
+  cartReducer,
+  wishlistReducer,
+} from "./reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  locations: locationReducer,
   wishlist: wishlistReducer,
   cart: cartReducer,
+  auth: authReducer,
 });
 
 const store = legacy_createStore(
