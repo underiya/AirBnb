@@ -60,13 +60,8 @@ function Header() {
                   </a>
                 </div>
               )}
-              <a href="/" onClick={toggleUserMenu}>
-                <box-icon
-                  name="user-circle"
-                  size="42px"
-                  type="solid"
-                ></box-icon>
-              </a>
+
+              <box-icon name="user-circle" size="42px" type="solid"></box-icon>
             </div>
           </div>
         </div>
