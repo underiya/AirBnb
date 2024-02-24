@@ -1,115 +1,123 @@
-// const Price=()=>{
-
-
-
-
-
-//     return(
-//         <div className="md:sticky flex flex-col gap-3 left-2/3 top-3/4 md:top-1/4 mt-20 md:mt-0 p-5 w-96 text-center bg-white shadow-lg rounded-lg">
-//         <h1></h1>
-//         <p>night</p>
-//         <div className="rounded-lg grid grid-cols-2 grid-flow-row w-72 h-28 m-auto">
-//           <div className="col-span-1 row-span-1 border border-black rounded-lg">
-//             01
-//           </div>
-//           <div className="col-span-1 row-span-1 border border-black rounded-lg">
-//             02
-//           </div>
-//           <div className="row-span-1 col-span-2 border border-black rounded-lg flex justify-between px-3">
-//             <p className="text-s">
-//               Guest<br></br>1 guest
-//             </p>
-//             <p className="">
-//               <i className="fa-solid fa-chevron-down"></i>
-//             </p>
-//           </div>
-//         </div>
-//         <button className="bg-rose-600 w-72 h-10 m-auto rounded-lg ">
-//           Reserve
-//         </button>
-//         <p>You won't be charged yet</p>
-//         <div className="flex justify-around gap-20 md:gap-40">
-//           <p>₹3,137 x 5 nights</p>
-//           <p>₹15,687</p>
-//         </div>
-//         <div className="flex justify-around gap-20 md:gap-40">
-//           <p>Airbnb service fee</p>
-//           <p>₹2,215</p>
-//         </div>
-//         <hr className="" />
-//         <div className="flex justify-around items-center gap-20 md:gap-40">
-//           <p>Total before taxes</p>
-//           <p>₹17,902</p>
-//         </div>
-//       </div>
-//     )
-// }
-// export default Price;
+// Price.js
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Guest from "./Guest";
 
-const Price = () => {
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
+const Price = ({}) => {
+  const [formData, setFormData] = useState({
+    checkInDate: null,
+    checkOutDate: null,
+    selectedCategory: '',
+  });
   const [numberOfNights, setNumberOfNights] = useState(0);
-  const [nightlyRate, setNightlyRate] = useState(2750); // assuming nightly rate is ₹2750
+  const [nightlyRate, setNightlyRate] = useState(2750);
+  const airbnbServiceFeePercentage = 0.2;
+  const [guestComponentVisible, setGuestComponentVisible] = useState(false);
 
   useEffect(() => {
-    if (checkInDate && checkOutDate) {
-      const nights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
+    if (formData.checkInDate && formData.checkOutDate) {
+      const nights = Math.ceil(
+        (formData.checkOutDate - formData.checkInDate) / (1000 * 60 * 60 * 24)
+      );
       setNumberOfNights(nights);
     }
-  }, [checkInDate, checkOutDate]);
+  }, [formData.checkInDate, formData.checkOutDate]);
 
   const calculateTotal = () => {
-    return nightlyRate * numberOfNights;
+    const subtotal = nightlyRate * numberOfNights;
+    const serviceFee = subtotal * airbnbServiceFeePercentage;
+    return subtotal + serviceFee;
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    // Toggle visibility of guest component directly if "Guests" is selected
+    if (value === "Guests") {
+      setGuestComponentVisible(true);
+    } else {
+      setGuestComponentVisible(false);
+    }
+  };
+
+  const handleDateChange = (date, name) => {
+    setFormData({
+      ...formData,
+      [name]: date,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  
+  };
+
+  const handleCloseGuestComponent = () => {
+    setGuestComponentVisible(false);
   };
 
   return (
-    <div className="md:sticky flex flex-col gap-3 left-2/3 top-3/4 md:top-1/4 mt-20 md:mt-0 p-5 w-96 text-center bg-white shadow-lg rounded-lg">
-      <h1>{nightlyRate}</h1>
-      <p>night</p>
-      <div className="rounded-lg grid grid-cols-2 grid-flow-row w-72 h-28 m-auto">
-        <div className="col-span-1 row-span-1 border border-black rounded-lg">
-          <DatePicker
-            selected={checkInDate}
-            onChange={(date) => setCheckInDate(date)}
-            placeholderText="Check-in"
-          />
+    <div className=" md:sticky flex flex-col gap-3 left-2/3 top-3/4 md:top-1/4 mt-20 md:mt-0 p-5 w-96 text-center bg-white shadow-lg rounded-lg">
+      <span className="text-start flex gap-3">
+        <h1 className="text-3xl font-bold text-start">{nightlyRate}</h1>{' '}
+        <span className="text-sm text-gray-500 mt-3 ">per night</span>
+      </span>
+      <form onSubmit={handleSubmit}>
+        <div className="rounded-full grid grid-cols-2 w-72 ml-9">
+          <div className="border border-black rounded-lg">
+            <DatePicker
+              id="checkInDate"
+              selected={formData.checkInDate}
+              onChange={(date) => handleDateChange(date, 'checkInDate')}
+              placeholderText="Check-in"
+              className="date-picker w-full h-10 border-2 border-gray-600"
+            />
+          </div>
+          <div className="border border-black rounded-lg">
+            <DatePicker
+              id="checkOutDate"
+              selected={formData.checkOutDate}
+              onChange={(date) => handleDateChange(date, 'checkOutDate')}
+              placeholderText="Check-out"
+              className="date-picker w-full h-10 border-2 border-gray-600"
+            />
+          </div>
+          <div className="border border-black rounded-lg col-span-2">
+            <select
+              id="selectedCategory"
+              name="selectedCategory"
+              value={formData.selectedCategory}
+              onChange={handleFormChange}
+              className="w-full h-10 border-2 border-gray-600"
+            >
+              <option value="">Select Category</option>
+              <option value="Guests">Guests</option>
+            </select>
+          </div>
         </div>
-        <div className="col-span-1 row-span-1 border border-black rounded-lg">
-          <DatePicker
-            selected={checkOutDate}
-            onChange={(date) => setCheckOutDate(date)}
-            placeholderText="Check-out"
-          />
-        </div>
-        <div className="row-span-1 col-span-2 border border-black rounded-lg flex justify-between px-3">
-          <p className="text-s">
-            Guest<br></br>1 guest
-          </p>
-          <p className="">
-            <i className="fa-solid fa-chevron-down"></i>
-          </p>
-        </div>
+        {guestComponentVisible && <Guest onClose={handleCloseGuestComponent} />}
+        <button type="submit" className="bg-rose-600 text-white w-full h-10 rounded-lg mt-4">
+          Reserve
+        </button>
+      </form>
+      <p className="text-sm text-gray-500">You won't be charged yet</p>
+      <div className="flex justify-between mt-4">
+        <p className="text-lg">₹{nightlyRate} x {numberOfNights} nights</p>
+        <p className="text-lg">₹{calculateTotal()}</p>
       </div>
-      <button className="bg-rose-600 w-72 h-10 m-auto rounded-lg ">
-        Reserve
-      </button>
-      <p>You won't be charged yet</p>
-      <div className="flex justify-around gap-20 md:gap-40">
-        <p>₹{nightlyRate} x {numberOfNights} nights</p>
-        <p>₹{calculateTotal()}</p>
+      <div className="flex justify-between mt-2">
+        <p className="text-lg">Airbnb service fee ({(airbnbServiceFeePercentage * 100).toFixed(0)}%)</p>
+        <p className="text-lg">₹{(nightlyRate * numberOfNights * airbnbServiceFeePercentage).toFixed(2)}</p>
       </div>
-      <div className="flex justify-around gap-20 md:gap-40">
-        <p>Airbnb service fee</p>
-        <p>₹2,215</p>
-      </div>
-      <hr className="" />
-      <div className="flex justify-around items-center gap-20 md:gap-40">
-        <p>Total before taxes</p>
-        <p>₹{calculateTotal() + 2215}</p>
+      <hr className="mt-4" />
+      <div className="flex justify-between mt-2">
+        <p className="text-lg font-bold">Total before taxes</p>
+        <p className="text-lg font-bold">₹{calculateTotal()}</p>
       </div>
     </div>
   );
