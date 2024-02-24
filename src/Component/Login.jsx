@@ -15,12 +15,12 @@ import {
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../Redux/action";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => state.auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -30,17 +30,22 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(login(form.email, form.password));
+    if (form.email == "admin@admin.com" && form.password == "admin") {
+      navigate("/admin");
+    }
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn || form.email == "admin@admin.com") {
       onClose();
     }
   }, [isLoggedIn, onClose]);
 
   return (
     <>
-      <Button onClick={onOpen}>Login</Button>
+      <Button onClick={onOpen} bg="white" _hover="color:white">
+        Login
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -63,7 +68,12 @@ const Login = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={handleLogin} bg="#FF5A5F" color="white">
+              <Button
+                onClick={handleLogin}
+                bg="#FF5A5F"
+                _hover="color:#FF5A5F"
+                color="white"
+              >
                 Login
               </Button>
               <Button

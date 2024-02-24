@@ -8,12 +8,10 @@ import AllRoutes from "./Component/AllRoutes";
 import SideNavbar from "./Admin/SideNavbar";
 function App() {
   return (
-
-
     <>
       <Navbar />
       <AllRoutes />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
