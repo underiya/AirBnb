@@ -45,7 +45,7 @@ function Header() {
                 <box-icon name="menu" size="42px"></box-icon>
               </a>
               {isMenuOpen && (
-                <div className="absolute top-full left-0 bg-white border rounded mt-2 p-2">
+                <div className="absolute top-full left-0 bg-white border rounded mt-[8px] p-[20px] ">
                   <p className="block text-gray-800">
                     <Login />
                   </p>
@@ -60,29 +60,8 @@ function Header() {
                   </a>
                 </div>
               )}
-              <a href="#" onClick={toggleUserMenu}>
-                <box-icon
-                  name="user-circle"
-                  size="42px"
-                  type="solid"
-                ></box-icon>
-              </a>
-              {isUserMenuOpen && (
-                <div className="absolute top-full right-0 bg-white border rounded mt-2 p-2">
-                  <a href="/" className="block text-gray-800">
-                    Login
-                  </a>
-                  <a href="/" className="block text-gray-800">
-                    Signup
-                  </a>
-                  <a href="/" className="block text-gray-800">
-                    Help
-                  </a>
-                  <a href="/" className="block text-gray-800">
-                    Contact
-                  </a>
-                </div>
-              )}
+
+              <box-icon name="user-circle" size="42px" type="solid"></box-icon>
             </div>
           </div>
         </div>
