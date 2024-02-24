@@ -15,7 +15,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 
-async function PostUsers(url, cred) {
+export async function PostUsers(url, cred) {
   try {
     let res = await axios.post(url, cred);
     console.log(res.data);
@@ -43,7 +43,9 @@ const Signup = () => {
   };
   return (
     <>
-      <Button onClick={onOpen}>Signup</Button>
+      <Button onClick={onOpen} bg="white" _hover="color:white">
+        Signup
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -78,7 +80,12 @@ const Signup = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={handleSignup} bg="#ff5733" color="white">
+              <Button
+                onClick={handleSignup}
+                bg="#FF5A5F"
+                color="white"
+                _hover="color:#FF5A5F"
+              >
                 Signup
               </Button>
               <Button

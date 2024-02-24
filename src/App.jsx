@@ -12,13 +12,11 @@ import SideNavbar from "./Admin/SideNavbar";
 
 function App() {
   return (
-
-
     <>
       {/* <Navbar /> */}
       <Header />
       <AllRoutes />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
