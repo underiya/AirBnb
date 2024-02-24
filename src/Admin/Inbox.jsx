@@ -1,18 +1,43 @@
 import { useState } from "react";
 
-const Inbox = () => {
 
 
+
+  const Inbox = () => {
     const [id, setId] = useState('');
-        const [name, setName] = useState('');
-        const [rating, setRating] = useState('');
-        const [description, setDescription] = useState('');
-        const [price, setPrice] = useState('');
-        const [images, setImages] = useState([]);
-        const handleSubmit = (e) => {
-          e.preventDefault();
-          // Add your logic to handle form submission
-        };
+    const [name, setName] = useState('');
+    const [rating, setRating] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
+    const [images, setImages] = useState([]);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch("https://backend-airbnb-stqx.onrender.com/api/locations", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // Add any other headers if required
+          },
+          body: JSON.stringify({
+            id,
+            name,
+            rating,
+            description,
+            price,
+            images,
+          }),
+        });
+
+        
+        const data = await response.json();
+        console.log(data); // Log the response data
+      } catch (error) {
+        console.error("Error posting data: ", error);
+      }
+    };
+
       
         return (
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -93,5 +118,5 @@ const Inbox = () => {
             </div>
           </form>
         )
-};
+}
 export default Inbox;
