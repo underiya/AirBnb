@@ -9,3 +9,7 @@ export const CART_REMOVE = "CART_REMOVE";
 
 export const GET_WISHLIST_SUCCESS = "GET_WISHLIST_SUCCESS";
 export const WISHLIST_REMOVE = "WISHLIST_REMOVE";
+
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
+export const LOGOUT="LOGOUT";

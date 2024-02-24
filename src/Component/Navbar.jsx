@@ -1,5 +1,6 @@
 import "boxicons/css/boxicons.min.css";
-import Login from "./Signup";
+import Login from "./Login";
+import Signup from "./Signup";
 
 const Navbar = () => {
   return (
@@ -34,6 +35,7 @@ const Navbar = () => {
               <box-icon name="menu" size="42px"></box-icon>
               <box-icon name="user-circle" size="42px" type="solid"></box-icon>
               <Login />
+              <Signup />
             </div>
           </div>
         </div>
