@@ -63,7 +63,7 @@ const Login = () => {
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={handleLogin} bg="#ff5733" color="white">
+              <Button onClick={handleLogin} bg="#FF5A5F" color="white">
                 Login
               </Button>
               <Button
