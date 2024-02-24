@@ -5,10 +5,12 @@ import "boxicons/css/boxicons.min.css";
 import Navbar from "./Component/Navbar";
 import CardCarousel from "./Component/CardCarousel";
 import AllRoutes from "./Component/AllRoutes";
+import Header from "./Component/Header";
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Header />
       <AllRoutes />
       <Footer />
     </>
