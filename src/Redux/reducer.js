@@ -41,3 +41,19 @@ export const cartReducer = (state = [], action) => {
       return state;
   }
 };
+
+// const userInitialState = {
+//   isAuth: false,
+//   userDetails: {},
+// };
+
+// export userReducer=(state=userInitialState,action){
+//   switch(action.type){
+//     case "Login_Success":
+//       return {isAuth:true,userDetails:action.payload};
+//     case "Login_Failed":
+//       return {isAuth=false,userDetails:{}}
+//     default:
+//       return state
+//   }
+// }

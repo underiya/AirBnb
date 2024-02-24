@@ -33,3 +33,5 @@ export const addToCart = (data) => (dispatch) => {
 export const addToWishlist = (data) => (dispatch) => {
   dispatch({ type: GET_WISHLIST_SUCCESS, payload: data });
 };
+
+export const checkLogin = () => (dispatch) => {};
