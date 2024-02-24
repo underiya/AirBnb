@@ -1,6 +1,6 @@
 export default function Footerbottom() {
   return (
-    <div className="flex flex-col ml-[50px] pb-[30px] md:flex-row justify-between w-[90%] md:w-[90%] lg:[90%] xl:[90%]">
+    <div className="flex text-[18px] flex-col ml-[50px] pb-[30px] md:flex-row justify-between w-[90%] md:w-[90%] lg:[90%] xl:[90%]">
       <div className="mb-8 md:mb-0">
         <ul className="flex flex-col md:flex-row justify-between gap-2 text-gray-600 text-[16px]">
           <li>&copy; {new Date().getFullYear()} Airbnb Inc,.</li>

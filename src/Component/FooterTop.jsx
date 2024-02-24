@@ -15,14 +15,14 @@ export default function FooterTop() {
   return (
     <>
       <div className="w-[90%] ml-[50px] mt-[70px] px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-semibold leading-tight pt-6 sm:pt-12">
+        <h2 className="text-[36px] font-semibold leading-tight pt-6 sm:pt-12">
           Inspiration for future getaways
         </h2>
         <div className="mt-6 flex flex-wrap space-x-4 border-b-2 overflow-x-auto">
           {categories.map((category) => (
             <a
               key={category}
-              className={`text-base font-medium ${
+              className={`text-[20px] font-medium ${
                 activeCategory === category
                   ? "text-gray-900 pb-2 border-b-2 active:underline active:border-gray-900"
                   : "text-gray-500 hover:text-gray-900 pb-2"
@@ -41,8 +41,8 @@ export default function FooterTop() {
           {(showMore ? allLocations : allLocations.slice(0, 16)).map(
             (location, index) => (
               <div key={index} className="mb-4">
-                <h3 className="text-[26px] font-semibold">{location.name}</h3>
-                <p className="text-[16px] text-gray-600">
+                <h3 className="text-[18px] font-semibold">{location.name}</h3>
+                <p className="text-[20px] text-gray-600">
                   {location.description}
                 </p>
               </div>

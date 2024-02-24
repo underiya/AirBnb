@@ -10,7 +10,7 @@ export default function Footer() {
 
         <hr className=" border-t-[1px] border-gray-400 my-4" />
 
-        <div className=" flex flex-col ml-[50px] md:flex-row justify-between w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] mx-auto my-[20px] py-[30px]  ">
+        <div className=" flex flex-col text-[18px] ml-[50px] md:flex-row justify-between w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] mx-auto my-[20px] py-[30px]  ">
           <div className="mb-8 md:mb-0">
             <ul className="flex flex-col justify-between gap-[10px] text-slate-500">
               <li className="font-semibold text-black">Support</li>
