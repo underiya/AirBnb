@@ -11,6 +11,9 @@ import {
   useDisclosure,
   Textarea,
   Text,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import MessageToast from "./MessageToast";
 
@@ -44,19 +47,16 @@ export default function SendMessageModal() {
           <ModalHeader>Message the Host</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text mb={4}>Hi, I have a question about your listing:</Text>
-            <Textarea
-              placeholder="Type your message here..."
-              value={message}
-              onChange={handleMessageChange}
-              size="lg"
-              isInvalid={!isMessageValid} // Apply invalid styles if message is not valid
-            />
-            {!isMessageValid && ( // Display error message if message is not valid
-              <Text mt={2} color="red.500">
-                Please enter a message.
-              </Text>
-            )}
+            <FormControl isInvalid={!isMessageValid} mb={4}>
+              <FormLabel>Hi, I have a question about your listing:</FormLabel>
+              <Textarea
+                placeholder="Type your message here..."
+                value={message}
+                onChange={handleMessageChange}
+                size="lg"
+              />
+              <FormErrorMessage>Please enter a message.</FormErrorMessage>
+            </FormControl>
           </ModalBody>
           <ModalFooter justifyContent="center">
             <MessageToast colorScheme="blue" onClick={handleSendMessage} />

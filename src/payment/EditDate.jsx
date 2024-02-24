@@ -18,10 +18,11 @@ import EditDateToast from "./EditDateToast";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function EditDate() {
+export default function EditDate({data,onUpdate}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [checkInDate, setCheckInDate] = useState(null);
-  const [checkOutDate, setCheckOutDate] = useState(null);
+  // const [newData, setNewData] = useState(data);
+  const [checkInDate, setCheckInDate] = useState(data.checkInDate);
+  const [checkOutDate, setCheckOutDate] = useState(data.checkOutDate);
 
 
   const today = new Date(); // Get today's date
@@ -29,15 +30,9 @@ export default function EditDate() {
   tomorrow.setDate(tomorrow.getDate() + 1); // Get tomorrow's date
 
   const handleSave = () => {
-    if (checkInDate < today || checkOutDate < today) {
-      setIsInvalidDateOpen(true);
-    } else {
-      console.log("Selected Date:", checkInDate, checkOutDate);
-      onClose();
-    }
+      onUpdate(checkInDate,checkOutDate);
+      onClose();   
   };
-
-
 
   return (
     <>
@@ -52,7 +47,7 @@ export default function EditDate() {
             <Flex direction="column" gap={5}>
               <Box>
                 <Text>5 nights</Text>
-                <Text>1 bed . 1 bath</Text>
+                <Text>1 bed.1 bath</Text>
               </Box>
               <Spacer />
 
@@ -84,14 +79,13 @@ export default function EditDate() {
           </ModalBody>
 
           <ModalFooter justifyContent="center">
-            <EditDateToast colorScheme="blue" mr={3} onClick={handleSave} />
+            <EditDateToast color="blue" mr={3} onClick={handleSave} />
             <Button variant="ghost" onClick={onClose}>
               Cancel
             </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-   
     </>
   );
 }

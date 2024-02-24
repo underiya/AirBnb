@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 // import { fetchData } from './fetch';
-const CardCarousel = () => {
+const Analytics = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -46,6 +46,11 @@ const CardCarousel = () => {
   return (
     <>
       <div className="relative">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="w-full py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-300"
+        />
         <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
           <svg
             className="h-5 w-5 text-gray-400"
@@ -64,6 +69,7 @@ const CardCarousel = () => {
       </div>
       <div className="grid grid-cols-2 gap-y-5 gap-[25px] w-[90%] mx-auto pt-[10px] ">
         {data.map((el, i) => (
+          // CARD
           <div>
             <div className="rounded-lg w-[100%] h-[50%] overflow-hidden relative ">
               <img
@@ -131,4 +137,4 @@ const CardCarousel = () => {
     </>
   );
 };
-export default React.memo(CardCarousel);
+export default React.memo(Analytics);
