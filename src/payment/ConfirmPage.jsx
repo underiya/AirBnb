@@ -1,4 +1,4 @@
-  import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PaymentForm from "./PaymentForm";
 import EditDate from "./EditDate";
 import EditGuest from "./EditGuest";
@@ -7,10 +7,6 @@ import SendMessageModal from "./SendMessageModal";
 import PANModal from "./PanModel";
 import ConfirmPay from "./ConfirmPay";
 import HotelCard from "./HotelCard";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import Price from "./Price";
-import Guest from "./Guest";
 import { useSelector } from "react-redux";
 
 export default function ConfirmPage() {
@@ -38,19 +34,6 @@ function formatDate(date) {
 const formattedCheckInDate = formatDate(checkInDate);
 const formattedCheckOutDate = formatDate(checkOutDate);
 
-
-  // const [checkDate,setCheckDate]=useState(dayOfCheckInDay)
-  // const [checkoDate,setCheckotDate]=useState(dayOfCcheckOutDay)
-  // const [checkInMonth,setcheckInMonthName]=useState(checkInMonthName)
-  // const [checkOutMonth,setcheckOutMonthName]=useState(checkOutMonthName)
-
-  
-  // const handleUpdate = (checkInDate, checkOutDate) => {
-  //   setCheckDate(checkInDate.getDate());
-  //   setCheckotDate(checkOutDate.getDate());
-  //   setcheckInMonthName(checkInDate.toLocaleString('default', { month: 'long' }));
-  //   setcheckOutMonthName(checkOutDate.toLocaleString('default', { month: 'long' }));
-  // };
   return (
     <div className="mx-auto w-10/12">
       <div className="mt-9 sm:w-full lg:w-1/2 ">
@@ -69,7 +52,6 @@ const formattedCheckOutDate = formatDate(checkOutDate);
               <h2>Dates</h2>
              <h2>{`${formattedCheckInDate} - ${formattedCheckOutDate}`}</h2>
             </div>
-            {/* onUpdate={handleUpdate} */}
             <EditDate data={newdetails}  />
           </div>
 
@@ -79,7 +61,6 @@ const formattedCheckOutDate = formatDate(checkOutDate);
             <p>{totalGuest}</p>
             </div>
             <EditGuest />
-            {/* <Guest/> */}
           </div>
         </div>
         <hr className="mt-3" />
@@ -165,7 +146,6 @@ const formattedCheckOutDate = formatDate(checkOutDate);
           responsible for damage.
         </p>
         {/* <button className='mt-3 p-3  bg-pink-600 text-white rounded-lg mb-4'>Confirm and Pay</button> */}
-
         <ConfirmPay />
       </div>
     </div>

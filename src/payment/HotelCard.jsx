@@ -13,7 +13,7 @@ export default function HotelCard({ data }) {
   const differenceIn = difference / (1000 * 3600 * 24);
   let totalP = data.price * differenceIn;
   console.log(differenceIn);
-  const servceFees = 2910;
+  const servceFees = 2910 ;
   let totalPayment = totalP + servceFees;
   totalPayment = totalPayment.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
@@ -35,7 +35,7 @@ export default function HotelCard({ data }) {
           <p>{data.nearBy}</p>
           {data.rating && (
             <h3 className="font-semibold">
-              {data.rating} <span>({data.reviews && data.reviews.length})</span>
+              {data.rating} <span>({data.reviews && data.reviews.length+"Reviews"})</span>
             </h3>
           )}
         </div>
