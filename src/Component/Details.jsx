@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Price from './Price';
 import BelowDetails from './BelowDetails';
+import Reviews from './Reviews';
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -13,7 +14,6 @@ const DetailsPage = () => {
         const res = await fetch(`https://backend-airbnb-stqx.onrender.com/api/locations/1`);
         const data = await res.json();
         setDetailData(data);
-        // console.log(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -30,14 +30,6 @@ const DetailsPage = () => {
         
         <div className="card-details ">
           <h1 className='font-semibold text-3xl text-start ml-48' >{detailData.title}</h1>
-        
-     
-          {/* <div className="card-images grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 h-80 w-3/4 m-auto">
-          {detailData.images.map((image, index) => (
-            <img className='h-56 w-56' key={index} src={image} alt={`Image ${index + 1}`} />
-          ))}
-          
-        </div> */}
 <div className="card-images grid grid-cols-4 gap-2 border border-gray-300 rounded-lg w-3/4 m-auto relative">
   {/* First image spans 2 columns and 2 rows */}
   <img className="object-cover col-span-2 row-span-2 rounded-lg" key={0} src={detailData.images[0]} alt={`Image 1`}  />
@@ -82,16 +74,14 @@ const DetailsPage = () => {
         </span>
       </div>
 
-{/* <p>Price: {detailData.price}</p> */}
-
-
+         <Price detailData={detailData}/>
 
         </div><Price detailData={detailData}/>
         <div className='grid grid-cols-2 gap-2'>  <BelowDetails detailData={detailData}/>   
         </div>
     
       </div> 
-    
+    <Reviews reviews={detailData.reviews}/>
     </div>
   );
 };
