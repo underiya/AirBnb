@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <>
       {" "}
-      <div className="bg-[#dddddd] mt-[14px]">
+      <div className="bg-[#f1efef] mt-[14px]">
         <FooterTop />
 
         <hr className=" border-t-[1px] border-gray-400 my-4" />
