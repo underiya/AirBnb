@@ -71,7 +71,7 @@ const CardCarousel = () => {
                 : "block"
             }`}
           >
-            <div className="rounded-[18px] overflow-hidden relative">
+            <div className="rounded-[18px] overflow-hidden relative" >
               <img
                 className="w-full h-[300px] object-cover"
                 src={el.images[currentIndex[i]]}

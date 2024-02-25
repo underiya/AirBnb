@@ -10,15 +10,15 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-const BelowDetails = () => {
+const BelowDetails = ({detailData}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);
   const handleOpen = () => setIsOpen(true);
 
   return (
-    <div className="container mx-auto py-8">
-      <Price />
+    <div className="container mx-auto py-8 ">
+      
       <div className="flex gap-4 ml-48">
         <img
           className="h-10 w-10 rounded-full"
