@@ -5,10 +5,10 @@ export default function EditDateToast({ onClick }) {
 
   const handleClick = () => {
     // Execute the onClick function passed from the parent component
-    const isUpdateSuccessful = onClick();
+    onClick();
 
     // If the date update was successful, show the toast and close the modal
-    if (isUpdateSuccessful) {
+    // if (isUpdateSuccessful) {
       toast({
         title: "Date update",
         description: "Date updated Successfully",
@@ -16,11 +16,11 @@ export default function EditDateToast({ onClick }) {
         duration: 5000,
         isClosable: true,
       });
-    }
+    // }
   };
 
   return (
-    <Button mt={3} mb={3} bgColor={"palevioletred"} onClick={handleClick}>
+    <Button mt={3} mb={3} colorScheme="blue" onClick={handleClick}>
       Save
     </Button>
   );

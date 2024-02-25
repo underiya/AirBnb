@@ -44,12 +44,6 @@ export default function EditDate({data,onUpdate}) {
           <ModalCloseButton />
           <ModalBody>
             <Flex direction="column" gap={5}>
-              <Box>
-                <Text>5 nights</Text>
-                <Text>1 bed.1 bath</Text>
-              </Box>
-              <Spacer />
-
               <Box className="rounded-lg w-72 h-28 ml-3">
                 <Flex gap={4}>
                   <Box>
@@ -78,7 +72,7 @@ export default function EditDate({data,onUpdate}) {
           </ModalBody>
 
           <ModalFooter justifyContent="center">
-            <EditDateToast color="blue" mr={3} onClick={handleSave} />
+            <EditDateToast color="blue" mr={3} onClick={onClose} />
             <Button variant="ghost" onClick={onClose}>
               Cancel
             </Button>

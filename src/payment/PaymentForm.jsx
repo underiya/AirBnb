@@ -3,16 +3,74 @@ import FormSubmitToast from './FormSubmitToast';
 
 function PaymentForm() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
-  const [inputValue, setInputValue] = useState('');
+  const [inputValues, setInputValues] = useState({
+    upiId: '',
+    creditCardNumber: '',
+    cardHolderName: '',
+    expiryDate: '',
+    cvv: '',
+    bankName: ''
+  });
+  const [formErrors, setFormErrors] = useState({});
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    const { name, value } = e.target;
+    setInputValues({
+      ...inputValues,
+      [name]: value
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle form submission based on selectedPaymentMethod and inputValue
-    console.log(selectedPaymentMethod, inputValue);
+    // Validation
+    const errors = {};
+    const today = new Date();
+    const expiryDate = new Date(inputValues.expiryDate);
+
+    if (!inputValues.upiId && selectedPaymentMethod === 'UPI') {
+      errors.upiId = 'UPI ID is required';
+    }
+    if (!inputValues.creditCardNumber && selectedPaymentMethod === 'Creditdebitcard') {
+      errors.creditCardNumber = 'Credit Card Number is required';
+    } else if (!/^\d+$/.test(inputValues.creditCardNumber)) {
+      errors.creditCardNumber = 'Invalid Credit Card Number';
+    }
+    if (!inputValues.cardHolderName && selectedPaymentMethod === 'Creditdebitcard') {
+      errors.cardHolderName = 'Card Holder Name is required';
+    } else if (!/^[a-zA-Z\s]+$/.test(inputValues.cardHolderName)) {
+      errors.cardHolderName = 'Invalid Card Holder Name';
+    }
+    if (!inputValues.expiryDate && selectedPaymentMethod === 'Creditdebitcard') {
+      errors.expiryDate = 'Expiry Date is required';
+    } else if (expiryDate <= today) {
+      errors.expiryDate = 'Expiry Date must be in the future';
+    }
+    if (!inputValues.cvv && selectedPaymentMethod === 'Creditdebitcard') {
+      errors.cvv = 'CVV Number is required';
+    } else if (!/^\d{3,4}$/.test(inputValues.cvv)) {
+      errors.cvv = 'Invalid CVV Number';
+    }
+    if (!inputValues.bankName && selectedPaymentMethod === 'NetBanking') {
+      errors.bankName = 'Bank Name is required';
+    }
+
+    if (Object.keys(errors).length === 0) {
+      // handle form submission
+      console.log(selectedPaymentMethod, inputValues);
+    } else {
+      setFormErrors(errors);
+    }
+    setInputValues({
+    upiId: '',
+    creditCardNumber: '',
+    cardHolderName: '',
+    expiryDate: '',
+    cvv: '',
+    bankName: ''
+    }
+   
+    )
   };
 
   const renderPaymentForm = () => {
@@ -23,11 +81,14 @@ function PaymentForm() {
             <label className="block mb-2">Enter UPI ID:</label>
             <input
               type="text"
-              value={inputValue}
+              name="upiId"
+              value={inputValues.upiId}
               onChange={handleInputChange}
               className="border border-gray-300 rounded-lg p-2 w-full"
               placeholder='Enter UPI ID'
+              required
             />
+            {formErrors.upiId && <p className="text-red-500">{formErrors.upiId}</p>}
           </div>
         );
       case 'Creditdebitcard':
@@ -35,24 +96,60 @@ function PaymentForm() {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block mb-2">Credit Card Number:</label>
-              <input type="text" className="border border-gray-300 rounded-lg p-2 w-full" placeholder='Enter Nuber' />
+              <input
+                type="text"
+                name="creditCardNumber"
+                value={inputValues.creditCardNumber}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-lg p-2 w-full"
+                placeholder='Enter Number'
+                required
+              />
+              {formErrors.creditCardNumber && <p className="text-red-500">{formErrors.creditCardNumber}</p>}
             </div>
             <div className="mb-4">
               <label className="block mb-2">Card Holder Name:</label>
-              <input type="text" className="border border-gray-300 rounded-lg p-2 w-full" placeholder='Enter Your Name' />
+              <input
+                type="text"
+                name="cardHolderName"
+                value={inputValues.cardHolderName}
+                onChange={handleInputChange}
+                className="border border-gray-300 rounded-lg p-2 w-full"
+                placeholder='Enter Your Name'
+                required
+              />
+              {formErrors.cardHolderName && <p className="text-red-500">{formErrors.cardHolderName}</p>}
             </div>
-            <div className='flex justify-between'>
-            <div className="mb-4">
-              <label className="block mb-2">Expiry Date:</label>
-              <input type="date" className="border border-gray-300 rounded-lg p-2 w-full" placeholder='Expiry Date' />
-            </div>
-            <div className="mb-4">
-              <label className="block mb-2">CVV Number:</label>
-              <input type="text" className="border border-gray-300 rounded-lg p-2 w-full"  placeholder='CVV Number'/>
-            </div>
+            <div className='flex justify-between mb-4'>
+              <div>
+                <label className="block mb-2">Expiry Date:</label>
+                <input
+                  type="date"
+                  name="expiryDate"
+                  value={inputValues.expiryDate}
+                  onChange={handleInputChange}
+                  className="border border-gray-300 rounded-lg p-2"
+                  required
+                />
+                {formErrors.expiryDate && <p className="text-red-500">{formErrors.expiryDate}</p>}
+              </div>
+              <div>
+                <label className="block mb-2">CVV Number:</label>
+                <input
+                  type="text"
+                  name="cvv"
+                  value={inputValues.cvv}
+                  onChange={handleInputChange}
+                  className="border border-gray-300 rounded-lg p-2"
+                  placeholder='CVV Number'
+                  required
+                />
+                {formErrors.cvv && <p className="text-red-500">{formErrors.cvv}</p>}
+              </div>
             </div>
             {/* <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Submit</button> */}
-            <FormSubmitToast/>
+            {/* <FormSubmitToast /> */}
+            <button type='submit'className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">submit</button>
           </form>
         );
       case 'NetBanking':
@@ -61,10 +158,13 @@ function PaymentForm() {
             <label className="block mb-2">Enter Bank Name:</label>
             <input
               type="text"
-              value={inputValue}
+              name="bankName"
+              value={inputValues.bankName}
               onChange={handleInputChange}
+              required
               className="border border-gray-300 rounded-lg p-2 w-full" placeholder='Enter Bank Name'
             />
+            {formErrors.bankName && <p className="text-red-500">{formErrors.bankName}</p>}
           </div>
         );
       default:

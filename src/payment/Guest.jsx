@@ -79,8 +79,6 @@ const Guest = () => {
         </div>
       </div>
       <input type="text" placeholder={guestString()} readOnly />
-      <button >Close</button>
-      {/* onClick={handleClose} */}
     </div>
   );
 };

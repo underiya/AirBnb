@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../Redux/action";
+import { login, loginSuccess } from "../Redux/action";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,9 +29,20 @@ const Login = () => {
   //   console.log(form);
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(form.email, form.password));
+
     if (form.email == "admin@admin.com" && form.password == "admin") {
+      const Admin = [
+        {
+          firstName: "Admin",
+          email: form.email,
+          password: form.password,
+        },
+      ];
+      dispatch(loginSuccess(Admin));
+      onClose();
       navigate("/admin");
+    } else {
+      dispatch(login(form.email, form.password));
     }
   };
 
