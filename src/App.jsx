@@ -9,14 +9,15 @@ import AllRoutes from "./Component/AllRoutes";
 import Header from "./Component/Header";
 
 import SideNavbar from "./Admin/SideNavbar";
-
+import Home from "./Component/Home";
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      {/* <Home /> */}
+
       <Header />
       <AllRoutes />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
