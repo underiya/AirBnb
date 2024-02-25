@@ -3,6 +3,10 @@ import Dashboard from "./Dashboard";
 import Inbox from "./Inbox";
 import Analytics from "./Analytic";
 // import { ReturnFocus } from "./Modal";
+import { useDispatch } from 'react-redux';
+import { logout } from "../Redux/action";
+import { useNavigate } from "react-router-dom";
+
 
 
 const SideNavbar = () => {
@@ -19,10 +23,16 @@ const SideNavbar = () => {
     // { title: "Files ", src: "Folder",  component: <Files /> },
     // { title: "Setting", src: "Setting", component: <Setting /> },
   ];
-
+  const dispatch = useDispatch();
+  const navigate=useNavigate()
   const handleMenuClick = (title) => {
     setSelectedMenu(title);
   };
+
+  function handleLogout(){
+    dispatch(logout());
+    navigate("/");
+  }
 
   return (
     <>
@@ -30,9 +40,9 @@ const SideNavbar = () => {
       <div
         className={` ${
           open ? "w-72" : "w-20 "
-        } bg-dark-purple p-5  pt-8 relative duration-300 w-full`}
+        } bg-dark-purple p-5  pt-8 relative duration-300 w-full flex justify-between`}
       >
-         <img src="/airbnb.png" alt="" className=" w-20"/>
+         <img src="/airbnb.png" alt="" className=" w-[120px] h-[50px]"/>
         
         <div className="flex gap-x-4 items-center justify-center align-middle">
           
@@ -54,7 +64,10 @@ const SideNavbar = () => {
             </p>
           ))}
         </div>
+
         </div>
+        <button className=" px-3  border relative right-0  text-zinc-100 hover:bg-[#f18488] bg-[#f54a50] font-bold rounded-lg" onClick={handleLogout}>Log Out</button>
+
       </div>
       
     {/* </div> */}
