@@ -7,56 +7,32 @@ import SendMessageModal from "./SendMessageModal";
 import PANModal from "./PanModel";
 import ConfirmPay from "./ConfirmPay";
 import HotelCard from "./HotelCard";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import Price from "./Price";
-import Guest from "./Guest";
-// const obj = {
-//   checkInDate: "2024-02-25",
-//   checkOutDate: "2024-02-28", 
-// };
-
-// const checkInDate = new Date(obj.checkInDate);
-// const checkOutDate = new Date(obj.checkOutDate);
-
-// const dayOfCheckInDay = checkInDate.getDate(); // Get the day of the week for the check-in date
-// const dayOfCcheckOutDay = checkOutDate.getDate();
-// const checkInMonthName = checkInDate.toLocaleString('default', { month: 'long' });
-// const checkOutMonthName = checkOutDate.toLocaleString('default', { month: 'long' });
+import { useSelector } from "react-redux";
 
 export default function ConfirmPage() {
-  const id = useParams();
-  const [data,setdate]=useState("");
+ 
+  let details=useSelector(state=>state.cart)
+  let newdetails=details[details.length-1]
+  // console.log(newdetails)
 
-  
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      let res = await axios.get(`https://backend-airbnb-stqx.onrender.com/api/locations/${id.id}`);
-      console.log(res.data);
-      setdate(res.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+ 
+ 
+const totalGuest=(newdetails?.formData?.adults) + (newdetails?.formData?.children)
 
-  fetchData(); // Invoke the async function here
-
-}, []);
-  // const [checkDate,setCheckDate]=useState(dayOfCheckInDay)
-  // const [checkoDate,setCheckotDate]=useState(dayOfCcheckOutDay)
-  // const [checkInMonth,setcheckInMonthName]=useState(checkInMonthName)
-  // const [checkOutMonth,setcheckOutMonthName]=useState(checkOutMonthName)
-
-  
-  // const handleUpdate = (checkInDate, checkOutDate) => {
-  //   setCheckDate(checkInDate.getDate());
-  //   setCheckotDate(checkOutDate.getDate());
-  //   setcheckInMonthName(checkInDate.toLocaleString('default', { month: 'long' }));
-  //   setcheckOutMonthName(checkOutDate.toLocaleString('default', { month: 'long' }));
-  // };
+const checkInDate = new Date(details[details.length-1].formData.checkInDate);
+const checkOutDate = new Date(details[details.length-1].formData.checkOutDate);
 
 
+
+function formatDate(date) {
+  const day = date.getDate();
+  const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
+  return `${day} ${month}`;
+}
+
+// Format the check-in and check-out dates
+const formattedCheckInDate = formatDate(checkInDate);
+const formattedCheckOutDate = formatDate(checkOutDate);
 
   return (
     <div className="mx-auto w-10/12">
@@ -66,8 +42,7 @@ useEffect(() => {
           <span className="ml-5 text-4xl font-semibold">Confirm and pay</span>
         </div>
         <div className="md:relative lg:absolute md:w-full lg:w-2/6 md:h-96  lg:h-96  shadow-lg rounded-xl border-1 border-gray-100 sm:relative md:absolute lg:top-40  lg:right-36">
-          <HotelCard data={data} />
-          {/* <Price detailData={data}/> */}
+       <HotelCard data={newdetails} /> 
         </div>
 
         <div className="ave">
@@ -75,20 +50,17 @@ useEffect(() => {
           <div className="flex justify-between">
             <div className="mt-3">
               <h2>Dates</h2>
-              {/* <h2>{`${checkDate} ${checkInMonth}-${checkoDate} ${checkOutMonth}`}</h2> */}
-              <h2>25-31june</h2>
+             <h2>{`${formattedCheckInDate} - ${formattedCheckOutDate}`}</h2>
             </div>
-            {/* onUpdate={handleUpdate} */}
-            <EditDate data={data}  />
+            <EditDate data={newdetails}  />
           </div>
 
           <div className="flex justify-between">
             <div>
             <h1 className="mt-9">Guests</h1>
-            <p>2</p>
+            <p>{totalGuest}</p>
             </div>
             <EditGuest />
-            {/* <Guest/> */}
           </div>
         </div>
         <hr className="mt-3" />
@@ -174,7 +146,6 @@ useEffect(() => {
           responsible for damage.
         </p>
         {/* <button className='mt-3 p-3  bg-pink-600 text-white rounded-lg mb-4'>Confirm and Pay</button> */}
-
         <ConfirmPay />
       </div>
     </div>
