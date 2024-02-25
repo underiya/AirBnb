@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Guest from "./Guest";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../Redux/action";
+
 const Price = ({ detailData }) => {
   const [formData, setFormData] = useState({
     checkInDate: null,
@@ -16,9 +15,6 @@ const Price = ({ detailData }) => {
   const airbnbServiceFeePercentage = 0.2;
   const [guestComponentVisible, setGuestComponentVisible] = useState(false);
   console.log(detailData);
-
-  const dispatch = useDispatch();
-
   useEffect(() => {
     if (formData.checkInDate && formData.checkOutDate) {
       const nights = Math.ceil(
@@ -63,9 +59,6 @@ const Price = ({ detailData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addToCart({ ...detailData, formData }));
-    console.log(e.target.value);
-    console.log(guestComponentVisible);
   };
 
   const handleCloseGuestComponent = () => {
@@ -111,7 +104,7 @@ const Price = ({ detailData }) => {
             </select>
           </div>
         </div>
-        {<Guest onClose={handleCloseGuestComponent} />}
+        {guestComponentVisible && <Guest onClose={handleCloseGuestComponent} />}
         <button
           type="submit"
           className="bg-rose-600 text-white w-full h-10 rounded-lg mt-4"
