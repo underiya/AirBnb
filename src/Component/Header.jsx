@@ -3,6 +3,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Home from "./Home";
 import HomeR from "./HomeR";
+import SearchBar from "./Navbar";
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
@@ -17,13 +18,25 @@ function Header() {
 
   return (
     <>
-      <div className="fixed w-full bg-white z-[1] ">
+      <div className="fixed w-full bg-white z-[1] shadow-md">
         <div className="flex w-[90%] m-auto justify-between justify-item-center items-center py-[18px]">
           <div className="w-[120px]">
             <a href="airbnb.com">
               {" "}
               <img src="/airbnb.png" alt="Log" />
             </a>{" "}
+          </div>
+          {/* middle */}
+
+          <div className="flex justify-between gap-[24px] text-[22px] text-slate-400">
+            <a
+              href="/"
+              className="active:font-semibold active:text-black active:underline"
+            >
+              Stays
+            </a>
+            <a href="#">Experince</a>
+            <a href="#">Online Experinces</a>
           </div>
 
           {/* HAMBURGER  */}
@@ -70,6 +83,10 @@ function Header() {
             </div>
           </div>
         </div>
+        <div>
+          <SearchBar />
+        </div>
+
         <hr className="border-t-3" />
         <div className=" w-[90%] flex justify-between justify-items-center  gap-[10px] items-center mx-auto my-[14px] pb-[20px]">
           <Home />
