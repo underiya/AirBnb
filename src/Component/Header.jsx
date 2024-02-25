@@ -146,7 +146,17 @@ function Header() {
             </a>
           </div>
 
-          <div className="flex justify-between gap-[24px] text-[22px] text-slate-400">
+          {/* <div className="flex justify-between gap-[24px] text-[22px] text-slate-400">
+            <a
+              href="/"
+              className="active:font-semibold active:text-black active:underline"
+            >
+              Stays
+            </a>
+            <a href="#">Experince</a>
+            <a href="#">Online Experinces</a>
+          </div> */}
+          <div className="lg:flex hidden justify-between gap-[24px] text-[22px] text-slate-400">
             <a
               href="/"
               className="active:font-semibold active:text-black active:underline"
@@ -157,7 +167,6 @@ function Header() {
             <a href="#">Online Experinces</a>
           </div>
 
-          {/* HAMBURGER  */}
           <div className="lg:flex hidden gap-[4px] items-center">
             <div className="flex justify-center items-center">
               <a
@@ -209,7 +218,6 @@ function Header() {
                 </div>
               )}
 
-              {/* user image */}
               {isLoggedIn ? (
                 <>
                   <h1 className=" bg-black text-white w-10 h-10  text-center text-[25px] rounded-[50%]  font-bold">
