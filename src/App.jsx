@@ -14,7 +14,7 @@ function App() {
       {/* <Navbar />
       <AllRoutes />
       <Footer /> */}
-      {/* <SideNavbar/> */}
+      <SideNavbar/>
     </div>
   );
 }
