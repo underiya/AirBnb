@@ -12,60 +12,48 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-import axios from "axios";
-import { useState } from "react";
-
-export async function PostUsers(url, cred) {
-  try {
-    let res = await axios.post(url, cred);
-    console.log(res.data);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-const Signup = () => {
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../Redux/action";
+import { useNavigate } from "react-router-dom";
+const Login = () => {
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const navigate = useNavigate();
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
     email: "",
     password: "",
   });
 
   //   console.log(form);
-  const handleSignup = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    PostUsers("https://backend-airbnb-stqx.onrender.com/api/users", form);
-    console.log(form);
-    onClose();
+    dispatch(login(form.email, form.password));
+    if (form.email == "admin@admin.com" && form.password == "admin") {
+      navigate("/admin");
+    }
   };
+
+  useEffect(() => {
+    if (isLoggedIn || form.email == "admin@admin.com") {
+      onClose();
+    }
+  }, [isLoggedIn, onClose]);
+
   return (
     <>
       <Button onClick={onOpen} bg="white" _hover="color:white">
-        Signup
+        Login
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Signup</ModalHeader>
+          <ModalHeader>Login</ModalHeader>
           <ModalCloseButton />
           <FormControl>
             <ModalBody>
-              <FormLabel>First name</FormLabel>
-              <Input
-                placeholder="First name"
-                onChange={(e) =>
-                  setForm({ ...form, firstName: e.target.value })
-                }
-              />
-              <FormLabel>Last name</FormLabel>
-              <Input
-                placeholder="Last name"
-                onChange={(e) => setForm({ ...form, lastName: e.target.value })}
-              />
               <FormLabel>Email</FormLabel>
               <Input
                 type="email"
@@ -81,12 +69,12 @@ const Signup = () => {
 
             <ModalFooter>
               <Button
-                onClick={handleSignup}
+                onClick={handleLogin}
                 bg="#FF5A5F"
-                color="white"
                 _hover="color:#FF5A5F"
+                color="white"
               >
-                Signup
+                Login
               </Button>
               <Button
                 colorScheme="black"
@@ -104,4 +92,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
