@@ -26,7 +26,7 @@ const DetailsPage = () => {
   if (!detailData) return <div>Loading...</div>;
 
   return (
-    <div className="">
+    <div className=" pt-[300px]">
       <div className="card">
         <div className="card-details">
           <h1 className="font-semibold text-3xl text-start ml-48">
