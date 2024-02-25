@@ -1,20 +1,24 @@
 // Price.js
-import React, { useState, useEffect } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Guest from "./Guest";
-
-const Price = ({detailData}) => {
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/action";
+const Price = ({ detailData }) => {
   const [formData, setFormData] = useState({
     checkInDate: null,
     checkOutDate: null,
-    selectedCategory: '',
+    selectedCategory: "",
   });
   const [numberOfNights, setNumberOfNights] = useState(0);
   const [nightlyRate, setNightlyRate] = useState(detailData.price);
   const airbnbServiceFeePercentage = 0.2;
   const [guestComponentVisible, setGuestComponentVisible] = useState(false);
   console.log(detailData);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (formData.checkInDate && formData.checkOutDate) {
       const nights = Math.ceil(
@@ -32,7 +36,7 @@ const Price = ({detailData}) => {
   const calculateTotalpay = () => {
     const subtotal = nightlyRate * numberOfNights;
     const serviceFee = subtotal * airbnbServiceFeePercentage;
-    return subtotal+serviceFee;
+    return subtotal + serviceFee;
   };
 
   const handleFormChange = (e) => {
@@ -59,7 +63,9 @@ const Price = ({detailData}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+    dispatch(addToCart({ ...detailData, formData }));
+    console.log(e.target.value);
+    console.log(guestComponentVisible);
   };
 
   const handleCloseGuestComponent = () => {
@@ -69,7 +75,7 @@ const Price = ({detailData}) => {
   return (
     <div className=" md:sticky flex flex-col gap-3 left-2/3 top-3/4 md:top-1/4 mt-20 md:mt-0 p-5 w-96 text-center bg-white shadow-lg rounded-lg">
       <span className="text-start flex gap-3">
-        <h1 className="text-3xl font-bold text-start">{nightlyRate}</h1>{' '}
+        <h1 className="text-3xl font-bold text-start">{nightlyRate}</h1>{" "}
         <span className="text-sm text-gray-500 mt-3 ">per night</span>
       </span>
       <form onSubmit={handleSubmit}>
@@ -78,7 +84,7 @@ const Price = ({detailData}) => {
             <DatePicker
               id="checkInDate"
               selected={formData.checkInDate}
-              onChange={(date) => handleDateChange(date, 'checkInDate')}
+              onChange={(date) => handleDateChange(date, "checkInDate")}
               placeholderText="Check-in"
               className="date-picker w-full h-10 border-2 border-gray-600"
             />
@@ -87,7 +93,7 @@ const Price = ({detailData}) => {
             <DatePicker
               id="checkOutDate"
               selected={formData.checkOutDate}
-              onChange={(date) => handleDateChange(date, 'checkOutDate')}
+              onChange={(date) => handleDateChange(date, "checkOutDate")}
               placeholderText="Check-out"
               className="date-picker w-full h-10 border-2 border-gray-600"
             />
@@ -105,19 +111,29 @@ const Price = ({detailData}) => {
             </select>
           </div>
         </div>
-        {guestComponentVisible && <Guest onClose={handleCloseGuestComponent} />}
-        <button type="submit" className="bg-rose-600 text-white w-full h-10 rounded-lg mt-4">
+        {<Guest onClose={handleCloseGuestComponent} />}
+        <button
+          type="submit"
+          className="bg-rose-600 text-white w-full h-10 rounded-lg mt-4"
+        >
           Reserve
         </button>
       </form>
       <p className="text-sm text-gray-500">You won't be charged yet</p>
       <div className="flex justify-between mt-4">
-        <p className="text-lg">₹{nightlyRate} X {numberOfNights} nights</p>
+        <p className="text-lg">
+          ₹{nightlyRate} X {numberOfNights} nights
+        </p>
         <p className="text-lg">₹{calculateTotal()}</p>
       </div>
       <div className="flex justify-between mt-2">
         <p className="text-lg">Airbnb service fee </p>
-        <p className="text-lg">₹{(nightlyRate * numberOfNights * airbnbServiceFeePercentage).toFixed(2)}</p>
+        <p className="text-lg">
+          ₹
+          {(nightlyRate * numberOfNights * airbnbServiceFeePercentage).toFixed(
+            2
+          )}
+        </p>
       </div>
       <hr className="mt-4" />
       <div className="flex justify-between mt-2">
