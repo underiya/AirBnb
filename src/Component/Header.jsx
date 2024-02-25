@@ -116,12 +116,8 @@ import Signup from "./Signup";
 import Home from "./Home";
 import HomeR from "./HomeR";
 import SearchBar from "./Navbar";
-<<<<<<< HEAD
-
-=======
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../Redux/action";
->>>>>>> f4b17256003be68e2ac27e21943dfb7f37942d2c
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
