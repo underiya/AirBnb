@@ -4,16 +4,24 @@ import Signup from "./Signup";
 import Home from "./Home";
 import HomeR from "./HomeR";
 import SearchBar from "./Navbar";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../Redux/action";
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
-
+  const dispatch = useDispatch();
+  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const userInitial = user[0]?.firstName.charAt(0).toUpperCase();
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
   const toggleUserMenu = () => {
     setUserMenuOpen(!isUserMenuOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   return (
@@ -61,16 +69,24 @@ function Header() {
               </a>
               {isMenuOpen && (
                 <div className=" flex flex-col justify-between items-center absolute top-full right-2   bg-white border rounded mt-[4px] p-[18px] z-10 ">
-                  <p className="px-[20px]  text-gray-800">
-                    <Login />
-                  </p>
-                  <p className="px-[20px]  text-gray-800">
-                    <Signup />
-                  </p>
-                  <a
-                    href="https://www.airbnb.co.in/help"
-                    className="px-[20px] text-[16px] text-gray-800"
-                  >
+                  {isLoggedIn ? (
+                    <button
+                      onClick={handleLogout}
+                      className=" bg-[#FF5A5F]  text-white p-2  rounded-[8px] "
+                    >
+                      Logout
+                    </button>
+                  ) : (
+                    <>
+                      <p className="px-[20px]  text-gray-800">
+                        <Login />
+                      </p>
+                      <p className="px-[20px]  text-gray-800">
+                        <Signup />
+                      </p>
+                    </>
+                  )}
+                  <a href="/" className="px-[20px] text-[16px] text-gray-800">
                     Help
                   </a>
                   <a href="/" className="px-[20px] text-[16px] text-gray-800">
@@ -79,7 +95,20 @@ function Header() {
                 </div>
               )}
 
-              <box-icon name="user-circle" size="42px" type="solid"></box-icon>
+              {/* user image */}
+              {isLoggedIn ? (
+                <>
+                  <h1 className=" bg-black text-white w-10 h-10  text-center text-[25px] rounded-[50%]  font-bold">
+                    {userInitial}
+                  </h1>
+                </>
+              ) : (
+                <box-icon
+                  name="user-circle"
+                  size="42px"
+                  type="solid"
+                ></box-icon>
+              )}
             </div>
           </div>
         </div>

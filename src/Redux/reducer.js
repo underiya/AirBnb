@@ -26,7 +26,7 @@ export const cartReducer = (state = [], action) => {
 
 const initialUserState = {
   isLoggedIn: false,
-  user: null,
+  user: [],
   error: null,
 };
 
