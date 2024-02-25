@@ -64,7 +64,7 @@ const CardCarousel = () => {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-[25px] w-[90%] mx-auto pt-[310px] ">
         {data.slice(0, visibleCards).map((el, i) => (
-          <Link to={`/details/${i}`} key={i} className="mb-8">
+          <Link to={`/details/${el.id}`} key={i} className="mb-8">
             <div
               key={i}
               className={`mb-8 ${
