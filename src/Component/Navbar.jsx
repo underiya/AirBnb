@@ -92,7 +92,7 @@ import React from "react";
 
 const SearchBar = () => {
   return (
-    <div className="search-bar w-[65%] mx-auto my-[10px] rounded-[40px] flex justify-center justify-items-center items-center border-2 gap-[10px] shadow-md">
+    <div className="search-bar w-[65%] mx-auto mb-[10px] rounded-[40px] flex justify-center justify-items-center items-center border-2 gap-[10px] shadow-md">
       <div className="relative cursor-pointer hover:bg-slate-100 p-[12px] rounded-[30px]">
         <p>Where</p>
         <input
