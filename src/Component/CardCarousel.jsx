@@ -61,7 +61,7 @@ const CardCarousel = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-[25px] w-[90%] mx-auto pt-[10px]">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-[25px] w-[90%] mx-auto pt-[230px] ">
         {data.slice(0, visibleCards).map((el, i) => (
           <div
             key={i}
