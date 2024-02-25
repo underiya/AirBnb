@@ -35,7 +35,7 @@ export default function HotelCard({ data }) {
           <p>{data.nearBy}</p>
           {data.rating && (
             <h3 className="font-semibold">
-              {data.rating} <span>({data.reviews && data.reviews.length+"Reviews"})</span>
+              ★{data.rating} <span>({data.reviews && data.reviews.length+"Reviews"})</span>
             </h3>
           )}
         </div>
