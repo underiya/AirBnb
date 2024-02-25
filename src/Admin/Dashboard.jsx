@@ -1,13 +1,48 @@
 import Chart from "react-apexcharts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Dashboard = () => {
+  const [user,setUser]=useState(2);
+  const [location,setLocation]=useState(2);
+
+ 
+    async function userda(){
+      try{
+        let res =await fetch("https://backend-airbnb-stqx.onrender.com/api/users");
+        let data= await res.json();
+        console.log(data);
+setUser(data.length);
+      }
+      catch(e){
+        console.log(e);
+      }
+      
+
+    }
+    userda();
+
+
+    async function userda(){
+      try{
+        let res =await fetch("https://backend-airbnb-stqx.onrender.com/api/locations");
+        let data= await res.json();
+        console.log(data);
+setLocation(data.length);
+      }
+      catch(e){
+        console.log(e);
+      }
+      
+
+    }
+    userda();
+  
   const [state, setState] = useState({
     options: {
       chart: {
         id: "basic-bar",
       },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+        categories: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
       },
     },
     series: [
@@ -20,7 +55,7 @@ const Dashboard = () => {
   const [donut, setDonut] = useState({
     options: {},
     series: [44, 55, 41, 17, 15],
-    labels: ["A", "B", "C", "D", "E"],
+    labels: ["Goa", "Delhi", "Mumbai", "Banglore", "Kashmir"]
   });
   return (
     <>
@@ -28,7 +63,7 @@ const Dashboard = () => {
         <div className=" border-4 border-slate-400 bg-slate-100 flex w-1/5 ">
           <div className="p-3 items-center ">
             <h4 className="font-bold">Number of Users</h4>
-            <h1 className="font-bold text-red-950">2M</h1>
+            <h1 className="font-bold text-red-950">{user}</h1>
           </div>
           <div className="p-3 bg-slate-200 items-center">
             <img
@@ -41,7 +76,7 @@ const Dashboard = () => {
         <div className=" border-red-400 border-4 flex w-1/5 bg-red-100">
           <div className="p-3 items-center">
             <h4 className="font-bold">Number of Locations</h4>
-            <h1 className="font-bold text-red-950">2M</h1>
+            <h1 className="font-bold text-red-950">{location}</h1>
           </div>
           <div className="p-3 bg-red-200 items-center">
             <img

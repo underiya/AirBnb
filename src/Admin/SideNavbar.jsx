@@ -2,6 +2,7 @@ import { useState } from "react";
 import Dashboard from "./Dashboard";
 import Inbox from "./Inbox";
 import Analytics from "./Analytic";
+// import { ReturnFocus } from "./Modal";
 
 
 const SideNavbar = () => {
@@ -31,15 +32,16 @@ const SideNavbar = () => {
           open ? "w-72" : "w-20 "
         } bg-dark-purple p-5  pt-8 relative duration-300 w-full`}
       >
+         <img src="/airbnb.png" alt="" className=" w-20"/>
         
-        <div className="flex gap-x-4 items-center justify-center">
+        <div className="flex gap-x-4 items-center justify-center align-middle">
           
-         
-        <ul className="pt-6 flex gap-8">
+        
+        <div className=" flex gap-8 align-middle justify-center items-center">
           {Menus.map((Menu, index) => (
-            <li
+            <p
               key={index}
-              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-lg font-bold	 items-center gap-x-4 
               ${Menu.gap ? "mt-9" : "mt-2"} ${
                 Menu.title === selectedMenu && "bg-light-white"
               } `}
@@ -49,9 +51,9 @@ const SideNavbar = () => {
               <h1 className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
               </h1>
-            </li>
+            </p>
           ))}
-        </ul>
+        </div>
         </div>
       </div>
       
@@ -59,6 +61,7 @@ const SideNavbar = () => {
     <div className="h-screen flex-1 p-7">
     {Menus.find((item) => item.title === selectedMenu)?.component}
   </div>
+ 
   </>
   );
 };
