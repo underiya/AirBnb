@@ -10,13 +10,15 @@ import Header from "./Component/Header";
 
 import SideNavbar from "./Admin/SideNavbar";
 import Home from "./Component/Home";
+import { useSelector } from "react-redux";
 function App() {
+  const Admin = useSelector((state) => state.auth.user);
+  console.log(Admin);
   return (
     <>
-      <Header />
+      {Admin[0]?.email != "admin@admin.com" ? <Header /> : <div></div>}
       <AllRoutes />
-      <Footer /> */}
-     
+      {Admin[0]?.email != "admin@admin.com" ? <Footer /> : <div></div>}
     </>
   );
 }

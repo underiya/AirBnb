@@ -1,41 +1,37 @@
 import Chart from "react-apexcharts";
 import { useEffect, useState } from "react";
 const Dashboard = () => {
-  const [user,setUser]=useState(2);
-  const [location,setLocation]=useState(2);
+  const [user, setUser] = useState(2);
+  const [location, setLocation] = useState(2);
 
- 
-    async function userda(){
-      try{
-        let res =await fetch("https://backend-airbnb-stqx.onrender.com/api/users");
-        let data= await res.json();
-        console.log(data);
-setUser(data.length);
-      }
-      catch(e){
-        console.log(e);
-      }
-      
-
+  async function userda() {
+    try {
+      let res = await fetch(
+        "https://backend-airbnb-stqx.onrender.com/api/users"
+      );
+      let data = await res.json();
+      console.log(data);
+      setUser(data.length);
+    } catch (e) {
+      console.log(e);
     }
-    userda();
+  }
+  userda();
 
-
-    async function userda(){
-      try{
-        let res =await fetch("https://backend-airbnb-stqx.onrender.com/api/locations");
-        let data= await res.json();
-        console.log(data);
-setLocation(data.length);
-      }
-      catch(e){
-        console.log(e);
-      }
-      
-
+  async function userda() {
+    try {
+      let res = await fetch(
+        "https://backend-airbnb-stqx.onrender.com/api/locations"
+      );
+      let data = await res.json();
+      console.log(data);
+      setLocation(data.length);
+    } catch (e) {
+      console.log(e);
     }
-    userda();
-  
+  }
+  userda();
+
   const [state, setState] = useState({
     options: {
       chart: {
@@ -55,7 +51,7 @@ setLocation(data.length);
   const [donut, setDonut] = useState({
     options: {},
     series: [44, 55, 41, 17, 15],
-    labels: ["Goa", "Delhi", "Mumbai", "Banglore", "Kashmir"]
+    labels: ["Goa", "Delhi", "Mumbai", "Banglore", "Kashmir"],
   });
   return (
     <>
@@ -90,7 +86,7 @@ setLocation(data.length);
         <div className=" border-yellow-400 border-4 flex w-1/5 bg-yellow-100">
           <div className="p-3 items-center">
             <h4 className="font-bold">Total Revenue</h4>
-            <h1 className="font-bold text-red-950">200M</h1>
+            <h1 className="font-bold text-red-950">20M</h1>
           </div>
           <div className="p-3 bg-yellow-200 items-center">
             <img
@@ -114,9 +110,7 @@ setLocation(data.length);
           type="donut"
           width="380"
         />
-       
       </div>
-      
     </>
   );
 };
