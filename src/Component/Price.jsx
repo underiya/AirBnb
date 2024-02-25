@@ -4,17 +4,17 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Guest from "./Guest";
 
-const Price = ({}) => {
+const Price = ({detailData}) => {
   const [formData, setFormData] = useState({
     checkInDate: null,
     checkOutDate: null,
     selectedCategory: '',
   });
   const [numberOfNights, setNumberOfNights] = useState(0);
-  const [nightlyRate, setNightlyRate] = useState(2750);
+  const [nightlyRate, setNightlyRate] = useState(detailData.price);
   const airbnbServiceFeePercentage = 0.2;
   const [guestComponentVisible, setGuestComponentVisible] = useState(false);
-
+  console.log(detailData);
   useEffect(() => {
     if (formData.checkInDate && formData.checkOutDate) {
       const nights = Math.ceil(
@@ -26,8 +26,13 @@ const Price = ({}) => {
 
   const calculateTotal = () => {
     const subtotal = nightlyRate * numberOfNights;
+    // const serviceFee = subtotal * airbnbServiceFeePercentage;
+    return subtotal;
+  };
+  const calculateTotalpay = () => {
+    const subtotal = nightlyRate * numberOfNights;
     const serviceFee = subtotal * airbnbServiceFeePercentage;
-    return subtotal + serviceFee;
+    return subtotal+serviceFee;
   };
 
   const handleFormChange = (e) => {
@@ -107,17 +112,17 @@ const Price = ({}) => {
       </form>
       <p className="text-sm text-gray-500">You won't be charged yet</p>
       <div className="flex justify-between mt-4">
-        <p className="text-lg">₹{nightlyRate} x {numberOfNights} nights</p>
+        <p className="text-lg">₹{nightlyRate} X {numberOfNights} nights</p>
         <p className="text-lg">₹{calculateTotal()}</p>
       </div>
       <div className="flex justify-between mt-2">
-        <p className="text-lg">Airbnb service fee ({(airbnbServiceFeePercentage * 100).toFixed(0)}%)</p>
+        <p className="text-lg">Airbnb service fee </p>
         <p className="text-lg">₹{(nightlyRate * numberOfNights * airbnbServiceFeePercentage).toFixed(2)}</p>
       </div>
       <hr className="mt-4" />
       <div className="flex justify-between mt-2">
         <p className="text-lg font-bold">Total before taxes</p>
-        <p className="text-lg font-bold">₹{calculateTotal()}</p>
+        <p className="text-lg font-bold">₹{calculateTotalpay()}</p>
       </div>
     </div>
   );
