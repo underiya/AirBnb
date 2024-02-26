@@ -57,15 +57,16 @@ Vite
 
 Include screenshots as necessary.
 <img src='./startApp.png' alt=""/>
+![Start](/public/startApp.png)
 
-## Credentials
-
-Provide user credentials for autheticated pages
-
-## APIs Used
-
-If your application relies on external APIs, document them and include any necessary links or references.
-
+## Application ScreenShots
+![landing](/public/landing.png)
+![details](/public/details.png)
+![details](/public/details-2.png)
+![login](/public/login.png)
+![signup](/public/signup.png)
+![admin](/public/admin-1.png)
+![admin](/public/admin-3.png)
 ## API Endpoints
 
 Backend Applications provide a list of your API endpoints, methods, brief descriptions.
