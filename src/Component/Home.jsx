@@ -52,13 +52,21 @@ function Home() {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 6,
+          width: "90%",
+        },
+      },
+      {
+        breakpoint: 548,
+        settings: {
+          slidesToShow: 4,
+          width: "90%",
         },
       },
     ],
   };
   return (
-    <div className="slider-container w-[65%] m-auto  text-slate-800">
+    <div className="w-[90%] slider-container lg:w-[65%] m-auto  text-slate-800">
       <Slider {...settings}>
         {obj1.image.map((imageUrl, index) => (
           <a
@@ -67,8 +75,8 @@ function Home() {
             className="hover:underline decoration-[2.5px]"
           >
             <div key={index} className="">
-              <img src={imageUrl} alt="category" className=" w-[34px] " />
-              <p className="text-[14px] font-[400] text-slate-400">
+              <img src={imageUrl} alt="category" className=" w-[32px] " />
+              <p className="text-[12px] font-[400] text-slate-400">
                 {obj1.type[index]}
               </p>
             </div>
