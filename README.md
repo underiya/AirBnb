@@ -71,11 +71,12 @@ Include screenshots as necessary.
 
 Backend Applications provide a list of your API endpoints, methods, brief descriptions.
 
-GET /api/locations - retrieve all locations
-POST /api/locations - create a locations
+<p>GET /api/locations - retrieve all locations</p>
+<p>POST /api/locations - create a locations</p>
 
-GET /api/users - retrieve all users
-POST /api/users - create a new users
+
+<p>GET /api/users - retrieve all users</p>
+<p>POST /api/users - create a new users</p>
 
 ## Technology Stack
 
