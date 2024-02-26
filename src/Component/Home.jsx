@@ -48,6 +48,14 @@ function Home() {
     speed: 500,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+    ],
   };
   return (
     <div className="slider-container w-[65%] m-auto  text-slate-800">
