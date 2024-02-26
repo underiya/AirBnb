@@ -11,7 +11,7 @@ Frontend
 ## Deplolyed App
 
 Frontend: https://airbnb-2a476f.netlify.app/
-Backend: https://backend-airbnb-stqx.onrender.com/api/
+Backend: https://backend-airbnb-stqx.onrender.com/
 
 ## Video Walkthrough of the project
 
