@@ -56,7 +56,7 @@ Vite
 ```
 
 Include screenshots as necessary.
-<img src='startApp.png' alt=""/>
+<img src='./startApp.png' alt=""/>
 
 ## Credentials
 
