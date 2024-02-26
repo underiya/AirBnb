@@ -18,7 +18,9 @@ export default function HotelCard({ data }) {
   totalPayment = totalPayment.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
   return (
-    <div className="lg:h-auto md:h-auto">
+    // lg:w-6/12 md:w-96
+    <div className="lg:h-auto md:h-auto ">
+      {/* w-40 md:w-72 lg:w-96 */}
       <div className="flex justify-between items-center mt-6 gap-5  ">
         {data && data.images && data.images.length > 0 && (
           <img

@@ -20,17 +20,18 @@ import MessageToast from "./MessageToast";
 export default function SendMessageModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [message, setMessage] = useState("");
-  const [isMessageValid, setIsMessageValid] = useState(true);
+  const [isMessageValid, setIsMessageValid] = useState(true); 
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
-    setIsMessageValid(true);
+    setIsMessageValid(true); 
   };
 
   const handleSendMessage = () => {
     if (message.trim() === "") {
-      setIsMessageValid(false);
-      return;
+      
+      setIsMessageValid(false); 
+      return; 
     }
     console.log("Sending message:", message);
     onClose();
