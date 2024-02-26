@@ -1,5 +1,3 @@
-// action
-
 import axios from "axios";
 import {
   GET_CART_SUCCESS,
@@ -17,7 +15,6 @@ export const addToWishlist = (data) => (dispatch) => {
   dispatch({ type: GET_WISHLIST_SUCCESS, payload: data });
 };
 
-// user Authentication
 export const loginSuccess = (user) => ({
   type: LOGIN_SUCCESS,
   payload: user,
@@ -32,11 +29,9 @@ export const logout = () => ({
   type: LOGOUT,
 });
 
-// Authentication
 export const login = (email, password) => {
   return async (dispatch) => {
     try {
-      // Make GET request to authenticate user
       const response = await axios.get(
         `https://backend-airbnb-stqx.onrender.com/api/users`
       );

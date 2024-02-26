@@ -18,19 +18,18 @@ import EditDateToast from "./EditDateToast";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function EditDate({data,onUpdate}) {
+export default function EditDate({ data, onUpdate }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [checkInDate, setCheckInDate] =useState(data.checkInDate);
-  const [checkOutDate, setCheckOutDate] =useState(data.checkOutDate);
-
+  const [checkInDate, setCheckInDate] = useState(data.checkInDate);
+  const [checkOutDate, setCheckOutDate] = useState(data.checkOutDate);
 
   const today = new Date(); // Get today's date
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1); // Get tomorrow's date
 
   const handleSave = () => {
-      onUpdate(checkInDate,checkOutDate);
-      onClose();   
+    onUpdate(checkInDate, checkOutDate);
+    onClose();
   };
 
   return (
@@ -52,8 +51,7 @@ export default function EditDate({data,onUpdate}) {
                       selected={checkInDate}
                       onChange={(date) => setCheckInDate(date)}
                       placeholderText="Check-in"
-                      minDate={tomorrow} // Set minimum date as tomorrow
-                      // Add any other props you need for react-datepicker here
+                      minDate={tomorrow}
                     />
                   </Box>
                   <Box>
@@ -62,8 +60,7 @@ export default function EditDate({data,onUpdate}) {
                       selected={checkOutDate}
                       onChange={(date) => setCheckOutDate(date)}
                       placeholderText="Check-out"
-                      minDate={checkInDate || tomorrow} // Set minimum date as check-in date or tomorrow if check-in date not selected
-                      // Add any other props you need for react-datepicker here
+                      minDate={checkInDate || tomorrow}
                     />
                   </Box>
                 </Flex>

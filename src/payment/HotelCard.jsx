@@ -47,18 +47,12 @@ export default function HotelCard({ data }) {
         <h3 className="ml-4">{`₹${data.price} x ${differenceIn} nights`}</h3>
         <h3 className="mr-4">{`₹${totalP}`}</h3>
       </div>
-      {/* <div className='flex justify-between mt-3'>
-            <h3  className='ml-4'>Cleaning fee</h3>
-          <h3 className='mr-4'>{`₹${cleaningFees}`}</h3>
-          </div> */}
+
       <div className="flex justify-between mt-3">
         <h3 className="ml-4">Airbnb service fee</h3>
         <h3 className="mr-4">{`₹${servceFees}`}</h3>
       </div>
-      {/* <div className='flex justify-between mt-3'>
-            <h3  className='ml-4'>Taxes</h3>
-            <h3 className='mr-4'>{`₹${tax}`}</h3>
-          </div> */}
+
       <hr className="mt-2" />
 
       <div className="flex justify-between  mt-3 lg:mb-3 md:pb-5">
