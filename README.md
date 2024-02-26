@@ -30,8 +30,8 @@ Project-Presentation Link:https://youtu.be/BllQ-pgqktg
 - Admin Profile: Admin can handle Server Data
 
 ## Admin credentials
-  login: admin@admin.com
-  password: admin
+  <p>login: admin@admin.com</p>
+  <p>password: admin</p>
 ## Installation & Getting started
 
 Detailed instructions on how to install, configure, and get the project running.
@@ -77,7 +77,7 @@ Backend Applications provide a list of your API endpoints, methods, brief descri
 <p>PATCH /api/locations - edit location  details </p>
 <p>DELETE /api/locations - delete locations</p>
 
-
+<br/>
 <p>GET /api/users - retrieve all users</p>
 <p>POST /api/users - create a new user </p>
 <p>PATCH /api/users - create edit user</p>
