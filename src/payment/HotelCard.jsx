@@ -19,7 +19,7 @@ export default function HotelCard({ data }) {
 
   return (
     // lg:w-6/12 md:w-96
-    <div className="lg:h-auto md:h-auto">
+    <div className="lg:h-auto md:h-auto ">
       {/* w-40 md:w-72 lg:w-96 */}
       <div className="flex justify-between items-center mt-6 gap-5  ">
         {data && data.images && data.images.length > 0 && (

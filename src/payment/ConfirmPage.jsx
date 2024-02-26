@@ -37,13 +37,13 @@ export default function ConfirmPage() {
   const formattedCheckOutDate = formatDate(checkOutDate);
 
   return (
-    <div className="mx-auto w-10/12 ">
-      <div className="mt-9 sm:w-full lg:w-1/2 ">
+    <div className="mx-auto w-10/12 pt-[300px]">
+      <div className=" sm:w-full lg:w-1/2 ">
         <div>
           <i class="fa-solid fa-chevron-left"></i>
           <span className="ml-5 text-4xl font-semibold">Confirm and pay</span>
         </div>
-        <div className="md:relative lg:absolute md:w-full lg:w-2/6 md:h-96  lg:h-96  shadow-lg rounded-xl border-1 border-gray-100 sm:relative md:absolute lg:top-40  lg:right-36">
+        <div className="md:relative  mt-[180px]  lg:absolute md:w-full lg:w-2/6 md:h-96  lg:h-96  shadow-lg rounded-xl border-1 border-gray-100 sm:relative md:absolute lg:top-40  lg:right-36">
           <HotelCard data={newdetails} />
         </div>
 
