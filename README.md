@@ -17,7 +17,6 @@ Backend: https://backend-airbnb-stqx.onrender.com/api/
 
 Project-Presentation Link:https://youtu.be/BllQ-pgqktg
 
-
 ## Features
 
 - User Authentication: Secure user registration and login.
@@ -28,7 +27,6 @@ Project-Presentation Link:https://youtu.be/BllQ-pgqktg
   Reviews and Ratings: Users can leave feedback and ratings for accommodations.
 
 - User Profiles: guests can create profiles and manage bookings.
-  
 - Admin Profile: Admin can handle Server Data
 
 ## design decisions or assumptions
@@ -44,7 +42,7 @@ git clone https://github.com/underiya/AirBnb.git
 
 cd AirBnb
 
-npm i 
+npm i
 ```
 
 ## Usage
@@ -58,6 +56,7 @@ Vite
 ```
 
 Include screenshots as necessary.
+<img src='startApp.png' alt=""/>
 
 ## Credentials
 
@@ -88,8 +87,9 @@ List and provide a brief overview of the technologies used in the project.
 - Other libraries/modules
 
 ## Contributors
+
 - Deepak Underiya--fw27_088
 - Sumit Kumar Jha-- fw29_093
 - Yawer Atique -- fw29_091
-- Supriya Hatele --
-- Renuka Jagarwal --
+- Supriya Hatele -- fw28_263
+- Renuka Jagarwal --fw29_183
