@@ -18,9 +18,7 @@ export default function HotelCard({ data }) {
   totalPayment = totalPayment.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
   return (
-    // lg:w-6/12 md:w-96
     <div className="lg:h-auto md:h-auto">
-      {/* w-40 md:w-72 lg:w-96 */}
       <div className="flex justify-between items-center mt-6 gap-5  ">
         {data && data.images && data.images.length > 0 && (
           <img
@@ -47,18 +45,12 @@ export default function HotelCard({ data }) {
         <h3 className="ml-4">{`₹${data.price} x ${differenceIn} nights`}</h3>
         <h3 className="mr-4">{`₹${totalP}`}</h3>
       </div>
-      {/* <div className='flex justify-between mt-3'>
-            <h3  className='ml-4'>Cleaning fee</h3>
-          <h3 className='mr-4'>{`₹${cleaningFees}`}</h3>
-          </div> */}
+
       <div className="flex justify-between mt-3">
         <h3 className="ml-4">Airbnb service fee</h3>
         <h3 className="mr-4">{`₹${servceFees}`}</h3>
       </div>
-      {/* <div className='flex justify-between mt-3'>
-            <h3  className='ml-4'>Taxes</h3>
-            <h3 className='mr-4'>{`₹${tax}`}</h3>
-          </div> */}
+
       <hr className="mt-2" />
 
       <div className="flex justify-between  mt-3 lg:mb-3 md:pb-5">

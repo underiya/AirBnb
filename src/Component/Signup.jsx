@@ -34,7 +34,6 @@ const Signup = () => {
     password: "",
   });
 
-  //   console.log(form);
   const handleSignup = (e) => {
     e.preventDefault();
     PostUsers("https://backend-airbnb-stqx.onrender.com/api/users", form);

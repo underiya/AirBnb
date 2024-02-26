@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
+
   return (
     <div
       className={className}

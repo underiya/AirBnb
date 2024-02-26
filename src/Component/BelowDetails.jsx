@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import Price from "./Price";
 import {
   Modal,
   ModalOverlay,
@@ -18,7 +17,7 @@ const BelowDetails = ({ detailData }) => {
 
   const handleClose = () => {
     setIsOpen(false);
-    setShowAmenitiesModal(false); // Close amenities modal when closing the main modal
+    setShowAmenitiesModal(false);
   };
 
   const handleOpen = () => setIsOpen(true);
@@ -71,17 +70,16 @@ const BelowDetails = ({ detailData }) => {
       <hr />
       <div className="border-t border-gray-400 my-4">
         <p className="">
-          ★ You’ll be taken care of by one of the most successful Airbnb hosts in
-          the country.
+          ★ You’ll be taken care of by one of the most successful Airbnb hosts
+          in the country.
         </p>
         <p className="">
-          ★ The treehouse is nestled in the Himalayan subtropical pine forests. It
-          is made keeping in mind to provide a comfortable and memorable stay to
-          travelers seeking a break from the hustle of city life. The house is
-          cozy both in winter and summer. It has a 360-degree view of the greater
-          Himalayas.
-        </p>
-        {" "}
+          ★ The treehouse is nestled in the Himalayan subtropical pine forests.
+          It is made keeping in mind to provide a comfortable and memorable stay
+          to travelers seeking a break from the hustle of city life. The house
+          is cozy both in winter and summer. It has a 360-degree view of the
+          greater Himalayas.
+        </p>{" "}
         <p className=" text-2xl">...</p>
         <span
           onClick={handleOpen}
@@ -144,7 +142,8 @@ const BelowDetails = ({ detailData }) => {
               src={image}
               alt={`Image ${index + 1}`}
             />
-          ))}<br/>
+          ))}
+          <br />
           <div>
             {" "}
             <p className="text-xl font-semibold">bedroom 1</p>

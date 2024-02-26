@@ -22,7 +22,6 @@ export default function PANModal() {
   const [isPanValid, setIsPanValid] = useState(true);
 
   const validatePAN = (pan) => {
-    // Regular expression for PAN validation
     const panRegex = /[A-Z]{5}[0-9]{4}[A-Z]{1}/;
     return panRegex.test(pan);
   };
@@ -34,7 +33,6 @@ export default function PANModal() {
   };
 
   const handleSave = () => {
-    // Validate PAN again before saving
     if (validatePAN(panNumber)) {
       console.log("Valid PAN:", panNumber);
       onClose();
@@ -67,10 +65,7 @@ export default function PANModal() {
             </FormControl>
           </ModalBody>
           <ModalFooter justifyContent="center">
-            {/* <Button colorScheme="blue" mr={3} onClick={handleSave}>
-              Save
-            </Button> */}
-            <PanToast colorScheme="blue" mr={3} onClick={handleSave}/>
+            <PanToast colorScheme="blue" mr={3} onClick={handleSave} />
             <Button variant="ghost" onClick={onClose}>
               Cancel
             </Button>

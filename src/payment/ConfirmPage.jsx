@@ -32,7 +32,6 @@ export default function ConfirmPage() {
     return `${day} ${month}`;
   }
 
-  // Format the check-in and check-out dates
   const formattedCheckInDate = formatDate(checkInDate);
   const formattedCheckOutDate = formatDate(checkOutDate);
 
@@ -107,7 +106,6 @@ export default function ConfirmPage() {
           </h3>
           <div className="flex justify-between mr-4 mt-2">
             <h2 className="font-semibold">Permanent Account Number (PAN)</h2>
-            {/* <button className='rounded-lg border-black border-2 px-2 '>Add</button> */}
             <PANModal />
           </div>
           <h3>
@@ -147,7 +145,6 @@ export default function ConfirmPage() {
           and that Airbnb can <strong>charge my payment method </strong> if I’m
           responsible for damage.
         </p>
-        {/* <button className='mt-3 p-3  bg-pink-600 text-white rounded-lg mb-4'>Confirm and Pay</button> */}
         <ConfirmPay />
       </div>
     </div>
