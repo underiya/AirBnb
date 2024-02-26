@@ -29,13 +29,12 @@ Project-Presentation Link:https://youtu.be/BllQ-pgqktg
 - User Profiles: guests can create profiles and manage bookings.
 - Admin Profile: Admin can handle Server Data
 
-## design decisions or assumptions
-
-List your design desissions & assumptions
-
+## Admin credentials
+  login: admin@admin.com
+  password: admin
 ## Installation & Getting started
 
-Detailed instructions on how to install, configure, and get the project running. For BE/FS projects, guide the reviewer how to check mongodb schema etc.
+Detailed instructions on how to install, configure, and get the project running.
 
 ```bash
 git clone https://github.com/underiya/AirBnb.git
@@ -67,16 +66,25 @@ Include screenshots as necessary.
 ![signup](/public/signup.png)
 ![admin](/public/admin-1.png)
 ![admin](/public/admin-3.png)
+
+
 ## API Endpoints
 
 Backend Applications provide a list of your API endpoints, methods, brief descriptions.
 
 <p>GET /api/locations - retrieve all locations</p>
-<p>POST /api/locations - create a locations</p>
+<p>POST /api/locations - create location</p>
+<p>PATCH /api/locations - edit location  details </p>
+<p>DELETE /api/locations - delete locations</p>
 
 
 <p>GET /api/users - retrieve all users</p>
-<p>POST /api/users - create a new users</p>
+<p>POST /api/users - create a new user </p>
+<p>PATCH /api/users - create edit user</p>
+<p>DELETE /api/users - delete a user</p>
+
+
+
 
 ## Technology Stack
 
@@ -86,6 +94,7 @@ List and provide a brief overview of the technologies used in the project.
 - Chakra-ui
 - Tailwind
 - Redux
+- json-server
 - Other libraries/modules
 
 ## Contributors
