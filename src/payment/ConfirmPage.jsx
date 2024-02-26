@@ -10,39 +10,41 @@ import HotelCard from "./HotelCard";
 import { useSelector } from "react-redux";
 
 export default function ConfirmPage() {
- 
-  let details=useSelector(state=>state.cart)
-  let newdetails=details[details.length-1]
+  let details = useSelector((state) => state.cart);
+  let newdetails = details[details.length - 1];
   // console.log(newdetails)
 
- 
- 
-const totalGuest=(newdetails?.formData?.adults) + (newdetails?.formData?.children)
+  const totalGuest =
+    newdetails?.formData?.adults + newdetails?.formData?.children;
 
-const checkInDate = new Date(details[details.length-1].formData.checkInDate);
-const checkOutDate = new Date(details[details.length-1].formData.checkOutDate);
+  const checkInDate = new Date(
+    details[details.length - 1].formData.checkInDate
+  );
+  const checkOutDate = new Date(
+    details[details.length - 1].formData.checkOutDate
+  );
 
+  function formatDate(date) {
+    const day = date.getDate();
+    const month = new Intl.DateTimeFormat("en-US", { month: "short" }).format(
+      date
+    );
+    return `${day} ${month}`;
+  }
 
-
-function formatDate(date) {
-  const day = date.getDate();
-  const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
-  return `${day} ${month}`;
-}
-
-// Format the check-in and check-out dates
-const formattedCheckInDate = formatDate(checkInDate);
-const formattedCheckOutDate = formatDate(checkOutDate);
+  // Format the check-in and check-out dates
+  const formattedCheckInDate = formatDate(checkInDate);
+  const formattedCheckOutDate = formatDate(checkOutDate);
 
   return (
-    <div className="mx-auto w-10/12 mt-80">
+    <div className="mx-auto w-10/12 ">
       <div className="mt-9 sm:w-full lg:w-1/2 ">
         <div>
           <i class="fa-solid fa-chevron-left"></i>
           <span className="ml-5 text-4xl font-semibold">Confirm and pay</span>
         </div>
         <div className="md:relative lg:absolute md:w-full lg:w-2/6 md:h-96  lg:h-96  shadow-lg rounded-xl border-1 border-gray-100 sm:relative md:absolute lg:top-40  lg:right-36">
-       <HotelCard data={newdetails} /> 
+          <HotelCard data={newdetails} />
         </div>
 
         <div className="ave">
@@ -50,15 +52,15 @@ const formattedCheckOutDate = formatDate(checkOutDate);
           <div className="flex justify-between">
             <div className="mt-3">
               <h2>Dates</h2>
-             <h2>{`${formattedCheckInDate} - ${formattedCheckOutDate}`}</h2>
+              <h2>{`${formattedCheckInDate} - ${formattedCheckOutDate}`}</h2>
             </div>
-            <EditDate data={newdetails}  />
+            <EditDate data={newdetails} />
           </div>
 
           <div className="flex justify-between">
             <div>
-            <h1 className="mt-9">Guests</h1>
-            <p>{totalGuest}</p>
+              <h1 className="mt-9">Guests</h1>
+              <p>{totalGuest}</p>
             </div>
             <EditGuest />
           </div>
