@@ -15,15 +15,10 @@ Backend: https://backend-airbnb-stqx.onrender.com/api/
 
 ## Video Walkthrough of the project
 
-Attach a very short video walkthough of all of the features [ 1 - 3 minutes ]
+Project-Presentation Link:https://youtu.be/BllQ-pgqktg
 
-## Video Walkthrough of the codebase
-
-Attach a very short video walkthough of codebase [ 1 - 5 minutes ]
 
 ## Features
-
-List out the key features of your application.
 
 - User Authentication: Secure user registration and login.
 
@@ -33,6 +28,8 @@ List out the key features of your application.
   Reviews and Ratings: Users can leave feedback and ratings for accommodations.
 
 - User Profiles: guests can create profiles and manage bookings.
+  
+- Admin Profile: Admin can handle Server Data
 
 ## design decisions or assumptions
 
@@ -46,20 +43,18 @@ Detailed instructions on how to install, configure, and get the project running.
 git clone https://github.com/underiya/AirBnb.git
 
 cd AirBnb
-```
 
-Start App
-
-```bash
-npm run dev
+npm i 
 ```
 
 ## Usage
 
-Provide instructions and examples on how to use your project.
+To start Application
 
 ```bash
-# Example
+npm run dev
+or
+Vite
 ```
 
 Include screenshots as necessary.
@@ -74,13 +69,13 @@ If your application relies on external APIs, document them and include any neces
 
 ## API Endpoints
 
-In case of Backend Applications provide a list of your API endpoints, methods, brief descriptions, and examples of request/response.
+Backend Applications provide a list of your API endpoints, methods, brief descriptions.
 
-GET /api/locations - retrieve all items
-POST /api/locations - create a new
+GET /api/locations - retrieve all locations
+POST /api/locations - create a locations
 
-GET /api/users - retrieve all items
-POST /api/users - create a new item
+GET /api/users - retrieve all users
+POST /api/users - create a new users
 
 ## Technology Stack
 
@@ -89,4 +84,12 @@ List and provide a brief overview of the technologies used in the project.
 - React.js
 - Chakra-ui
 - Tailwind
+- Redux
 - Other libraries/modules
+
+## Contributors
+- Deepak Underiya--fw27_088
+- Sumit Kumar Jha-- fw29_093
+- Yawer Atique -- fw29_091
+- Supriya Hatele --
+- Renuka Jagarwal --
