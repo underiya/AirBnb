@@ -35,7 +35,7 @@ const formattedCheckInDate = formatDate(checkInDate);
 const formattedCheckOutDate = formatDate(checkOutDate);
 
   return (
-    <div className="mx-auto w-10/12">
+    <div className="mx-auto w-10/12 mt-80">
       <div className="mt-9 sm:w-full lg:w-1/2 ">
         <div>
           <i class="fa-solid fa-chevron-left"></i>

@@ -34,7 +34,7 @@ const DetailsPage = () => {
   if (!detailData) return <div>Loading...</div>;
 
   return (
-    <div className=' '>
+    <div className=' mt-80'>
       <div className="card">
         
         <div className="card-details ">

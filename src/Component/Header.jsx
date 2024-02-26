@@ -26,7 +26,7 @@ function Header() {
 
   return (
     <>
-      <div className="fixed w-full bg-white z-[1] shadow-md">
+      <div className="fixed top-0 w-full bg-white z-[1] shadow-md">
         <div className="flex w-[90%] m-auto justify-between justify-item-center items-center py-[18px]">
           <div className="w-[120px]">
             <a href="airbnb.com">
