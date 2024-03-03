@@ -3,7 +3,7 @@ const Allimages = () => {
   const images = useLocation();
   console.log(images);
   return (
-    <div className=" m-auto">
+    <div className=" w-[75%] m-auto pt-6">
       {images.state.map((el, i) => {
         return (
           <div key={i}>
