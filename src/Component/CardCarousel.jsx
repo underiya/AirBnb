@@ -57,7 +57,7 @@ const CardCarousel = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-[25px] w-[90%] mx-auto pt-[310px] ">
+      <div className="grid grid-cols-1 sm:grid-cols-1  md:grid-cols-2  lg:grid-cols-4 gap-y-5 gap-[25px] w-[90%] mx-auto pt-[290px] ">
         {data.slice(0, visibleCards).map((el, i) => (
           <div className="mb-8" key={i}>
             <div className="rounded-[18px] overflow-hidden relative">
