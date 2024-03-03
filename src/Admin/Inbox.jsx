@@ -131,6 +131,7 @@ import { withTheme } from "@emotion/react";
               />
             </div>
 
+
             <div className="mb-4">
         <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images</label>
         <input
@@ -160,16 +161,6 @@ import { withTheme } from "@emotion/react";
 export default Inbox;
 
 
-// import React, { useState } from "react";
-// import { Button, useDisclosure } from "@chakra-ui/react";
-// import CustomModal from "./Modal";
 
-// const Inbox = () => {
-//   const [name, setName] = useState('');
-//   const [rating, setRating] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [price, setPrice] = useState('');
-//   const [images, setImages] = useState('');
-//   const { isOpen, onOpen, onClose } = useDisclosure();
 
 

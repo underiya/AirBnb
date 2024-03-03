@@ -209,7 +209,7 @@ const Analytics = () => {
         </div>
             
           </form>
-          
+
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
