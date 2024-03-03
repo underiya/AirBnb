@@ -66,23 +66,23 @@ function Header() {
               <div className="flex justify-center items-center">
                 <a
                   href="/"
-                  className="font-semibold p-[16px] hover:bg-slate-200 hover:rounded-[50px]"
+                  className="font-semibold p-[16px] hover:bg-slate-100 hover:rounded-[50px]"
                 >
                   Become a Host
                 </a>
                 <a
                   href="#"
-                  className="text-[34px] px-[14px] hover:bg-slate-200 hover:rounded-[50px]"
+                  className="text-[34px] px-[14px] hover:bg-slate-100 hover:rounded-[50px]"
                 >
-                  <box-icon name="globe" color="#afabab" size="32px"></box-icon>
+                  <box-icon name="globe" color="black" size="24px"></box-icon>
                 </a>
               </div>
             </div>
 
             <div className="flex gap-[4px] items-center">
-              <div className="flex justify-between pt-[8px] px-[8px]  relative hover:bg-slate-200 hover:rounded-[22px]">
+              <div className="flex justify-between pt-[8px] px-[8px] border-[1px] rounded-[18px] relative hover:bg-slate-100 hover:rounded-[22px]">
                 <a href="#" onClick={toggleMenu}>
-                  <box-icon name="menu" size="42px"></box-icon>
+                  <box-icon name="menu" size="32px"></box-icon>
                 </a>
                 {isMenuOpen && (
                   <div className=" flex flex-col justify-between items-center absolute top-full right-2   bg-white border rounded mt-[4px] p-[18px] z-10 ">
@@ -123,6 +123,7 @@ function Header() {
                     name="user-circle"
                     size="42px"
                     type="solid"
+                    color="grey"
                   ></box-icon>
                 )}
               </div>

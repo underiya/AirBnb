@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import {
   Modal,
@@ -26,7 +25,6 @@ const App = ({ detailData }) => {
     setShowAmenitiesModal(false);
   };
 
-  
   const handleOpen = () => setIsOpen(true);
   const handleOpenAmenitiesModal = () => setShowAmenitiesModal(true);
 
@@ -55,8 +53,7 @@ const App = ({ detailData }) => {
   useEffect(() => {
     if (formData.checkInDate && formData.checkOutDate) {
       const nights = Math.ceil(
-        (formData.checkOutDate - formData.checkInDate) /
-          (1000 * 60 * 60 * 24)
+        (formData.checkOutDate - formData.checkInDate) / (1000 * 60 * 60 * 24)
       );
       setNumberOfNights(nights);
     }
@@ -133,8 +130,7 @@ const App = ({ detailData }) => {
   };
   return (
     <div className="flex">
-      <div className="flex-1 p-6 ">
-        {/* Left side content */}
+      <div className="flex-1  ">
         <div className="container mx-auto py-8 flex flex-col items-start md:ml-48 border-t border-gray-400 my-4">
           <div className="flex flex-col md:flex-row gap-4">
             <img
@@ -154,16 +150,11 @@ const App = ({ detailData }) => {
             <div>
               <p>Great Check-in Experience</p>
               <p>
-                90% of recent guests gave the check-in process a 5-star
-                rating.
+                90% of recent guests gave the check-in process a 5-star rating.
               </p>
             </div>
             <div className="flex items-center justify-center">
-              <box-icon
-                name="key"
-                type="solid"
-                rotate="270"
-              ></box-icon>
+              <box-icon name="key" type="solid" rotate="270"></box-icon>
             </div>
             <div>
               <p>Park for free</p>
@@ -199,11 +190,7 @@ const App = ({ detailData }) => {
               onClick={handleOpen}
               className="text-black cursor-pointer underline flex mt-4"
             >
-              Show more{" "}
-              <box-icon
-                name="chevron-right"
-                type="solid"
-              ></box-icon>
+              Show more <box-icon name="chevron-right" type="solid"></box-icon>
             </span>
             <Modal isOpen={isOpen} onClose={handleClose}>
               <ModalOverlay />
@@ -216,12 +203,11 @@ const App = ({ detailData }) => {
                     Airbnb hosts in the country.
                   </p>
                   <p>
-                    ★ The treehouse is nestled in the Himalayan subtropical
-                    pine forests. It is made keeping in mind to provide a
-                    comfortable and memorable stay to travelers seeking a break
-                    from the hustle of city life. The house is cozy both in
-                    winter and summer. It has a 360-degree view of the greater
-                    Himalayas.
+                    ★ The treehouse is nestled in the Himalayan subtropical pine
+                    forests. It is made keeping in mind to provide a comfortable
+                    and memorable stay to travelers seeking a break from the
+                    hustle of city life. The house is cozy both in winter and
+                    summer. It has a 360-degree view of the greater Himalayas.
                   </p>
                   <p>
                     ★ We have the best food in the Jibhi and the best view in
@@ -341,44 +327,45 @@ const App = ({ detailData }) => {
           </div>
         </div>
       </div>
-      <div className="flex-1 p-6 ">
+      <div className="flex-1  ">
         {/* Right side sticky box */}
-        <div className="sticky top-20   bg-white-100 ml-60  p-6">
+        <div className="sticky top-20   bg-white-100 ml-[220px]  ">
           <div className="flex flex-col gap-3 left-2/3 top-3/4 md:top-1/4 mt-20 md:mt-0 p-5 w-96 text-center bg-white shadow-lg rounded-lg">
-          <span className="text-start flex gap-3">
-        <h1 className="text-3xl font-bold text-start">₹{detailData.price}</h1>{' '}
-        <span className="text-sm text-gray-500 mt-3 ">per night</span>
-      </span>
+            <span className="text-start flex gap-3">
+              <h1 className="text-3xl font-bold text-start">
+                ₹{detailData.price}
+              </h1>{" "}
+              <span className="text-sm text-gray-500 mt-3 ">per night</span>
+            </span>
             <form onSubmit={handleSubmit}>
-              
-              <div className="flex"><div className="-mr-14">
-                <label htmlFor="checkInDate" className="">
-                  Check-in Date:
-                </label>
-                
-                <DatePicker
-                  id="checkInDate"
-                  selected={formData.checkInDate}
-                  onChange={(date) => handleDateChange(date, "checkInDate")}
-                  className="border-2 w-36 border-gray-400 rounded px-2 py-1"
-                />
+              <div className="flex">
+                <div className="">
+                  <label htmlFor="checkInDate" className="">
+                    Check-in Date:
+                  </label>
+
+                  <DatePicker
+                    id="checkInDate"
+                    selected={formData.checkInDate}
+                    onChange={(date) => handleDateChange(date, "checkInDate")}
+                    className="border-2 w-36 border-gray-400 rounded px-2 py-1"
+                  />
+                </div>
+                <div className="">
+                  <label htmlFor="checkOutDate" className="">
+                    Check-out Date:
+                  </label>
+                  <DatePicker
+                    id="checkOutDate"
+                    selected={formData.checkOutDate}
+                    onChange={(date) => handleDateChange(date, "checkOutDate")}
+                    className="border-2 w-36 border-gray-400 rounded px-2 py-1"
+                  />
+                </div>
               </div>
+
               <div className="">
-                <label htmlFor="checkOutDate" className="">
-                  Check-out Date:
-                </label>
-                <DatePicker
-                  id="checkOutDate"
-                  selected={formData.checkOutDate}
-                  onChange={(date) => handleDateChange(date, "checkOutDate")}
-                  className="border-2 w-36 border-gray-400 rounded px-2 py-1"
-                />
-              </div></div>
-              
-              <div className="">
-                <label htmlFor="category" className="">
-               
-                </label>
+                <label htmlFor="category" className=""></label>
                 <select
                   id="category"
                   name="category"
@@ -527,7 +514,12 @@ const App = ({ detailData }) => {
             <div className="flex justify-between mt-2">
               <p className="text-lg">Airbnb service fee </p>
               <p className="text-lg">
-                ₹{(detailData.price * numberOfNights * airbnbServiceFeePercentage).toFixed(2)}
+                ₹
+                {(
+                  detailData.price *
+                  numberOfNights *
+                  airbnbServiceFeePercentage
+                ).toFixed(2)}
               </p>
             </div>
             <hr className="mt-4" />

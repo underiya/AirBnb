@@ -4,16 +4,18 @@ const Maps = ({ map_location, locationName }) => {
   const key = "AIzaSyDrJyW7ZQyuXHg2hkCrCUtIDwbyzBkV7_E";
   return (
     <div
-      className="App w-full border rounded-lg overflow-hidden"
-      style={{ width: "100%", height: "400px", position: "relative" }}
+      className="App w-[90%] m-auto border-[1px] rounded-[14px] "
+      style={{ width: "90%", height: "500px", position: "relative" }}
     >
-      <h1 className="text-center font-bold text-2xl p-2">Map</h1>
+      <h1 className="text-center font-bold text-[32px] p-[10px] font-serif">
+        Map
+      </h1>
       {map_location && map_location.lat && map_location.long && (
         <div>
           <iframe
             title="Map"
             width="100%"
-            height="400"
+            height="500"
             frameBorder="0"
             style={{
               border: 0,

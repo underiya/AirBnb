@@ -56,7 +56,7 @@ const DetailsPage = () => {
   const { map_location } = detailData;
   return (
     <div className="pt-[300px] ">
-      <div className="card">
+      <div className="card w-[100%] m-auto">
         <div className="card-details ">
           <div className="flex">
             <h1 className="font-semibold text-3xl text-start ml-48">
@@ -150,21 +150,9 @@ const DetailsPage = () => {
           {" "}
           <BelowDetails detailData={detailData} />
         </div>
+
         <Review reviews={detailData.reviews} />
-        {/* <div className="w-full border rounded-lg overflow-hidden">
-          <h1 className="text-center p-2">Map</h1>
-          {map_location && map_location.lat && map_location.long && (
-            <iframe
-              title="Map"
-              width="100%"
-              height="400"
-              frameBorder="0"
-              style={{ border: 0 }}
-              src={`https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${map_location.lat},${map_location.long}&zoom=15`}
-              allowFullScreen
-            ></iframe>
-          )}
-        </div> */}
+
         <Maps
           map_location={detailData.map_location}
           locationName={detailData.title}
