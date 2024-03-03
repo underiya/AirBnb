@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import BelowDetails from "./BelowDetails";
 import Review from "./Review";
 import Maps from "./Maps";
-import { Button, Flex, Text, VStack, useToast } from "@chakra-ui/react";
+import { Button, Flex, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, VStack, useToast } from "@chakra-ui/react";
 
 const DetailsPage = () => {
   const navigate = useNavigate();
@@ -64,17 +64,19 @@ const DetailsPage = () => {
               {detailData.title}
             </h1>
             <Flex spacing={4} align="center" marginLeft={"600px"} gap={"10px"}>
-              <Text
-                textDecoration="underline"
-                cursor="pointer"
-                onClick={handleShareClick}
-              >
-                <box-icon
-                  name="arrow-from-bottom"
-                  style={{ fontSize: "16px", verticalAlign: "middle" }}
-                ></box-icon>{" "}
-                Share
-              </Text>
+            <Text
+        textDecoration="underline"
+        cursor="pointer"
+        onClick={handleShareClick}
+      >
+        <box-icon
+          name="arrow-from-bottom"
+          style={{ fontSize: "16px", verticalAlign: "middle" }}
+        ></box-icon>{" "}
+        Share
+      </Text>
+
+      
               <Text
                 textDecoration="underline"
                 cursor="pointer"

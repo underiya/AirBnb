@@ -327,45 +327,44 @@ const App = ({ detailData }) => {
           </div>
         </div>
       </div>
-      <div className="flex-1  ">
+      <div className="flex-1 p-6 ">
         {/* Right side sticky box */}
-        <div className="sticky top-20   bg-white-100 ml-[220px]  ">
+        <div className="sticky top-20   bg-white-100 ml-40  p-6">
           <div className="flex flex-col gap-3 left-2/3 top-3/4 md:top-1/4 mt-20 md:mt-0 p-5 w-96 text-center bg-white shadow-lg rounded-lg">
-            <span className="text-start flex gap-3">
-              <h1 className="text-3xl font-bold text-start">
-                ₹{detailData.price}
-              </h1>{" "}
-              <span className="text-sm text-gray-500 mt-3 ">per night</span>
-            </span>
+          <span className="text-start flex gap-3">
+        <h1 className="text-3xl font-bold text-start">₹{detailData.price}</h1>{' '}
+        <span className="text-sm text-gray-500 mt-3 ">per night</span>
+      </span>
             <form onSubmit={handleSubmit}>
-              <div className="flex">
-                <div className="">
-                  <label htmlFor="checkInDate" className="">
-                    Check-in Date:
-                  </label>
-
-                  <DatePicker
-                    id="checkInDate"
-                    selected={formData.checkInDate}
-                    onChange={(date) => handleDateChange(date, "checkInDate")}
-                    className="border-2 w-36 border-gray-400 rounded px-2 py-1"
-                  />
-                </div>
-                <div className="">
-                  <label htmlFor="checkOutDate" className="">
-                    Check-out Date:
-                  </label>
-                  <DatePicker
-                    id="checkOutDate"
-                    selected={formData.checkOutDate}
-                    onChange={(date) => handleDateChange(date, "checkOutDate")}
-                    className="border-2 w-36 border-gray-400 rounded px-2 py-1"
-                  />
-                </div>
+              
+              <div className="flex"><div className="-mr-14">
+                <label htmlFor="checkInDate" className="">
+                  Check-in Date:
+                </label>
+                
+                <DatePicker
+                  id="checkInDate"
+                  selected={formData.checkInDate}
+                  onChange={(date) => handleDateChange(date, "checkInDate")}
+                  className="border-2 w-36 border-gray-400 rounded px-2 py-1"
+                />
               </div>
-
               <div className="">
-                <label htmlFor="category" className=""></label>
+                <label htmlFor="checkOutDate" className="">
+                  Check-out Date:
+                </label>
+                <DatePicker
+                  id="checkOutDate"
+                  selected={formData.checkOutDate}
+                  onChange={(date) => handleDateChange(date, "checkOutDate")}
+                  className="border-2 w-36 border-gray-400 rounded px-2 py-1"
+                />
+              </div></div>
+              
+              <div className="">
+                <label htmlFor="category" className="">
+               
+                </label>
                 <select
                   id="category"
                   name="category"
@@ -514,12 +513,7 @@ const App = ({ detailData }) => {
             <div className="flex justify-between mt-2">
               <p className="text-lg">Airbnb service fee </p>
               <p className="text-lg">
-                ₹
-                {(
-                  detailData.price *
-                  numberOfNights *
-                  airbnbServiceFeePercentage
-                ).toFixed(2)}
+                ₹{(detailData.price * numberOfNights * airbnbServiceFeePercentage).toFixed(2)}
               </p>
             </div>
             <hr className="mt-4" />
