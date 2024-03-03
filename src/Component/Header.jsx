@@ -45,12 +45,12 @@ function Header() {
       <div className="fixed w-full bg-white z-[1] shadow-md">
         <div className="flex w-[90%] m-auto justify-between justify-item-center items-center py-[10px]">
           <div className="w-[120px]">
-            <a href="airbnb.com">
+            <a href="/">
               <img src="/airbnb.png" alt="Log" />
             </a>
           </div>
 
-          <div className="lg:flex hidden justify-between gap-[24px] text-[22px] text-slate-400">
+          <div className="lg:flex hidden justify-between gap-[22px] ml-[50px] text-[22px] text-slate-400">
             <a
               href="/"
               className="active:font-semibold active:text-black active:underline"
@@ -66,13 +66,13 @@ function Header() {
               <div className="flex justify-center items-center">
                 <a
                   href="/"
-                  className="font-semibold p-[16px] hover:bg-slate-100 hover:rounded-[50px]"
+                  className="font-semibold px-[10px] py-[10px] hover:bg-slate-100 hover:rounded-[50px]"
                 >
                   Become a Host
                 </a>
                 <a
                   href="#"
-                  className="text-[34px] px-[14px] hover:bg-slate-100 hover:rounded-[50px]"
+                  className="text-[34px] px-[10px] hover:bg-slate-100 hover:rounded-[50px]"
                 >
                   <box-icon name="globe" color="black" size="24px"></box-icon>
                 </a>
@@ -80,7 +80,7 @@ function Header() {
             </div>
 
             <div className="flex gap-[4px] items-center">
-              <div className="flex justify-between pt-[8px] px-[8px] border-[1px] rounded-[18px] relative hover:bg-slate-100 hover:rounded-[22px]">
+              <div className="flex justify-between pt-[8px] px-[6px] border-[1px] rounded-[18px] relative hover:bg-slate-100 hover:rounded-[22px]">
                 <a href="#" onClick={toggleMenu}>
                   <box-icon name="menu" size="32px"></box-icon>
                 </a>
