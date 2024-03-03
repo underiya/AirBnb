@@ -45,7 +45,7 @@ function Header() {
       <div className="fixed w-full bg-white z-[1] shadow-md">
         <div className="flex w-[90%] m-auto justify-between justify-item-center items-center py-[10px]">
           <div className="w-[120px]">
-            <a href="airbnb.com">
+            <a href="/">
               <img src="/airbnb.png" alt="Log" />
             </a>
           </div>
