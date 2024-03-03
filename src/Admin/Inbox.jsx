@@ -14,6 +14,7 @@ import {
 import React from "react";
 import { withTheme } from "@emotion/react";
 
+
   const Inbox = () => {
     const [title, setName] = useState('');
     const [rating, setRating] = useState('');
@@ -130,6 +131,7 @@ import { withTheme } from "@emotion/react";
               />
             </div>
 
+
             <div className="mb-4">
         <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images</label>
         <input
@@ -157,3 +159,8 @@ import { withTheme } from "@emotion/react";
         )
 }
 export default Inbox;
+
+
+
+
+

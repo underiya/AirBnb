@@ -27,6 +27,7 @@ const Analytics = () => {
   const [search, setSearch] = useState("");
   const finalRef = React.useRef();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const { isOpen: isEditOpen, onOpen: onEditOpen, onClose: onEditClose } = useDisclosure();
   const [title, setName] = useState('');
   const [rating, setRating] = useState('');
@@ -35,6 +36,7 @@ const Analytics = () => {
   const [image, setImages] = useState([]);
   const[id,setId]=useState('');
   const[edit,setEdit]=useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -144,71 +146,53 @@ const Analytics = () => {
           <ModalHeader>Edit Item</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <form className="max-w-md mx-auto">
-              <div className="mb-4">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  value={title}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="rating"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Rating
-                </label>
-                <input
-                  id="rating"
-                  type="number"
-                  step="0.1"
-                  value={rating}
-                  onChange={(e) => setRating(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="description"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Description
-                </label>
-                <textarea
-                  id="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="price"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Price
-                </label>
-                <input
-                  id="price"
-                  type="text"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required
-                />
-              </div>
+           
+            <form  className="max-w-md mx-auto" >
+       
+            <div className="mb-4">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+              <input
+                id="name"
+                type="text"
+                value={title}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="rating" className="block text-sm font-medium text-gray-700">Rating</label>
+              <input
+                id="rating"
+                type="number"
+                step="0.1"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price</label>
+              <input
+                id="price"
+                type="text"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                required
+              />
+            </div>
 
             <div className="mb-4">
         <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images</label>
@@ -225,6 +209,7 @@ const Analytics = () => {
         </div>
             
           </form>
+
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
