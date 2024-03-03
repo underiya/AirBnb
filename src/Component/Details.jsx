@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Price from "./Price";
 import BelowDetails from "./BelowDetails";
 import Review from "./Review";
+import Allimages from "./Allimages";
+import Maps from "./Maps";
 
 const DetailsPage = () => {
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ const DetailsPage = () => {
   }, [id]);
   const handleShowAllImages = () => {
     setShowAllImages(true);
-    navigate(`/show-all-images`);
+    navigate(`/show-all-images`, { state: detailData.images });
   };
 
   if (!detailData) return <div>Loading...</div>;
@@ -102,6 +104,10 @@ const DetailsPage = () => {
         </div>
         <Review reviews={detailData.reviews} />
       </div>
+      <Maps
+        map_location={detailData.map_location}
+        locationName={detailData.title}
+      />
     </div>
   );
 };
