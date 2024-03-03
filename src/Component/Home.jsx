@@ -1,19 +1,110 @@
+// import React from "react";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
+// function SampleNextArrow(props) {
+//   const { className, style, onClick } = props;
+
+//   return (
+//     <div
+//       className={className}
+//       style={{
+//         ...style,
+//         // display: "block",
+//         color: "black",
+//         border: "1px solid black",
+//         borderRadius: "50%",
+//         // overflow: "hidden",
+//       }}
+//       onClick={onClick}
+//     />
+//   );
+// }
+
+// function SamplePrevArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{
+//         ...style,
+//         display: "block",
+//         // background: "black",
+//         color: "black",
+//         border: "1px solid black",
+//         borderRadius: "50%",
+//         // overflow: "hidden",
+//       }}
+//       onClick={onClick}
+//     />
+//   );
+// }
+
+// function Home() {
+//   const settings = {
+//     className: "center",
+//     infinite: true,
+//     slidesToShow: 8,
+//     swipeToSlide: true,
+//     speed: 500,
+//     nextArrow: <SampleNextArrow />,
+//     prevArrow: <SamplePrevArrow />,
+//     responsive: [
+//       {
+//         breakpoint: 768,
+//         settings: {
+//           slidesToShow: 6,
+//           width: "90%",
+//         },
+//       },
+//       {
+//         breakpoint: 548,
+//         settings: {
+//           slidesToShow: 4,
+//           width: "90%",
+//         },
+//       },
+//     ],
+//   };
+//   return (
+//     <div className="w-[90%] slider-container lg:w-[65%] m-auto  text-slate-800">
+//       <Slider {...settings}>
+//         {obj1.image.map((imageUrl, index) => (
+//           <a
+//             href="#"
+//             key={index}
+//             className="hover:underline decoration-[2.5px]"
+//           >
+//             <div key={index} className="">
+//               <img src={imageUrl} alt="category" className=" w-[32px] " />
+//               <p className="text-[12px] font-[400] text-slate-400">
+//                 {obj1.type[index]}
+//               </p>
+//             </div>
+//           </a>
+//         ))}
+//       </Slider>
+//     </div>
+//   );
+// }
+// export default Home;
+
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
+
   return (
     <div
       className={className}
       style={{
         ...style,
-        display: "block",
-        background: "black",
-
-        borderRadius: "50%",
-        overflow: "hidden",
+        background: "#aeaeae",
+        border: "1px solid black",
+        borderRadius: "100px",
       }}
       onClick={onClick}
     />
@@ -27,11 +118,10 @@ function SamplePrevArrow(props) {
       className={className}
       style={{
         ...style,
-        display: "block",
-        background: "black",
-
-        borderRadius: "50%",
-        overflow: "hidden",
+        background: "#aeaeae",
+        color: "black",
+        border: "1px solid black",
+        borderRadius: "100px",
       }}
       onClick={onClick}
     />
@@ -40,35 +130,48 @@ function SamplePrevArrow(props) {
 
 function Home() {
   const settings = {
-    className: "center",
+    className: "center gap-[20px]",
     infinite: true,
-    centerPadding: "60px",
     slidesToShow: 8,
     swipeToSlide: true,
     speed: 500,
+
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 768,
         settings: {
+          slidesToShow: 6,
+          width: "90%",
+        },
+      },
+      {
+        breakpoint: 548,
+        settings: {
           slidesToShow: 4,
+          width: "90%",
         },
       },
     ],
   };
+
   return (
-    <div className="slider-container w-[65%] m-auto  text-slate-800">
+    <div className="w-[90%] slider-container lg:w-[65%] m-auto text-slate-800">
       <Slider {...settings}>
         {obj1.image.map((imageUrl, index) => (
           <a
             href="#"
             key={index}
-            className="hover:underline decoration-[2.5px]"
+            className="hover:underline decoration-[2.5px] flex flex-col item-center  gap-3 " // Centering content
           >
-            <div key={index} className="">
-              <img src={imageUrl} alt="category" className=" w-[34px] " />
-              <p className="text-[14px] font-[400] text-slate-400">
+            <div key={index} className="text-center">
+              <img
+                src={imageUrl}
+                alt="category"
+                className="w-[32px] ml-[35%] items-center"
+              />
+              <p className="text-[12px] font-[400] text-slate-400">
                 {obj1.type[index]}
               </p>
             </div>
@@ -78,7 +181,12 @@ function Home() {
     </div>
   );
 }
+
 export default Home;
+
+// let obj1 = {
+//   // ... (unchanged)
+// };
 
 let obj1 = {
   image: [
