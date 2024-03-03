@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Price from "./Price";
+// import Price from "./Price";
 import BelowDetails from "./BelowDetails";
 import Review from "./Review";
+import Map from "./Map";
+import { Button, Flex, Text, VStack, useToast } from "@chakra-ui/react";
 
 const DetailsPage = () => {
   const navigate = useNavigate();
@@ -28,16 +30,47 @@ const DetailsPage = () => {
     setShowAllImages(true);
     navigate(`/show-all-images`);
   };
+  const toast = useToast();
+
+  const handleShareClick = () => {
+    toast({
+      title: "Share",
+      description: "copy to clipBoard",
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
+  };
+
+  const handleSaveClick = () => {
+    toast({
+      title: "Save",
+      description: "login to save this",
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
+  };
 
   if (!detailData) return <div>Loading...</div>;
-
+  const { map_location } = detailData; 
   return (
     <div className="pt-[300px] ">
+   
       <div className="card">
         <div className="card-details ">
-          <h1 className="font-semibold text-3xl text-start ml-48">
-            {detailData.title}
-          </h1>
+          <div  className="flex">
+        <h1 className="font-semibold text-3xl text-start ml-48"> {detailData.title}</h1>   
+    <Flex spacing={4} align="center" marginLeft={"600px"} gap={"10px"}>
+  <Text textDecoration="underline" cursor="pointer" onClick={handleShareClick}>
+    <box-icon name='arrow-from-bottom' style={{ fontSize: "16px", verticalAlign: "middle" }}></box-icon> Share
+  </Text>
+  <Text textDecoration="underline" cursor="pointer" onClick={handleSaveClick}>
+    <box-icon name='heart' style={{ fontSize: "16px", verticalAlign: "middle" }}></box-icon> Save
+  </Text>
+</Flex>
+
+          </div>
 
           <>
             <div
@@ -95,12 +128,27 @@ const DetailsPage = () => {
             </span>
           </div>
         </div>
-        <Price detailData={detailData} />
+        {/* <Price detailData={detailData} /> */}
         <div className="grid grid-cols-2 gap-2">
           {" "}
           <BelowDetails detailData={detailData} />
         </div>
         <Review reviews={detailData.reviews} />
+        <div className="w-full border rounded-lg overflow-hidden">
+  <h1 className="text-center p-2">Map</h1>
+  {map_location && map_location.lat && map_location.long && (
+    <iframe
+      title="Map"
+      width="100%"
+      height="400"
+      frameBorder="0"
+      style={{ border: 0 }}
+      src={`https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${map_location.lat},${map_location.long}&zoom=15`}
+      allowFullScreen
+    ></iframe>
+  )}
+</div>
+
       </div>
     </div>
   );
