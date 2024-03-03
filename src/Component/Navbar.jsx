@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBar = () => {
   return (
-    <div className="search-bar w-[65%] mx-auto mb-[10px] rounded-[40px] flex justify-center justify-items-center items-center border-2 gap-[10px] shadow-md">
+    <div className="search-bar w-[62%] mx-auto mb-[10px] rounded-[40px] flex justify-center justify-items-center items-center border-2 gap-[10px] shadow-md">
       <div className="relative cursor-pointer hover:bg-slate-100 p-[12px] rounded-[30px]">
         <p>Where</p>
         <input
@@ -12,7 +12,7 @@ const SearchBar = () => {
         />
       </div>
 
-      <div className="relative  cursor-pointer hover:bg-slate-100 p-[16px] rounded-[30px]">
+      <div className="relative  cursor-pointer hover:bg-slate-100 p-[10px] rounded-[30px]">
         <p>Check In</p>
         <input
           type="text"

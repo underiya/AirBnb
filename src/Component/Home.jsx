@@ -12,7 +12,6 @@ function SampleNextArrow(props) {
         ...style,
         display: "block",
         background: "black",
-
         borderRadius: "50%",
         overflow: "hidden",
       }}
@@ -43,7 +42,6 @@ function Home() {
   const settings = {
     className: "center",
     infinite: true,
-    centerPadding: "60px",
     slidesToShow: 8,
     swipeToSlide: true,
     speed: 500,
