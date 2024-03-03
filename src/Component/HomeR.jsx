@@ -24,9 +24,9 @@ export default function HomeR() {
   return (
     <>
       {!isSmallScreen && (
-        <div className="flex gap-[4px] items-center px-[16px] py-[10px] rounded-[18px] border-[2px] ">
+        <div className="flex gap-[4px] items-center px-[16px] py-[12px] rounded-[18px] border-[2px] ">
           <div className="">
-            <p className="text-[14px] font-semibold">
+            <p className="text-[12px] font-semibold">
               Display Total Before Taxes
             </p>
           </div>

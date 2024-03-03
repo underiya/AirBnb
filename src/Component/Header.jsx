@@ -136,7 +136,7 @@ function Header() {
         <hr className="border-t-3" />
         <div className=" w-[90%] flex justify-between justify-items-center  gap-[10px] items-center mx-auto my-[4px] py-[10px]">
           <Home />
-          <div className="px-[16px] py-[12px] rounded-[18px] border-[2px] lg:block hidden">
+          <div className="px-[16px] py-[12px] rounded-[22px] border-[2px] lg:block hidden">
             <a href="/">
               <img
                 src="filter.jpg"
