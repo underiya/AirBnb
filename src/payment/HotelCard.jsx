@@ -1,27 +1,38 @@
 import React from "react";
 
-export default function HotelCard({ data }) {
-  const checkInDate = new Date(data.checkInDate);
-  const checkOutDate = new Date(data.checkOutDate);
-  console.log(data);
+export default function HotelCard({ data,checkOut,checkIn }) {
+  let year = 2024; // You need to specify the year
+  
+  // Convert to a Date object
+  let ChecKIdate = new Date(`${year}-${checkIn}`);
+  let ChecKOdate = new Date(`${year}-${checkOut}`);
+  // Format the date as YYYY-MM-DD
+  let formattedCheckINDate = ChecKIdate.toISOString().split('T')[0];
+  let formattedCheckOutDate = ChecKOdate.toISOString().split('T')[0];
+ 
 
-  const checkInDateNew = new Date(data.formData.checkInDate);
-  const checkOutDateNew = new Date(data.formData.checkOutDate);
+  var checkInDate = new Date(formattedCheckINDate);
+  var checkOutDate = new Date(formattedCheckOutDate);
+  
 
-  const difference = checkOutDateNew.getTime() - checkInDateNew.getTime();
+  var timeDifference = checkOutDate.getTime() - checkInDate.getTime();
+  var daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
-  const differenceIn = difference / (1000 * 3600 * 24);
-  let totalP = data.price * differenceIn;
-  console.log(differenceIn);
+
+
+
+
+  let totalP = data.price * daysDifference;
+ 
   const servceFees = 2910;
   let totalPayment = totalP + servceFees;
   totalPayment = totalPayment.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
 
   return (
-    // lg:w-6/12 md:w-96
-    <div className="lg:h-auto md:h-auto ">
-      {/* w-40 md:w-72 lg:w-96 */}
-      <div className="flex justify-between items-center mt-6 gap-5  ">
+   
+    <div className="lg:h-auto md:h-auto  py-3">
+     
+      <div className="flex justify-between  items-center  gap-5  ">
         {data && data.images && data.images.length > 0 && (
           <img
             className="ml-4 rounded-xl md:h-36 lg:h-24 md:w-36 lg:w-28 object-cover"
@@ -44,7 +55,7 @@ export default function HotelCard({ data }) {
       <hr className="mt-3" />
       <h1 className="text-2xl font-semibold mt-3 ml-4">Price details</h1>
       <div className="flex justify-between  mt-3">
-        <h3 className="ml-4">{`₹${data.price} x ${differenceIn} nights`}</h3>
+        <h3 className="ml-4">{`₹${data.price} x ${daysDifference} nights`}</h3>
         <h3 className="mr-4">{`₹${totalP}`}</h3>
       </div>
 
@@ -55,7 +66,7 @@ export default function HotelCard({ data }) {
 
       <hr className="mt-2" />
 
-      <div className="flex justify-between  mt-3 lg:mb-3 md:pb-5">
+      <div className="flex justify-between  mt-3  ">
         <h3 className="ml-4">Total (INR)</h3>
         <h3 className="mr-4">{`₹${totalPayment}`}</h3>
       </div>

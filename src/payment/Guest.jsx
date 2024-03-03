@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-const Guest = () => {
-  const [guestCounts, setGuestCounts] = useState({
-    adults: 1,
-    children: 0,
-    infants: 0,
-    pets: 0,
-  });
+
+
+
+
+const Guest = ({guestCounts, setGuestCounts}) => {
+ console.log(guestCounts)
+
 
   const handleIncrease = (type) => {
     if (type === "adults" && totalGuests() < 5) {

@@ -54,7 +54,7 @@ const Login = () => {
 
   return (
     <>
-      <Button onClick={onOpen} bg="white" _hover="color:white">
+      <Button onClick={onOpen} bg="white" _hover="color:cyan">
         Login
       </Button>
 
