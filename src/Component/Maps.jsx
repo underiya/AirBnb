@@ -4,11 +4,10 @@ const Maps = ({ map_location, locationName }) => {
   const key = "AIzaSyDrJyW7ZQyuXHg2hkCrCUtIDwbyzBkV7_E";
   return (
     <div
-      className="App"
+      className="App w-full border rounded-lg overflow-hidden"
       style={{ width: "100%", height: "400px", position: "relative" }}
     >
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      <h1 className="text-center font-bold text-2xl p-2">Map</h1>
       {map_location && map_location.lat && map_location.long && (
         <div>
           <iframe
@@ -16,7 +15,9 @@ const Maps = ({ map_location, locationName }) => {
             width="100%"
             height="400"
             frameBorder="0"
-            style={{ border: 0 }}
+            style={{
+              border: 0,
+            }}
             src={`https://www.google.com/maps/embed/v1/view?key=${key}&center=${map_location.lat},${map_location.long}&zoom=15`}
             allowFullScreen
           ></iframe>

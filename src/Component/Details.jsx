@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import Price from "./Price";
 import BelowDetails from "./BelowDetails";
@@ -151,7 +151,7 @@ const DetailsPage = () => {
           <BelowDetails detailData={detailData} />
         </div>
         <Review reviews={detailData.reviews} />
-        <div className="w-full border rounded-lg overflow-hidden">
+        {/* <div className="w-full border rounded-lg overflow-hidden">
           <h1 className="text-center p-2">Map</h1>
           {map_location && map_location.lat && map_location.long && (
             <iframe
@@ -164,12 +164,12 @@ const DetailsPage = () => {
               allowFullScreen
             ></iframe>
           )}
-        </div>
+        </div> */}
+        <Maps
+          map_location={detailData.map_location}
+          locationName={detailData.title}
+        />
       </div>
-      <Maps
-        map_location={detailData.map_location}
-        locationName={detailData.title}
-      />
     </div>
   );
 };
