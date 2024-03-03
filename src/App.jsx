@@ -4,10 +4,6 @@ import "boxicons";
 import "boxicons/css/boxicons.min.css";
 import AllRoutes from "./Component/AllRoutes";
 import Header from "./Component/Header";
-
-
-import SideNavbar from "./Admin/SideNavbar";
-import Home from "./Component/Home";
 import { useSelector } from "react-redux";
 
 function App() {

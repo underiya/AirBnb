@@ -8,14 +8,18 @@ import PANModal from "./PanModel";
 import ConfirmPay from "./ConfirmPay";
 import HotelCard from "./HotelCard";
 import { useSelector } from "react-redux";
+import Login from "../Component/Login";
 
 export default function ConfirmPage() {
   let details = useSelector((state) => state.cart);
+  let isLoggedIn = useSelector((state) => state.auth);
+ 
   let newdetails = details[details.length - 1];
-  // console.log(newdetails)
+ 
 
   const totalGuest =
     newdetails?.formData?.adults + newdetails?.formData?.children;
+    
 
   const checkInDate = new Date(
     details[details.length - 1].formData.checkInDate
@@ -35,35 +39,46 @@ export default function ConfirmPage() {
   const formattedCheckInDate = formatDate(checkInDate);
   const formattedCheckOutDate = formatDate(checkOutDate);
 
+  const [checkIn,setCheckIn]=useState(formattedCheckInDate)
+  const [checkOut,setCheckout]=useState(formattedCheckOutDate)
+  const [guest,setGuest]=useState(totalGuest);
+
   return (
-    <div className="mx-auto w-10/12 pt-[300px]">
-      <div className=" sm:w-full lg:w-1/2 ">
+    <div className="mx-auto w-10/12 lg:pt-[300px] md:pt-[200px] mb-20 ">
+      <div className=" sm:w-full lg:w-1/2  ">
         <div>
           <i class="fa-solid fa-chevron-left"></i>
           <span className="ml-5 text-4xl font-semibold">Confirm and pay</span>
         </div>
-        <div className="md:relative  mt-[180px]  lg:absolute md:w-full lg:w-2/6 md:h-96  lg:h-96  shadow-lg rounded-xl border-1 border-gray-100 sm:relative md:absolute lg:top-40  lg:right-36">
-          <HotelCard data={newdetails} />
+        <div className="md:relative  lg:mt-[150px] md:mt-[50px] lg:absolute md:w-full lg:w-2/6 md:h-auto lg:h-auto  shadow-lg rounded-xl   sm:relative md:absolute lg:top-36  lg:right-36">
+          <HotelCard data={newdetails} checkIn={checkIn} checkOut={checkOut} />
         </div>
 
         <div className="ave">
-          <h1 className="font-medium text-2xl mt-4">Your trip</h1>
+          <h1 className="font-medium text-2xl mt-6">Your trip</h1>
           <div className="flex justify-between">
             <div className="mt-3">
               <h2>Dates</h2>
-              <h2>{`${formattedCheckInDate} - ${formattedCheckOutDate}`}</h2>
+              <h2>{`${checkIn} - ${checkOut}`}</h2>
             </div>
-            <EditDate data={newdetails} />
+            <EditDate checkInD={checkInDate} setCheckIn={setCheckIn} checkOutD={checkOutDate} setCheckout={setCheckout}/>
           </div>
 
           <div className="flex justify-between">
             <div>
               <h1 className="mt-9">Guests</h1>
-              <p>{totalGuest}</p>
+              <p>{guest}</p>
             </div>
-            <EditGuest />
+            <EditGuest setGuest={setGuest} />
           </div>
         </div>
+        {!isLoggedIn.isLoggedIn?
+        <div>
+          <h1 className="text-2xl font-semibold ">please Login to Book </h1>
+          <Login/>
+        </div>
+        :
+        <div>
         <hr className="mt-3" />
         <div className="flex justify-between mt-3">
           <h1 className="text-2xl font-semibold ">Pay with</h1>
@@ -146,6 +161,8 @@ export default function ConfirmPage() {
           responsible for damage.
         </p>
         <ConfirmPay />
+        </div>
+}
       </div>
     </div>
   );

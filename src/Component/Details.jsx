@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import Price from "./Price";
 import BelowDetails from "./BelowDetails";
 import Review from "./Review";
-import Map from "./Map";
+import Maps from "./Maps";
 import { Button, Flex, Text, VStack, useToast } from "@chakra-ui/react";
 
 const DetailsPage = () => {
@@ -28,7 +28,7 @@ const DetailsPage = () => {
   }, [id]);
   const handleShowAllImages = () => {
     setShowAllImages(true);
-    navigate(`/show-all-images`);
+    navigate(`/show-all-images`, { state: detailData.images });
   };
   const toast = useToast();
 
@@ -53,23 +53,40 @@ const DetailsPage = () => {
   };
 
   if (!detailData) return <div>Loading...</div>;
-  const { map_location } = detailData; 
+  const { map_location } = detailData;
   return (
     <div className="pt-[300px] ">
-   
       <div className="card">
         <div className="card-details ">
-          <div  className="flex">
-        <h1 className="font-semibold text-3xl text-start ml-48"> {detailData.title}</h1>   
-    <Flex spacing={4} align="center" marginLeft={"600px"} gap={"10px"}>
-  <Text textDecoration="underline" cursor="pointer" onClick={handleShareClick}>
-    <box-icon name='arrow-from-bottom' style={{ fontSize: "16px", verticalAlign: "middle" }}></box-icon> Share
-  </Text>
-  <Text textDecoration="underline" cursor="pointer" onClick={handleSaveClick}>
-    <box-icon name='heart' style={{ fontSize: "16px", verticalAlign: "middle" }}></box-icon> Save
-  </Text>
-</Flex>
-
+          <div className="flex">
+            <h1 className="font-semibold text-3xl text-start ml-48">
+              {" "}
+              {detailData.title}
+            </h1>
+            <Flex spacing={4} align="center" marginLeft={"600px"} gap={"10px"}>
+              <Text
+                textDecoration="underline"
+                cursor="pointer"
+                onClick={handleShareClick}
+              >
+                <box-icon
+                  name="arrow-from-bottom"
+                  style={{ fontSize: "16px", verticalAlign: "middle" }}
+                ></box-icon>{" "}
+                Share
+              </Text>
+              <Text
+                textDecoration="underline"
+                cursor="pointer"
+                onClick={handleSaveClick}
+              >
+                <box-icon
+                  name="heart"
+                  style={{ fontSize: "16px", verticalAlign: "middle" }}
+                ></box-icon>{" "}
+                Save
+              </Text>
+            </Flex>
           </div>
 
           <>
@@ -134,21 +151,24 @@ const DetailsPage = () => {
           <BelowDetails detailData={detailData} />
         </div>
         <Review reviews={detailData.reviews} />
-        <div className="w-full border rounded-lg overflow-hidden">
-  <h1 className="text-center p-2">Map</h1>
-  {map_location && map_location.lat && map_location.long && (
-    <iframe
-      title="Map"
-      width="100%"
-      height="400"
-      frameBorder="0"
-      style={{ border: 0 }}
-      src={`https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${map_location.lat},${map_location.long}&zoom=15`}
-      allowFullScreen
-    ></iframe>
-  )}
-</div>
-
+        {/* <div className="w-full border rounded-lg overflow-hidden">
+          <h1 className="text-center p-2">Map</h1>
+          {map_location && map_location.lat && map_location.long && (
+            <iframe
+              title="Map"
+              width="100%"
+              height="400"
+              frameBorder="0"
+              style={{ border: 0 }}
+              src={`https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${map_location.lat},${map_location.long}&zoom=15`}
+              allowFullScreen
+            ></iframe>
+          )}
+        </div> */}
+        <Maps
+          map_location={detailData.map_location}
+          locationName={detailData.title}
+        />
       </div>
     </div>
   );
