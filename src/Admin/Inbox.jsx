@@ -10,12 +10,14 @@ import { withTheme } from "@emotion/react";
     const [rating, setRating] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [images, setImages] = useState([]);
+    const [image, setImages] = useState([]);
     const { isOpen, onOpen, onClose } = useDisclosure()
     const finalRef = React.useRef()
   
     const handleSubmit = async (e) => {
       e.preventDefault();
+      let images=[];
+      images=[image];
       try {
         const response = await fetch("https://backend-airbnb-stqx.onrender.com/api/locations", {
           method: "POST",
@@ -29,7 +31,7 @@ import { withTheme } from "@emotion/react";
             rating,
             description,
             price,
-            images,
+           images,
           }),
         });
     
@@ -71,7 +73,10 @@ import { withTheme } from "@emotion/react";
             </ModalFooter>
           </ModalContent>
         </Modal>
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+        
+
+        
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto shadow-cyan-800 shadow-2xl p-10 mt-20">
        
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -121,13 +126,14 @@ import { withTheme } from "@emotion/react";
             <div className="mb-4">
         <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images</label>
         <input
-        type="file"
+        type="url"
           id="images"
           accept="image/*"
           onChange={(e) => setImages(e.target.value)}
           multiple
           className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           required
+          value={image}
         />
         </div>
             <div className="mb-4">
@@ -139,6 +145,7 @@ import { withTheme } from "@emotion/react";
               </button>
             </div>
           </form>
+         
           </>
         )
 }

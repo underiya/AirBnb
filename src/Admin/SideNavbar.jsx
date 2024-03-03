@@ -40,7 +40,7 @@ const SideNavbar = () => {
       <div
         className={` ${
           open ? "w-72" : "w-20 "
-        } bg-dark-purple p-5  pt-8 relative duration-300 w-full flex justify-between`}
+        } bg-dark-purple p-5  pt-8 fixed top-0 z-50 duration-300 w-full flex justify-between`}
       >
          <img src="/airbnb.png" alt="" className=" w-[120px] h-[50px]"/>
         

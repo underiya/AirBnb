@@ -55,7 +55,7 @@ const Dashboard = () => {
   });
   return (
     <>
-      <div className="flex gap-6 border px-6 py-6">
+      <div className="flex gap-6 border px-6 py-6 mt-20">
         <div className=" border-4 border-slate-400 bg-slate-100 flex w-1/5 ">
           <div className="p-3 items-center ">
             <h4 className="font-bold">Number of Users</h4>
@@ -97,7 +97,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-10 flex-wrap justify-between px-6 items-center border py-6 my-14 ">
+      <div className="flex gap-10 flex-wrap justify-between px-6 items-center border py-6 my-2 ">
         <Chart
           options={state.options}
           series={state.series}
