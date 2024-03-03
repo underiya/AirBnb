@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import { FaHeart } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight, FaHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+
 const CardCarousel = () => {
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState({});
-  const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [heartState, setHeartState] = useState({});
   const [visibleCards, setVisibleCards] = useState(16);
 
@@ -16,7 +15,6 @@ const CardCarousel = () => {
           "https://backend-airbnb-stqx.onrender.com/api/locations"
         );
         let data = await res.json();
-        console.log(data);
         setData(data);
         setCurrentIndex(Object.fromEntries(data.map((_, i) => [i, 0])));
       } catch (e) {
@@ -45,11 +43,7 @@ const CardCarousel = () => {
           : prevIndex[index] - 1,
     }));
   };
-
-  const handleCardClick = (index) => {
-    setSelectedCardIndex(index);
-  };
-
+  //login dispatch  wishlist
   const handleHeartClick = (index) => {
     setHeartState((prevState) => ({
       ...prevState,
@@ -60,64 +54,56 @@ const CardCarousel = () => {
   const handleShowMore = () => {
     setVisibleCards(data.length);
   };
+
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-5 gap-[25px] w-[90%] mx-auto pt-[310px] ">
         {data.slice(0, visibleCards).map((el, i) => (
-          <Link to={`/details/${el.id}`} key={i} className="mb-8">
-            <div
-              key={i}
-              className={`mb-8 ${
-                selectedCardIndex !== null && selectedCardIndex !== i
-                  ? "hidden"
-                  : "block"
-              }`}
-            >
-              <div className="rounded-[18px] overflow-hidden relative">
+          <div className="mb-8" key={i}>
+            <div className="rounded-[18px] overflow-hidden relative">
+              <Link to={`/details/${el.id}`} className="mb-8">
                 <img
                   className="w-full h-[300px] object-cover"
                   src={el.images[currentIndex[i]]}
                   alt=""
                 />
-                <div className="text-[14px] font-[400] rounded-full bg-gray-100 py-[2px] px-[15px] absolute top-[10px] left-[10px]">
-                  Guest Favourite
-                </div>
-                <div
-                  onClick={() => handleHeartClick(i)}
-                  className="absolute top-[10px] right-[10px] text-[24px] font-[700] cursor-pointer"
-                  style={{ color: heartState[i] ? "red" : "black" }}
-                >
-                  <FaHeart />
-                </div>
-                <span
-                  onClick={() => prevImage(i)}
-                  className="cursor-pointer absolute top-1/2 transform -translate-y-1/2 left-2 text-sm bg-gray-100 px-2 py-1 rounded-full"
-                >
-                  <FaAngleLeft />
-                </span>
-                <span
-                  onClick={() => nextImage(i)}
-                  className="cursor-pointer absolute top-1/2 transform -translate-y-1/2 right-2 text-sm bg-gray-100 px-2 py-1 rounded-full"
-                >
-                  <FaAngleRight />
-                </span>
+              </Link>
+              <div className="text-[18px] font-semibold rounded-full bg-white py-[3px] px-[16px] absolute top-[10px] left-[10px]">
+                Guest favourite
               </div>
-
-              <div className="flex justify-between mt-3">
-                <div className="font-semibold ">{el.title}</div>
-                <div className="font-semibold">★ {el.rating}</div>
+              <div
+                onClick={() => handleHeartClick(i)}
+                className="absolute top-[10px] right-[10px] text-[24px] font-[700] cursor-pointer border-1 border-white"
+                style={{ color: heartState[i] ? "red" : "grey" }}
+              >
+                <FaHeart />
               </div>
-
-              <div className="text-gray-600 text-[16px] mt-1">{el.nearBy}</div>
-
-              <div className="text-sm font-semibold mt-1">
-                <span className=" font-semibold text-[18px]">
-                  ₹ {el.price} /
-                </span>
-                night
-              </div>
+              <span
+                onClick={() => prevImage(i)}
+                className="cursor-pointer absolute top-1/2 transform -translate-y-1/2 left-2 text-sm bg-gray-100  p-[8px] rounded-full"
+              >
+                <FaAngleLeft />
+              </span>
+              <span
+                onClick={() => nextImage(i)}
+                className="cursor-pointer absolute top-1/2 transform -translate-y-1/2 right-2 text-sm bg-gray-100 p-[8px] rounded-full"
+              >
+                <FaAngleRight />
+              </span>
             </div>
-          </Link>
+
+            <div className="flex justify-between mt-3">
+              <div className="font-semibold ">{el.title}</div>
+              <div className="font-semibold">★ {el.rating}</div>
+            </div>
+
+            <div className="text-gray-600 text-[16px] mt-1">{el.nearBy}</div>
+
+            <div className="text-sm font-[500] mt-1">
+              <span className=" font-semibold text-[18px]">₹ {el.price} </span>
+              night
+            </div>
+          </div>
         ))}
       </div>
       {visibleCards < data.length && (

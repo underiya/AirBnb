@@ -12,15 +12,20 @@ import {
   FormLabel,
   Input,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login, loginSuccess } from "../Redux/action";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+
 const Login = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, error } = useSelector((state) => state.auth);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
+
+  const toast = useToast();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -43,6 +48,25 @@ const Login = () => {
       navigate("/admin");
     } else {
       dispatch(login(form.email, form.password));
+
+      // console.log(isLoggedIn);
+      // if (isLoggedIn) {
+      //   toast({
+      //     title: "login Successfull",
+      //     description: "Login completed",
+      //     status: "success",
+      //     duration: 5000,
+      //     isClosable: true,
+      //   });
+      // } else {
+      //   toast({
+      //     title: "Login failed",
+      //     description: error,
+      //     status: "error",
+      //     duration: 5000,
+      //     isClosable: true,
+      //   });
+      // }
     }
   };
 
@@ -54,7 +78,7 @@ const Login = () => {
 
   return (
     <>
-      <Button onClick={onOpen} bg="white" _hover="color:white">
+      <Button onClick={onOpen} bg="white" _hover="color:cyan">
         Login
       </Button>
 

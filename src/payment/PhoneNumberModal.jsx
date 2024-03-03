@@ -21,31 +21,28 @@ export default function PhoneNumberModal() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isPhoneValid, setIsPhoneNumberValid] = useState(true);
   const validatePhoneNumber = (phoneNumber) => {
-    // Regular expression for Indian phone number validation
     const phoneRegex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/;
     return phoneRegex.test(phoneNumber);
-};
+  };
 
-const handlePhoneChange = (e) => {
+  const handlePhoneChange = (e) => {
     const inputPhoneNumber = e.target.value;
     setPhoneNumber(inputPhoneNumber);
     setIsPhoneNumberValid(validatePhoneNumber(inputPhoneNumber));
-};
+  };
 
-const handleSave = () => {
-    // Validate phone number again before saving
+  const handleSave = () => {
     if (validatePhoneNumber(phoneNumber)) {
-        console.log("Valid Phone Number:", phoneNumber);
-        onClose();
+      console.log("Valid Phone Number:", phoneNumber);
+      onClose();
     } else {
-        setIsPhoneNumberValid(false);
+      setIsPhoneNumberValid(false);
     }
-};
-
+  };
 
   return (
     <>
-    <Button onClick={onOpen}>Add</Button>
+      <Button onClick={onOpen}>Add</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -61,16 +58,13 @@ const handleSave = () => {
                 value={phoneNumber}
                 onChange={handlePhoneChange}
               />
-               <FormErrorMessage>
+              <FormErrorMessage>
                 {!isPhoneValid && "Invalid Phone Number format"}
               </FormErrorMessage>
             </FormControl>
           </ModalBody>
           <ModalFooter justifyContent="center">
-            {/* <Button colorScheme="blue" mr={3} onClick={handleSave}>
-              Save
-            </Button> */}
-            <PhoneToast colorScheme="blue" mr={3} onClick={handleSave}/>
+            <PhoneToast colorScheme="blue" mr={3} onClick={handleSave} />
             <Button variant="ghost" onClick={onClose}>
               Cancel
             </Button>

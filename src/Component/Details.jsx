@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Price from "./Price";
+// import Price from "./Price";
 import BelowDetails from "./BelowDetails";
-// import AllImages from './AllImages';
 import Review from "./Review";
+import Maps from "./Maps";
+import { Button, Flex, Text, VStack, useToast } from "@chakra-ui/react";
 
 const DetailsPage = () => {
   const navigate = useNavigate();
@@ -27,37 +28,67 @@ const DetailsPage = () => {
   }, [id]);
   const handleShowAllImages = () => {
     setShowAllImages(true);
-    navigate(`/show-all-images`);
+    navigate(`/show-all-images`, { state: detailData.images });
+  };
+  const toast = useToast();
+
+  const handleShareClick = () => {
+    toast({
+      title: "Share",
+      description: "copy to clipBoard",
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
+  };
+
+  const handleSaveClick = () => {
+    toast({
+      title: "Save",
+      description: "login to save this",
+      status: "info",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   if (!detailData) return <div>Loading...</div>;
-
+  const { map_location } = detailData;
   return (
     <div className="pt-[300px] ">
-      <div className="card">
+      <div className="card w-[100%] m-auto">
         <div className="card-details ">
-          <h1 className="font-semibold text-3xl text-start ml-48">
-            {detailData.title}
-          </h1>
+          <div className="flex">
+            <h1 className="font-semibold text-3xl text-start ml-48">
+              {" "}
+              {detailData.title}
+            </h1>
+            <Flex spacing={4} align="center" marginLeft={"600px"} gap={"10px"}>
+              <Text
+                textDecoration="underline"
+                cursor="pointer"
+                onClick={handleShareClick}
+              >
+                <box-icon
+                  name="arrow-from-bottom"
+                  style={{ fontSize: "16px", verticalAlign: "middle" }}
+                ></box-icon>{" "}
+                Share
+              </Text>
+              <Text
+                textDecoration="underline"
+                cursor="pointer"
+                onClick={handleSaveClick}
+              >
+                <box-icon
+                  name="heart"
+                  style={{ fontSize: "16px", verticalAlign: "middle" }}
+                ></box-icon>{" "}
+                Save
+              </Text>
+            </Flex>
+          </div>
 
-          {/* <div className="card-images grid grid-cols-4 gap-2  rounded-lg w-3/4 m-auto relative mt-4">
-
-  <img className="object-cover col-span-2 row-span-2 rounded-lg" key={0} src={detailData.images[0]} alt={`Image 1`}  />
-
-
-  {detailData.images.slice(1,5).map((image, index) => (
-    <img className="object-cover col-span-1 rounded-lg overflow-hidden h-52 w-full relative" key={index + 1} src={image} alt={`Image ${index + 1}`} />
-  ))}
-  
- 
-  <div>
-      <button className='absolute right-4 bottom-3 bg-white p-2 border-2 border-black flex gap-2 rounded-lg ' onClick={handleShowAllImages}>
-        <box-icon type='solid' name='grid'></box-icon>
-        Show All Images
-      </button>
-      {showAllImages && <AllImages detailData={detailData} />}
-    </div>
-</div> */}
           <>
             <div
               id="imagegrid"
@@ -86,7 +117,6 @@ const DetailsPage = () => {
                   <box-icon type="solid" name="grid"></box-icon>
                   Show All Images
                 </button>
-                {/* {showAllImages && <AllImages props={detailData} />} */}
               </div>
             </div>
           </>
@@ -114,23 +144,19 @@ const DetailsPage = () => {
               <p>Review{detailData.review}</p>
             </span>
           </div>
-          {/* <div className="flex gap-4 ml-48 mt-4">
-        <img
-          className="h-10 w-10 rounded-full"
-          src="https://a0.muscache.com/im/pictures/user/dc023d0d-5bf7-4e5f-acf9-4e9cce1e4897.jpg?"
-        />
-        <span>
-          hosted by rekha <br />
-          <p className="text-gray-600">8 years of hosting</p>{' '}
-        </span>
-      </div> */}
         </div>
-        <Price detailData={detailData} />
+        {/* <Price detailData={detailData} /> */}
         <div className="grid grid-cols-2 gap-2">
           {" "}
           <BelowDetails detailData={detailData} />
         </div>
+
         <Review reviews={detailData.reviews} />
+
+        <Maps
+          map_location={detailData.map_location}
+          locationName={detailData.title}
+        />
       </div>
     </div>
   );

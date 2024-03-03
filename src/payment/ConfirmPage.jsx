@@ -8,61 +8,77 @@ import PANModal from "./PanModel";
 import ConfirmPay from "./ConfirmPay";
 import HotelCard from "./HotelCard";
 import { useSelector } from "react-redux";
+import Login from "../Component/Login";
 
 export default function ConfirmPage() {
+  let details = useSelector((state) => state.cart);
+  let isLoggedIn = useSelector((state) => state.auth);
  
-  let details=useSelector(state=>state.cart)
-  let newdetails=details[details.length-1]
-  // console.log(newdetails)
-
+  let newdetails = details[details.length - 1];
  
- 
-const totalGuest=(newdetails?.formData?.adults) + (newdetails?.formData?.children)
 
-const checkInDate = new Date(details[details.length-1].formData.checkInDate);
-const checkOutDate = new Date(details[details.length-1].formData.checkOutDate);
+  const totalGuest =
+    newdetails?.formData?.adults + newdetails?.formData?.children;
+    
 
+  const checkInDate = new Date(
+    details[details.length - 1].formData.checkInDate
+  );
+  const checkOutDate = new Date(
+    details[details.length - 1].formData.checkOutDate
+  );
 
+  function formatDate(date) {
+    const day = date.getDate();
+    const month = new Intl.DateTimeFormat("en-US", { month: "short" }).format(
+      date
+    );
+    return `${day} ${month}`;
+  }
 
-function formatDate(date) {
-  const day = date.getDate();
-  const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
-  return `${day} ${month}`;
-}
+  const formattedCheckInDate = formatDate(checkInDate);
+  const formattedCheckOutDate = formatDate(checkOutDate);
 
-// Format the check-in and check-out dates
-const formattedCheckInDate = formatDate(checkInDate);
-const formattedCheckOutDate = formatDate(checkOutDate);
+  const [checkIn,setCheckIn]=useState(formattedCheckInDate)
+  const [checkOut,setCheckout]=useState(formattedCheckOutDate)
+  const [guest,setGuest]=useState(totalGuest);
 
   return (
-    <div className="mx-auto w-10/12">
-      <div className="mt-9 sm:w-full lg:w-1/2 ">
+    <div className="mx-auto w-10/12 lg:pt-[300px] md:pt-[200px] mb-20 ">
+      <div className=" sm:w-full lg:w-1/2  ">
         <div>
           <i class="fa-solid fa-chevron-left"></i>
           <span className="ml-5 text-4xl font-semibold">Confirm and pay</span>
         </div>
-        <div className="md:relative lg:absolute md:w-full lg:w-2/6 md:h-96  lg:h-96  shadow-lg rounded-xl border-1 border-gray-100 sm:relative md:absolute lg:top-40  lg:right-36">
-       <HotelCard data={newdetails} /> 
+        <div className="md:relative  lg:mt-[150px] md:mt-[50px] lg:absolute md:w-full lg:w-2/6 md:h-auto lg:h-auto  shadow-lg rounded-xl   sm:relative md:absolute lg:top-36  lg:right-36">
+          <HotelCard data={newdetails} checkIn={checkIn} checkOut={checkOut} />
         </div>
 
         <div className="ave">
-          <h1 className="font-medium text-2xl mt-4">Your trip</h1>
+          <h1 className="font-medium text-2xl mt-6">Your trip</h1>
           <div className="flex justify-between">
             <div className="mt-3">
               <h2>Dates</h2>
-             <h2>{`${formattedCheckInDate} - ${formattedCheckOutDate}`}</h2>
+              <h2>{`${checkIn} - ${checkOut}`}</h2>
             </div>
-            <EditDate data={newdetails}  />
+            <EditDate checkInD={checkInDate} setCheckIn={setCheckIn} checkOutD={checkOutDate} setCheckout={setCheckout}/>
           </div>
 
           <div className="flex justify-between">
             <div>
-            <h1 className="mt-9">Guests</h1>
-            <p>{totalGuest}</p>
+              <h1 className="mt-9">Guests</h1>
+              <p>{guest}</p>
             </div>
-            <EditGuest />
+            <EditGuest setGuest={setGuest} />
           </div>
         </div>
+        {!isLoggedIn.isLoggedIn?
+        <div>
+          <h1 className="text-2xl font-semibold ">please Login to Book </h1>
+          <Login/>
+        </div>
+        :
+        <div>
         <hr className="mt-3" />
         <div className="flex justify-between mt-3">
           <h1 className="text-2xl font-semibold ">Pay with</h1>
@@ -105,7 +121,6 @@ const formattedCheckOutDate = formatDate(checkOutDate);
           </h3>
           <div className="flex justify-between mr-4 mt-2">
             <h2 className="font-semibold">Permanent Account Number (PAN)</h2>
-            {/* <button className='rounded-lg border-black border-2 px-2 '>Add</button> */}
             <PANModal />
           </div>
           <h3>
@@ -145,8 +160,9 @@ const formattedCheckOutDate = formatDate(checkOutDate);
           and that Airbnb can <strong>charge my payment method </strong> if I’m
           responsible for damage.
         </p>
-        {/* <button className='mt-3 p-3  bg-pink-600 text-white rounded-lg mb-4'>Confirm and Pay</button> */}
         <ConfirmPay />
+        </div>
+}
       </div>
     </div>
   );
