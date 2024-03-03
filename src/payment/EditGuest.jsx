@@ -16,10 +16,16 @@ import {
 } from "@chakra-ui/react";
 import Guest from "./Guest";
 
-export default function EditGuest() {
+export default function EditGuest({setGuest}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [guestCounts, setGuestCounts] = useState({
+    adults: 1,
+    children: 0,
+    infants: 0,
+    pets: 0,
+  });
   const handleSave = () => {
+    setGuest(guestCounts.adults + guestCounts.children);
     onClose();
   };
 
@@ -33,7 +39,7 @@ export default function EditGuest() {
           <ModalHeader>Add Guests</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Guest />
+            <Guest guestCounts={guestCounts} setGuestCounts={setGuestCounts}/>
           </ModalBody>
           <ModalFooter justifyContent="center">
             <Button colorScheme="blue" mr={3} onClick={handleSave}>
