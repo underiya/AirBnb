@@ -1,4 +1,5 @@
-import { useLocation } from "react-router-dom";
+/* eslint-disable max-len */
+import {useLocation} from 'react-router-dom';
 const Allimages = () => {
   const images = useLocation();
   // console.log(images);

@@ -1,11 +1,9 @@
-const Maps = ({ map_location, locationName }) => {
-  // const lat=map_location.lat;
-  // const long=map_location.long;
-  const key = "AIzaSyDrJyW7ZQyuXHg2hkCrCUtIDwbyzBkV7_E";
+const Maps = ({map_location, locationName}) => {
+  const key = 'AIzaSyDrJyW7ZQyuXHg2hkCrCUtIDwbyzBkV7_E';
   return (
     <div
       className="App w-[90%] m-auto border-[1px] rounded-[14px] "
-      style={{ width: "90%", height: "500px", position: "relative" }}
+      style={{width: '90%', height: '500px', position: 'relative'}}
     >
       <h1 className="text-center font-bold text-[32px] p-[10px] font-serif">
         Map
@@ -25,21 +23,21 @@ const Maps = ({ map_location, locationName }) => {
           ></iframe>
           <div
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
             }}
           >
             <img
               src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"
               alt="marker"
-              style={{ width: "32px", height: "30px" }}
+              style={{width: '32px', height: '30px'}}
               title={locationName}
             />
           </div>
         </div>
-      )}{" "}
+      )}{' '}
     </div>
   );
 };

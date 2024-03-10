@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+/* eslint-disable max-len */
+import {useState, useEffect} from 'react';
 
 export default function HomeR() {
   const [isToggled, setIsToggled] = useState(false);
@@ -15,9 +16,9 @@ export default function HomeR() {
 
     updateScreenSize();
 
-    window.addEventListener("resize", updateScreenSize);
+    window.addEventListener('resize', updateScreenSize);
     return () => {
-      window.removeEventListener("resize", updateScreenSize);
+      window.removeEventListener('resize', updateScreenSize);
     };
   }, []);
 
@@ -42,7 +43,7 @@ export default function HomeR() {
               <div className="toggle__line w-[46px] h-[24px] bg-gray-400 rounded-full shadow-inner"></div>
               <div
                 className={`toggle__dot absolute w-6 h-6 bg-white rounded-full shadow top-0 left-0 ${
-                  isToggled ? "transform translate-x-full" : ""
+                  isToggled ? 'transform translate-x-full' : ''
                 } transition-transform`}
               >
                 {isToggled && (

@@ -11,67 +11,45 @@ import {
   FormControl,
   FormLabel,
   Input,
-} from "@chakra-ui/react";
-import { useCallback, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { login, loginSuccess } from "../Redux/action";
-import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+} from '@chakra-ui/react';
+import {useEffect, useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {login, loginSuccess} from '../Redux/action';
+import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, error } = useSelector((state) => state.auth);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isLoggedIn, error} = useSelector((state) => state.auth);
+  const {isOpen, onOpen, onClose} = useDisclosure();
   const navigate = useNavigate();
 
-  const toast = useToast();
-
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   //   console.log(form);
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (form.email == "admin@admin.com" && form.password == "admin") {
+    if (form.email == 'admin@admin.com' && form.password == 'admin') {
       const Admin = [
         {
-          firstName: "Admin",
+          firstName: 'Admin',
           email: form.email,
           password: form.password,
         },
       ];
       dispatch(loginSuccess(Admin));
       onClose();
-      navigate("/admin");
+      navigate('/admin');
     } else {
       dispatch(login(form.email, form.password));
-
-      // console.log(isLoggedIn);
-      // if (isLoggedIn) {
-      //   toast({
-      //     title: "login Successfull",
-      //     description: "Login completed",
-      //     status: "success",
-      //     duration: 5000,
-      //     isClosable: true,
-      //   });
-      // } else {
-      //   toast({
-      //     title: "Login failed",
-      //     description: error,
-      //     status: "error",
-      //     duration: 5000,
-      //     isClosable: true,
-      //   });
-      // }
     }
   };
 
   useEffect(() => {
-    if (isLoggedIn || form.email == "admin@admin.com") {
+    if (isLoggedIn || form.email == 'admin@admin.com') {
       onClose();
     }
   }, [isLoggedIn, onClose]);
@@ -93,12 +71,12 @@ const Login = () => {
               <Input
                 type="email"
                 placeholder="Email"
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={(e) => setForm({...form, email: e.target.value})}
               />
               <FormLabel>Password</FormLabel>
               <Input
                 placeholder="Password"
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                onChange={(e) => setForm({...form, password: e.target.value})}
               />
             </ModalBody>
 

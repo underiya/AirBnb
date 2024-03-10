@@ -1,15 +1,15 @@
-import Chart from "react-apexcharts";
-import { useEffect, useState } from "react";
+import Chart from 'react-apexcharts';
+import {useState} from 'react';
 const Dashboard = () => {
   const [user, setUser] = useState(2);
   const [location, setLocation] = useState(2);
 
   async function userda() {
     try {
-      let res = await fetch(
-        "https://backend-airbnb-stqx.onrender.com/api/users"
+      const res = await fetch(
+          'https://backend-airbnb-stqx.onrender.com/api/users',
       );
-      let data = await res.json();
+      const data = await res.json();
       console.log(data);
       setUser(data.length);
     } catch (e) {
@@ -20,10 +20,10 @@ const Dashboard = () => {
 
   async function userda() {
     try {
-      let res = await fetch(
-        "https://backend-airbnb-stqx.onrender.com/api/locations"
+      const res = await fetch(
+          'https://backend-airbnb-stqx.onrender.com/api/locations',
       );
-      let data = await res.json();
+      const data = await res.json();
       console.log(data);
       setLocation(data.length);
     } catch (e) {
@@ -35,7 +35,7 @@ const Dashboard = () => {
   const [state, setState] = useState({
     options: {
       chart: {
-        id: "basic-bar",
+        id: 'basic-bar',
       },
       xaxis: {
         categories: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
@@ -43,7 +43,7 @@ const Dashboard = () => {
     },
     series: [
       {
-        name: "series-1",
+        name: 'series-1',
         data: [30, 40, 45, 50, 49, 60, 70, 91],
       },
     ],
@@ -51,7 +51,7 @@ const Dashboard = () => {
   const [donut, setDonut] = useState({
     options: {},
     series: [44, 55, 41, 17, 15],
-    labels: ["Goa", "Delhi", "Mumbai", "Banglore", "Kashmir"],
+    labels: ['Goa', 'Delhi', 'Mumbai', 'Banglore', 'Kashmir'],
   });
   return (
     <>

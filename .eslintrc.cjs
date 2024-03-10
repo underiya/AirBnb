@@ -28,5 +28,8 @@ module.exports = {
     'react',
   ],
   'rules': {
+    'require-jsdoc': 0,
+    'react/react-in-jsx-scope': 0,
+    'react/jsx-uses-react': 0,
   },
 };

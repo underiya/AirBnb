@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import Login from "./Login";
-import Signup from "./Signup";
-import Home from "./Home";
-import HomeR from "./HomeR";
-import SearchBar from "./Navbar";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../Redux/action";
+/* eslint-disable max-len */
+import {useState, useEffect} from 'react';
+import Login from './Login';
+import Signup from './Signup';
+import Home from './Home';
+import HomeR from './HomeR';
+import SearchBar from './Navbar';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout} from '../Redux/action';
 function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const [showSearchBar, setShowSearchBar] = useState(true);
-  const { isLoggedIn, user } = useSelector((state) => state.auth);
+  const {isLoggedIn, user} = useSelector((state) => state.auth);
   const userInitial = user[0]?.firstName.charAt(0).toUpperCase();
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -33,10 +34,10 @@ function Header() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -130,7 +131,7 @@ function Header() {
             </div>
           </div>
         </div>
-        <div className={showSearchBar ? "lg:block hidden" : "hidden"}>
+        <div className={showSearchBar ? 'lg:block hidden' : 'hidden'}>
           <SearchBar />
         </div>
 
@@ -148,7 +149,7 @@ function Header() {
             </a>
           </div>
           <a href="/" className="lg:block hidden">
-            {" "}
+            {' '}
             <HomeR />
           </a>
         </div>

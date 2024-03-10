@@ -11,13 +11,13 @@ import {
   FormControl,
   FormLabel,
   Input,
-} from "@chakra-ui/react";
-import axios from "axios";
-import { useState } from "react";
+} from '@chakra-ui/react';
+import axios from 'axios';
+import {useState} from 'react';
 
-export async function PostUsers(url, cred) {
+export async function postUsers(url, cred) {
   try {
-    let res = await axios.post(url, cred);
+    const res = await axios.post(url, cred);
     console.log(res.data);
   } catch (error) {
     console.log(error);
@@ -25,18 +25,18 @@ export async function PostUsers(url, cred) {
 }
 
 const Signup = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
   });
 
   const handleSignup = (e) => {
     e.preventDefault();
-    PostUsers("https://backend-airbnb-stqx.onrender.com/api/users", form);
+    PostUsers('https://backend-airbnb-stqx.onrender.com/api/users', form);
     console.log(form);
     onClose();
   };
@@ -57,24 +57,24 @@ const Signup = () => {
               <Input
                 placeholder="First name"
                 onChange={(e) =>
-                  setForm({ ...form, firstName: e.target.value })
+                  setForm({...form, firstName: e.target.value})
                 }
               />
               <FormLabel>Last name</FormLabel>
               <Input
                 placeholder="Last name"
-                onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+                onChange={(e) => setForm({...form, lastName: e.target.value})}
               />
               <FormLabel>Email</FormLabel>
               <Input
                 type="email"
                 placeholder="Email"
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={(e) => setForm({...form, email: e.target.value})}
               />
               <FormLabel>Password</FormLabel>
               <Input
                 placeholder="Password"
-                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                onChange={(e) => setForm({...form, password: e.target.value})}
               />
             </ModalBody>
 

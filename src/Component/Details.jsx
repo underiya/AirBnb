@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+/* eslint-disable max-len */
+import {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 // import Price from "./Price";
-import BelowDetails from "./BelowDetails";
-import Review from "./Review";
-import Maps from "./Maps";
-import { Button, Flex, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, VStack, useToast } from "@chakra-ui/react";
+import BelowDetails from './BelowDetails';
+import Review from './Review';
+import Maps from './Maps';
+import {Flex, Text, useToast} from '@chakra-ui/react';
 
 const DetailsPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const {id} = useParams();
   const [detailData, setDetailData] = useState(null);
   const [showAllImages, setShowAllImages] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `https://backend-airbnb-stqx.onrender.com/api/locations/${id}`
+            `https://backend-airbnb-stqx.onrender.com/api/locations/${id}`,
         );
         const data = await res.json();
         setDetailData(data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
       }
     };
 
@@ -28,15 +29,15 @@ const DetailsPage = () => {
   }, [id]);
   const handleShowAllImages = () => {
     setShowAllImages(true);
-    navigate(`/show-all-images`, { state: detailData.images });
+    navigate(`/show-all-images`, {state: detailData.images});
   };
   const toast = useToast();
 
   const handleShareClick = () => {
     toast({
-      title: "Share",
-      description: "copy to clipBoard",
-      status: "info",
+      title: 'Share',
+      description: 'copy to clipBoard',
+      status: 'info',
       duration: 3000,
       isClosable: true,
     });
@@ -44,39 +45,39 @@ const DetailsPage = () => {
 
   const handleSaveClick = () => {
     toast({
-      title: "Save",
-      description: "login to save this",
-      status: "info",
+      title: 'Save',
+      description: 'login to save this',
+      status: 'info',
       duration: 3000,
       isClosable: true,
     });
   };
 
   if (!detailData) return <div>Loading...</div>;
-  const { map_location } = detailData;
+  const {map_location} = detailData;
   return (
     <div className="pt-[300px] ">
       <div className="card w-[100%] m-auto">
         <div className="card-details ">
           <div className="flex">
             <h1 className="font-semibold text-3xl text-start ml-48">
-              {" "}
+              {' '}
               {detailData.title}
             </h1>
-            <Flex spacing={4} align="center" marginLeft={"600px"} gap={"10px"}>
-            <Text
-        textDecoration="underline"
-        cursor="pointer"
-        onClick={handleShareClick}
-      >
-        <box-icon
-          name="arrow-from-bottom"
-          style={{ fontSize: "16px", verticalAlign: "middle" }}
-        ></box-icon>{" "}
+            <Flex spacing={4} align="center" marginLeft={'600px'} gap={'10px'}>
+              <Text
+                textDecoration="underline"
+                cursor="pointer"
+                onClick={handleShareClick}
+              >
+                <box-icon
+                  name="arrow-from-bottom"
+                  style={{fontSize: '16px', verticalAlign: 'middle'}}
+                ></box-icon>{' '}
         Share
-      </Text>
+              </Text>
 
-      
+
               <Text
                 textDecoration="underline"
                 cursor="pointer"
@@ -84,8 +85,8 @@ const DetailsPage = () => {
               >
                 <box-icon
                   name="heart"
-                  style={{ fontSize: "16px", verticalAlign: "middle" }}
-                ></box-icon>{" "}
+                  style={{fontSize: '16px', verticalAlign: 'middle'}}
+                ></box-icon>{' '}
                 Save
               </Text>
             </Flex>
@@ -134,7 +135,7 @@ const DetailsPage = () => {
               <li>Toilet with sink</li>
             </ul>
             <span className="flex justify-start items-baseline gap-3 mt-3">
-              {" "}
+              {' '}
               <p className="mt-4">
                 <box-icon
                   className="mr-2 h-2 w-2 "
@@ -142,14 +143,14 @@ const DetailsPage = () => {
                   name="star"
                 ></box-icon>
                 {detailData.rating}
-              </p>{" "}
+              </p>{' '}
               <p>Review{detailData.review}</p>
             </span>
           </div>
         </div>
         {/* <Price detailData={detailData} /> */}
         <div className="grid grid-cols-2 gap-2">
-          {" "}
+          {' '}
           <BelowDetails detailData={detailData} />
         </div>
 

@@ -4,7 +4,7 @@ import {
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
   LOGOUT,
-} from "./actionType";
+} from './actionType';
 
 export const wishlistReducer = (state = [], action) => {
   switch (action.type) {

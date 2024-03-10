@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export default function Footerbottom() {
   return (
     <div className="flex text-[18px] flex-col ml-[50px] pb-[30px] md:flex-row justify-between w-[90%] md:w-[90%] lg:[90%] xl:[90%]">
@@ -7,7 +8,7 @@ export default function Footerbottom() {
           <li className="hover:underline">
             <a
               href="https://www.airbnb.co.in/help/article/2855"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Privacy
             </a>
@@ -15,20 +16,20 @@ export default function Footerbottom() {
           <li className="hover:underline">
             <a
               href="https://www.airbnb.co.in/help/article/2908"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Terms
             </a>
           </li>
           <li className="hover:underline">
-            <a href="https://www.airbnb.co.in/sitemaps/v2" target="_blank">
+            <a href="https://www.airbnb.co.in/sitemaps/v2" target="_blank" rel="noreferrer">
               Sitemap
             </a>
           </li>
           <li className="hover:underline">
             <a
               href="https://www.airbnb.co.in/about/company-details"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Company Details
             </a>

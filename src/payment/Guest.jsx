@@ -1,28 +1,27 @@
-
-
+/* eslint-disable react/prop-types */
 
 
 const Guest = ({guestCounts, setGuestCounts}) => {
- console.log(guestCounts)
+  console.log(guestCounts);
 
 
   const handleIncrease = (type) => {
-    if (type === "adults" && totalGuests() < 5) {
+    if (type === 'adults' && totalGuests() < 5) {
       setGuestCounts((prevCounts) => ({
         ...prevCounts,
         [type]: prevCounts[type] + 1,
       }));
-    } else if (type === "children" && totalGuests() < 5) {
+    } else if (type === 'children' && totalGuests() < 5) {
       setGuestCounts((prevCounts) => ({
         ...prevCounts,
         [type]: prevCounts[type] + 1,
       }));
-    } else if (type === "infants" && guestCounts.infants < 5) {
+    } else if (type === 'infants' && guestCounts.infants < 5) {
       setGuestCounts((prevCounts) => ({
         ...prevCounts,
         [type]: prevCounts[type] + 1,
       }));
-    } else if (type === "pets" && guestCounts.pets < 5) {
+    } else if (type === 'pets' && guestCounts.pets < 5) {
       setGuestCounts((prevCounts) => ({
         ...prevCounts,
         [type]: prevCounts[type] + 1,
@@ -44,10 +43,10 @@ const Guest = ({guestCounts, setGuestCounts}) => {
   };
 
   const guestString = () => {
-    let string = "";
+    let string = '';
     for (const [key, value] of Object.entries(guestCounts)) {
       if (value > 0) {
-        string += value + " " + key + ", ";
+        string += value + ' ' + key + ', ';
       }
     }
     return string.slice(0, -2);
@@ -59,14 +58,14 @@ const Guest = ({guestCounts, setGuestCounts}) => {
         <label>Adults</label>
         <div className="flex items-center">
           <button
-            onClick={() => handleDecrease("adults")}
+            onClick={() => handleDecrease('adults')}
             className="border rounded-full w-8 h-8"
           >
             -
           </button>
           <span className="mx-2">{guestCounts.adults}</span>
           <button
-            onClick={() => handleIncrease("adults")}
+            onClick={() => handleIncrease('adults')}
             className="border rounded-full w-8 h-8"
           >
             +
@@ -77,14 +76,14 @@ const Guest = ({guestCounts, setGuestCounts}) => {
         <label>Children</label>
         <div className="flex items-center">
           <button
-            onClick={() => handleDecrease("children")}
+            onClick={() => handleDecrease('children')}
             className="border rounded-full w-8 h-8"
           >
             -
           </button>
           <span className="mx-2">{guestCounts.children}</span>
           <button
-            onClick={() => handleIncrease("children")}
+            onClick={() => handleIncrease('children')}
             className="border rounded-full w-8 h-8"
           >
             +
@@ -95,14 +94,14 @@ const Guest = ({guestCounts, setGuestCounts}) => {
         <label>Infants</label>
         <div className="flex items-center">
           <button
-            onClick={() => handleDecrease("infants")}
+            onClick={() => handleDecrease('infants')}
             className="border rounded-full w-8 h-8"
           >
             -
           </button>
           <span className="mx-2">{guestCounts.infants}</span>
           <button
-            onClick={() => handleIncrease("infants")}
+            onClick={() => handleIncrease('infants')}
             className="border rounded-full w-8 h-8"
           >
             +
@@ -113,14 +112,14 @@ const Guest = ({guestCounts, setGuestCounts}) => {
         <label>Pets</label>
         <div className="flex items-center">
           <button
-            onClick={() => handleDecrease("pets")}
+            onClick={() => handleDecrease('pets')}
             className="border rounded-full w-8 h-8"
           >
             -
           </button>
           <span className="mx-2">{guestCounts.pets}</span>
           <button
-            onClick={() => handleIncrease("pets")}
+            onClick={() => handleIncrease('pets')}
             className="border rounded-full w-8 h-8"
           >
             +

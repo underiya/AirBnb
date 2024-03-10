@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable max-len */
+import {useState, useEffect} from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -6,15 +7,15 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-} from "@chakra-ui/react";
-import ReactDatePicker from "react-datepicker";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { addToCart } from "../Redux/action";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+} from '@chakra-ui/react';
+import ReactDatePicker from 'react-datepicker';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import {addToCart} from '../Redux/action';
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
-const App = ({ detailData }) => {
+const App = ({detailData}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showAmenitiesModal, setShowAmenitiesModal] = useState(false);
   const [checkInDate, setCheckInDate] = useState(null);
@@ -40,7 +41,7 @@ const App = ({ detailData }) => {
   const [formData, setFormData] = useState({
     checkInDate: null,
     checkOutDate: null,
-    category: "",
+    category: '',
     adults: 1,
     children: 0,
     infants: 0,
@@ -53,7 +54,7 @@ const App = ({ detailData }) => {
   useEffect(() => {
     if (formData.checkInDate && formData.checkOutDate) {
       const nights = Math.ceil(
-        (formData.checkOutDate - formData.checkInDate) / (1000 * 60 * 60 * 24)
+          (formData.checkOutDate - formData.checkInDate) / (1000 * 60 * 60 * 24),
       );
       setNumberOfNights(nights);
     }
@@ -78,12 +79,12 @@ const App = ({ detailData }) => {
   };
 
   const handleCategoryChange = (e) => {
-    const { value } = e.target;
+    const {value} = e.target;
     setFormData({
       ...formData,
       category: value,
     });
-    if (value === "Guests") {
+    if (value === 'Guests') {
       setShowGuestFields(true);
     } else {
       setShowGuestFields(false);
@@ -91,7 +92,7 @@ const App = ({ detailData }) => {
   };
 
   const handleGuestChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setFormData({
       ...formData,
       [name]: parseInt(value),
@@ -116,17 +117,17 @@ const App = ({ detailData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addToCart({ ...detailData, formData }));
+    dispatch(addToCart({...detailData, formData}));
     setFormData({
       checkInDate: null,
       checkOutDate: null,
-      category: "",
+      category: '',
       adults: 1,
       children: 0,
       infants: 0,
       pets: 0,
     });
-    navigate("/payment");
+    navigate('/payment');
   };
   return (
     <div className="flex">
@@ -184,7 +185,7 @@ const App = ({ detailData }) => {
               memorable stay to travelers seeking a break from the hustle of
               city life. The house is cozy both in winter and summer. It has a
               360-degree view of the greater Himalayas.
-            </p>{" "}
+            </p>{' '}
             <p className=" text-2xl">...</p>
             <span
               onClick={handleOpen}
@@ -250,13 +251,13 @@ const App = ({ detailData }) => {
               ))}
               <br />
               <div>
-                {" "}
+                {' '}
                 <p className="text-xl font-semibold">bedroom 1</p>
                 <p>1 double bed,1 floor matress</p>
               </div>
 
               <div>
-                {" "}
+                {' '}
                 <p className="text-xl font-semibold">bedroom 2</p>
                 <p>1 double bed,1 floor matress</p>
               </div>
@@ -264,7 +265,7 @@ const App = ({ detailData }) => {
           </div>
           <hr />
           <div className="border-t border-gray-400 my-4">
-            {" "}
+            {' '}
             <h1 className="text-2xl font-semibold mt-4">
               What this place offers
             </h1>
@@ -303,23 +304,23 @@ const App = ({ detailData }) => {
           </div>
           <hr />
           <div className="border-t border-gray-400 my-4">
-            {" "}
+            {' '}
             <h1 className="text-2xl font-semibold">Select check-in date</h1>
             <p>Add your travel dates for exact pricing</p>
             <div className="flex gap-20">
-              <div style={{ border: "none", height: "400px" }}>
+              <div style={{border: 'none', height: '400px'}}>
                 <p>Check-in Date:</p>
                 <ReactDatePicker
                   selected={checkInDate}
-                  onChange={(date) => handleDateChange(date, "checkInDate")}
+                  onChange={(date) => handleDateChange(date, 'checkInDate')}
                   inline
                 />
               </div>
-              <div style={{ border: "none", height: "400px" }}>
+              <div style={{border: 'none', height: '400px'}}>
                 <p>Check-out Date:</p>
                 <ReactDatePicker
                   selected={checkOutDate}
-                  onChange={(date) => handleDateChange(date, "checkOutDate")}
+                  onChange={(date) => handleDateChange(date, 'checkOutDate')}
                   inline
                 />
               </div>
@@ -331,21 +332,21 @@ const App = ({ detailData }) => {
         {/* Right side sticky box */}
         <div className="sticky top-20   bg-white-100 ml-40  p-6">
           <div className="flex flex-col gap-3 left-2/3 top-3/4 md:top-1/4 mt-20 md:mt-0 p-5 w-96 text-center bg-white shadow-lg rounded-lg">
-          <span className="text-start flex gap-3">
-        <h1 className="text-3xl font-bold text-start">₹{detailData.price}</h1>{' '}
-        <span className="text-sm text-gray-500 mt-3 ">per night</span>
-      </span>
+            <span className="text-start flex gap-3">
+              <h1 className="text-3xl font-bold text-start">₹{detailData.price}</h1>{' '}
+              <span className="text-sm text-gray-500 mt-3 ">per night</span>
+            </span>
             <form onSubmit={handleSubmit}>
-              
+
               <div className="flex"><div className="-mr-14">
                 <label htmlFor="checkInDate" className="">
                   Check-in Date:
                 </label>
-                
+
                 <DatePicker
                   id="checkInDate"
                   selected={formData.checkInDate}
-                  onChange={(date) => handleDateChange(date, "checkInDate")}
+                  onChange={(date) => handleDateChange(date, 'checkInDate')}
                   className="border-2 w-36 border-gray-400 rounded px-2 py-1"
                 />
               </div>
@@ -356,14 +357,14 @@ const App = ({ detailData }) => {
                 <DatePicker
                   id="checkOutDate"
                   selected={formData.checkOutDate}
-                  onChange={(date) => handleDateChange(date, "checkOutDate")}
+                  onChange={(date) => handleDateChange(date, 'checkOutDate')}
                   className="border-2 w-36 border-gray-400 rounded px-2 py-1"
                 />
               </div></div>
-              
+
               <div className="">
                 <label htmlFor="category" className="">
-               
+
                 </label>
                 <select
                   id="category"
@@ -384,7 +385,7 @@ const App = ({ detailData }) => {
                     </label>
                     <button
                       type="button"
-                      onClick={() => handleDecrease("adults")}
+                      onClick={() => handleDecrease('adults')}
                       className="mr-2"
                     >
                       -
@@ -401,7 +402,7 @@ const App = ({ detailData }) => {
                     />
                     <button
                       type="button"
-                      onClick={() => handleIncrease("adults")}
+                      onClick={() => handleIncrease('adults')}
                       className="ml-2"
                     >
                       +
@@ -413,7 +414,7 @@ const App = ({ detailData }) => {
                     </label>
                     <button
                       type="button"
-                      onClick={() => handleDecrease("children")}
+                      onClick={() => handleDecrease('children')}
                       className="mr-2"
                     >
                       -
@@ -430,7 +431,7 @@ const App = ({ detailData }) => {
                     />
                     <button
                       type="button"
-                      onClick={() => handleIncrease("children")}
+                      onClick={() => handleIncrease('children')}
                       className="ml-2"
                     >
                       +
@@ -442,7 +443,7 @@ const App = ({ detailData }) => {
                     </label>
                     <button
                       type="button"
-                      onClick={() => handleDecrease("infants")}
+                      onClick={() => handleDecrease('infants')}
                       className="mr-2"
                     >
                       -
@@ -459,7 +460,7 @@ const App = ({ detailData }) => {
                     />
                     <button
                       type="button"
-                      onClick={() => handleIncrease("infants")}
+                      onClick={() => handleIncrease('infants')}
                       className="ml-2"
                     >
                       +
@@ -471,7 +472,7 @@ const App = ({ detailData }) => {
                     </label>
                     <button
                       type="button"
-                      onClick={() => handleDecrease("pets")}
+                      onClick={() => handleDecrease('pets')}
                       className="mr-2"
                     >
                       -
@@ -488,7 +489,7 @@ const App = ({ detailData }) => {
                     />
                     <button
                       type="button"
-                      onClick={() => handleIncrease("pets")}
+                      onClick={() => handleIncrease('pets')}
                       className="ml-2"
                     >
                       +

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+/* eslint-disable max-len */
+import {useState} from 'react';
 import {
   Button,
   Modal,
@@ -11,15 +13,14 @@ import {
   useDisclosure,
   Box,
   Flex,
-  Spacer,
   Text,
-} from "@chakra-ui/react";
-import EditDateToast from "./EditDateToast";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+} from '@chakra-ui/react';
+import EditDateToast from './EditDateToast';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
-export default function EditDate({ checkInD ,checkOutD,setCheckIn,setCheckout }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export default function EditDate({checkInD, checkOutD, setCheckIn, setCheckout}) {
+  const {isOpen, onOpen, onClose} = useDisclosure();
   const [checkInDate, setCheckInDate] = useState(checkInD);
   const [checkOutDate, setCheckOutDate] = useState(checkOutD);
 
@@ -30,8 +31,8 @@ export default function EditDate({ checkInD ,checkOutD,setCheckIn,setCheckout })
 
   function formatDate(date) {
     const day = date.getDate();
-    const month = new Intl.DateTimeFormat("en-US", { month: "short" }).format(
-      date
+    const month = new Intl.DateTimeFormat('en-US', {month: 'short'}).format(
+        date,
     );
     return `${day} ${month}`;
   }
@@ -41,8 +42,8 @@ export default function EditDate({ checkInD ,checkOutD,setCheckIn,setCheckout })
 
 
   const handleSave = () => {
-    setCheckIn(formattedCheckInDate)
-    setCheckout(formattedCheckOutDate)
+    setCheckIn(formattedCheckInDate);
+    setCheckout(formattedCheckOutDate);
     onClose();
   };
 
@@ -51,45 +52,44 @@ export default function EditDate({ checkInD ,checkOutD,setCheckIn,setCheckout })
       <Button onClick={onOpen}>Edit</Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
-   <ModalOverlay />
-  <ModalContent  w="72" h={750}>
-    <ModalHeader></ModalHeader>
-    <ModalCloseButton />
-    <ModalBody >
-      <Flex direction="column" gap={5} >
-            <Box>
-              <Text>CheckIn Date</Text>
-              <DatePicker
-                selected={checkInDate}
-                onChange={(date) => setCheckInDate(date)}
-                minDate={tomorrow}
-                inline
-              />
-            </Box>
-            <Box>
-              <Text>Checkout Date</Text>
-              <DatePicker
-                selected={checkOutDate}
-                onChange={(date) => setCheckOutDate(date)}
-                minDate={checkInDate || tomorrow}
-                inline
-              />
-            </Box> 
-      </Flex>
-    </ModalBody>
-    <ModalFooter justifyContent="center">
-      <EditDateToast color="blue" mr={3} onClick={handleSave} />
-      <Button variant="ghost" onClick={onClose}>
+        <ModalOverlay />
+        <ModalContent w="72" h={750}>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />
+          <ModalBody >
+            <Flex direction="column" gap={5} >
+              <Box>
+                <Text>CheckIn Date</Text>
+                <DatePicker
+                  selected={checkInDate}
+                  onChange={(date) => setCheckInDate(date)}
+                  minDate={tomorrow}
+                  inline
+                />
+              </Box>
+              <Box>
+                <Text>Checkout Date</Text>
+                <DatePicker
+                  selected={checkOutDate}
+                  onChange={(date) => setCheckOutDate(date)}
+                  minDate={checkInDate || tomorrow}
+                  inline
+                />
+              </Box>
+            </Flex>
+          </ModalBody>
+          <ModalFooter justifyContent="center">
+            <EditDateToast color="blue" mr={3} onClick={handleSave} />
+            <Button variant="ghost" onClick={onClose}>
         Cancel
-      </Button>
-    </ModalFooter>
-  </ModalContent>
-</Modal>
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
 
     </>
   );
 }
-
 
 
 {/* <ModalOverlay />

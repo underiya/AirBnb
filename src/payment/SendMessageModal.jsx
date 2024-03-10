@@ -1,6 +1,6 @@
-/* eslint-disable require-jsdoc */
-/* eslint-disable react/react-in-jsx-scope */
-import { useState } from "react";
+
+
+import {useState} from 'react';
 import {
   Button,
   Modal,
@@ -15,12 +15,12 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
-} from "@chakra-ui/react";
-import MessageToast from "./MessageToast";
+} from '@chakra-ui/react';
+import MessageToast from './MessageToast';
 
 export default function SendMessageModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [message, setMessage] = useState("");
+  const {isOpen, onOpen, onClose} = useDisclosure();
+  const [message, setMessage] = useState('');
   const [isMessageValid, setIsMessageValid] = useState(true);
 
   const handleMessageChange = (e) => {
@@ -29,11 +29,11 @@ export default function SendMessageModal() {
   };
 
   const handleSendMessage = () => {
-    if (message.trim() === "") {
+    if (message.trim() === '') {
       setIsMessageValid(false);
       return;
     }
-    console.log("Sending message:", message);
+    console.log('Sending message:', message);
     onClose();
   };
 

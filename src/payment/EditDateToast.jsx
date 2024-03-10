@@ -1,15 +1,16 @@
-import { Button, useToast } from "@chakra-ui/react";
+/* eslint-disable react/prop-types */
+import {Button, useToast} from '@chakra-ui/react';
 
-export default function EditDateToast({ onClick }) {
+export default function EditDateToast({onClick}) {
   const toast = useToast();
 
   const handleClick = () => {
     onClick();
 
     toast({
-      title: "Date update",
-      description: "Date updated Successfully",
-      status: "success",
+      title: 'Date update',
+      description: 'Date updated Successfully',
+      status: 'success',
       duration: 5000,
       isClosable: true,
     });

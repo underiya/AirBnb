@@ -1,6 +1,5 @@
-import React from "react";
-
-function Review({ reviews }) {
+/* eslint-disable max-len */
+function Review({reviews}) {
   return (
     <div className="flex flex-col ml-[12%] flex-wrap justify-around">
       <h1 className="ml-8 font-extrabold  text-2xl">Reviews</h1>

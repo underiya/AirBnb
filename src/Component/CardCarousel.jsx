@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { FaAngleLeft, FaAngleRight, FaHeart } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+/* eslint-disable max-len */
+import React, {useState, useEffect} from 'react';
+import {FaAngleLeft, FaAngleRight, FaHeart} from 'react-icons/fa6';
+import {Link} from 'react-router-dom';
 
 const CardCarousel = () => {
   const [data, setData] = useState([]);
@@ -11,10 +12,10 @@ const CardCarousel = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let res = await fetch(
-          "https://backend-airbnb-stqx.onrender.com/api/locations"
+        const res = await fetch(
+            'https://backend-airbnb-stqx.onrender.com/api/locations',
         );
-        let data = await res.json();
+        const data = await res.json();
         setData(data);
         setCurrentIndex(Object.fromEntries(data.map((_, i) => [i, 0])));
       } catch (e) {
@@ -28,9 +29,9 @@ const CardCarousel = () => {
     setCurrentIndex((prevIndex) => ({
       ...prevIndex,
       [index]:
-        prevIndex[index] === data[index]?.images.length - 1
-          ? 0
-          : prevIndex[index] + 1,
+        prevIndex[index] === data[index]?.images.length - 1 ?
+          0 :
+          prevIndex[index] + 1,
     }));
   };
 
@@ -38,12 +39,12 @@ const CardCarousel = () => {
     setCurrentIndex((prevIndex) => ({
       ...prevIndex,
       [index]:
-        prevIndex[index] === 0
-          ? data[index]?.images.length - 1
-          : prevIndex[index] - 1,
+        prevIndex[index] === 0 ?
+          data[index]?.images.length - 1 :
+          prevIndex[index] - 1,
     }));
   };
-  //login dispatch  wishlist
+  // login dispatch  wishlist
   const handleHeartClick = (index) => {
     setHeartState((prevState) => ({
       ...prevState,
@@ -74,7 +75,7 @@ const CardCarousel = () => {
               <div
                 onClick={() => handleHeartClick(i)}
                 className="absolute top-[10px] right-[10px] text-[24px] font-[700] cursor-pointer border-1 border-white"
-                style={{ color: heartState[i] ? "red" : "grey" }}
+                style={{color: heartState[i] ? 'red' : 'grey'}}
               >
                 <FaHeart />
               </div>

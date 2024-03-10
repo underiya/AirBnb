@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import {useState} from 'react';
 import {
   Button,
   Modal,
@@ -13,12 +13,12 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
-} from "@chakra-ui/react";
-import PanToast from "./PanToast";
+} from '@chakra-ui/react';
+import PanToast from './PanToast';
 
 export default function PANModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [panNumber, setPanNumber] = useState("");
+  const {isOpen, onOpen, onClose} = useDisclosure();
+  const [panNumber, setPanNumber] = useState('');
   const [isPanValid, setIsPanValid] = useState(true);
 
   const validatePAN = (pan) => {
@@ -34,7 +34,7 @@ export default function PANModal() {
 
   const handleSave = () => {
     if (validatePAN(panNumber)) {
-      console.log("Valid PAN:", panNumber);
+      console.log('Valid PAN:', panNumber);
       onClose();
     } else {
       setIsPanValid(false);
@@ -60,7 +60,7 @@ export default function PANModal() {
                 onChange={handleChange}
               />
               <FormErrorMessage>
-                {!isPanValid && "Invalid PAN Number format"}
+                {!isPanValid && 'Invalid PAN Number format'}
               </FormErrorMessage>
             </FormControl>
           </ModalBody>

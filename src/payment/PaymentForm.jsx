@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import FormSubmitToast from "./FormSubmitToast";
+/* eslint-disable max-len */
+import {useState} from 'react';
 
 function PaymentForm() {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
   const [inputValues, setInputValues] = useState({
-    upiId: "",
-    creditCardNumber: "",
-    cardHolderName: "",
-    expiryDate: "",
-    cvv: "",
-    bankName: "",
+    upiId: '',
+    creditCardNumber: '',
+    cardHolderName: '',
+    expiryDate: '',
+    cvv: '',
+    bankName: '',
   });
   const [formErrors, setFormErrors] = useState({});
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setInputValues({
       ...inputValues,
       [name]: value,
@@ -28,40 +28,40 @@ function PaymentForm() {
     const today = new Date();
     const expiryDate = new Date(inputValues.expiryDate);
 
-    if (!inputValues.upiId && selectedPaymentMethod === "UPI") {
-      errors.upiId = "UPI ID is required";
+    if (!inputValues.upiId && selectedPaymentMethod === 'UPI') {
+      errors.upiId = 'UPI ID is required';
     }
     if (
       !inputValues.creditCardNumber &&
-      selectedPaymentMethod === "Creditdebitcard"
+      selectedPaymentMethod === 'Creditdebitcard'
     ) {
-      errors.creditCardNumber = "Credit Card Number is required";
+      errors.creditCardNumber = 'Credit Card Number is required';
     } else if (!/^\d+$/.test(inputValues.creditCardNumber)) {
-      errors.creditCardNumber = "Invalid Credit Card Number";
+      errors.creditCardNumber = 'Invalid Credit Card Number';
     }
     if (
       !inputValues.cardHolderName &&
-      selectedPaymentMethod === "Creditdebitcard"
+      selectedPaymentMethod === 'Creditdebitcard'
     ) {
-      errors.cardHolderName = "Card Holder Name is required";
+      errors.cardHolderName = 'Card Holder Name is required';
     } else if (!/^[a-zA-Z\s]+$/.test(inputValues.cardHolderName)) {
-      errors.cardHolderName = "Invalid Card Holder Name";
+      errors.cardHolderName = 'Invalid Card Holder Name';
     }
     if (
       !inputValues.expiryDate &&
-      selectedPaymentMethod === "Creditdebitcard"
+      selectedPaymentMethod === 'Creditdebitcard'
     ) {
-      errors.expiryDate = "Expiry Date is required";
+      errors.expiryDate = 'Expiry Date is required';
     } else if (expiryDate <= today) {
-      errors.expiryDate = "Expiry Date must be in the future";
+      errors.expiryDate = 'Expiry Date must be in the future';
     }
-    if (!inputValues.cvv && selectedPaymentMethod === "Creditdebitcard") {
-      errors.cvv = "CVV Number is required";
+    if (!inputValues.cvv && selectedPaymentMethod === 'Creditdebitcard') {
+      errors.cvv = 'CVV Number is required';
     } else if (!/^\d{3,4}$/.test(inputValues.cvv)) {
-      errors.cvv = "Invalid CVV Number";
+      errors.cvv = 'Invalid CVV Number';
     }
-    if (!inputValues.bankName && selectedPaymentMethod === "NetBanking") {
-      errors.bankName = "Bank Name is required";
+    if (!inputValues.bankName && selectedPaymentMethod === 'NetBanking') {
+      errors.bankName = 'Bank Name is required';
     }
 
     if (Object.keys(errors).length === 0) {
@@ -70,18 +70,18 @@ function PaymentForm() {
       setFormErrors(errors);
     }
     setInputValues({
-      upiId: "",
-      creditCardNumber: "",
-      cardHolderName: "",
-      expiryDate: "",
-      cvv: "",
-      bankName: "",
+      upiId: '',
+      creditCardNumber: '',
+      cardHolderName: '',
+      expiryDate: '',
+      cvv: '',
+      bankName: '',
     });
   };
 
   const renderPaymentForm = () => {
     switch (selectedPaymentMethod) {
-      case "UPI":
+      case 'UPI':
         return (
           <div>
             <label className="block mb-2">Enter UPI ID:</label>
@@ -99,7 +99,7 @@ function PaymentForm() {
             )}
           </div>
         );
-      case "Creditdebitcard":
+      case 'Creditdebitcard':
         return (
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -172,7 +172,7 @@ function PaymentForm() {
             </button>
           </form>
         );
-      case "NetBanking":
+      case 'NetBanking':
         return (
           <div>
             <label className="block mb-2">Enter Bank Name:</label>

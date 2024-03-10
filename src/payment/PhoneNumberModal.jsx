@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import {useState} from 'react';
 import {
   Button,
   Modal,
@@ -13,12 +13,12 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
-} from "@chakra-ui/react";
-import PhoneToast from "./PhoneToast";
+} from '@chakra-ui/react';
+import PhoneToast from './PhoneToast';
 
 export default function PhoneNumberModal() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const {isOpen, onOpen, onClose} = useDisclosure();
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [isPhoneValid, setIsPhoneNumberValid] = useState(true);
   const validatePhoneNumber = (phoneNumber) => {
     const phoneRegex = /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/;
@@ -33,7 +33,7 @@ export default function PhoneNumberModal() {
 
   const handleSave = () => {
     if (validatePhoneNumber(phoneNumber)) {
-      console.log("Valid Phone Number:", phoneNumber);
+      console.log('Valid Phone Number:', phoneNumber);
       onClose();
     } else {
       setIsPhoneNumberValid(false);
@@ -59,7 +59,7 @@ export default function PhoneNumberModal() {
                 onChange={handlePhoneChange}
               />
               <FormErrorMessage>
-                {!isPhoneValid && "Invalid Phone Number format"}
+                {!isPhoneValid && 'Invalid Phone Number format'}
               </FormErrorMessage>
             </FormControl>
           </ModalBody>

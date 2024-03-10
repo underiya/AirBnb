@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable max-len */
+import React, {useState, useEffect} from 'react';
 import {
-  Box,
   Button,
   Modal,
   ModalBody,
@@ -10,11 +10,11 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-} from "@chakra-ui/react";
-import axios from "axios";
-import { CiHeart } from "react-icons/ci";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import { handleDelete } from "./fetch";
+} from '@chakra-ui/react';
+import axios from 'axios';
+import {CiHeart} from 'react-icons/ci';
+import {FaAngleLeft, FaAngleRight} from 'react-icons/fa6';
+import {handleDelete} from './fetch';
 
 const Analytics = () => {
   const [data, setData] = useState([]);
@@ -22,26 +22,26 @@ const Analytics = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [dele, setDele] = useState(false);
   const [link, setLink] = useState(
-    `https://backend-airbnb-stqx.onrender.com/api/locations?`
+      `https://backend-airbnb-stqx.onrender.com/api/locations?`,
   );
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const finalRef = React.useRef();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isOpen, onOpen, onClose} = useDisclosure();
 
-  const { isOpen: isEditOpen, onOpen: onEditOpen, onClose: onEditClose } = useDisclosure();
+  const {isOpen: isEditOpen, onOpen: onEditOpen, onClose: onEditClose} = useDisclosure();
   const [title, setName] = useState('');
   const [rating, setRating] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImages] = useState([]);
-  const[id,setId]=useState('');
-  const[edit,setEdit]=useState(false);
+  const [id, setId]=useState('');
+  const [edit, setEdit]=useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let res = await fetch(link);
-        let data = await res.json();
+        const res = await fetch(link);
+        const data = await res.json();
         console.log(data);
         setData(data);
         setCurrentIndex(Object.fromEntries(data.map((_, i) => [i, 0])));
@@ -56,9 +56,9 @@ const Analytics = () => {
     setCurrentIndex((prevIndex) => ({
       ...prevIndex,
       [index]:
-        prevIndex[index] === data[index]?.image.length - 1
-          ? 0
-          : prevIndex[index] + 1,
+        prevIndex[index] === data[index]?.image.length - 1 ?
+          0 :
+          prevIndex[index] + 1,
     }));
   };
 
@@ -66,14 +66,14 @@ const Analytics = () => {
     setCurrentIndex((prevIndex) => ({
       ...prevIndex,
       [index]:
-        prevIndex[index] === 0
-          ? data[index]?.image.length - 1
-          : prevIndex[index] - 1,
+        prevIndex[index] === 0 ?
+          data[index]?.image.length - 1 :
+          prevIndex[index] - 1,
     }));
   };
   function handleSearch() {
     setLink(
-      `https://backend-airbnb-stqx.onrender.com/api/locations?location_like=${search}`
+        `https://backend-airbnb-stqx.onrender.com/api/locations?location_like=${search}`,
     );
   }
 
@@ -89,14 +89,14 @@ const Analytics = () => {
     setDescription(el.description);
     setImages(el.images);
     setId(el.id);
-    console.log("id ", id);
+    console.log('id ', id);
     onEditOpen();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     let images=[];
-      images=[image];
+    images=[image];
     try {
       const formData = {
         title,
@@ -106,9 +106,9 @@ const Analytics = () => {
         images,
       };
 
-      let res = await axios.patch(
-        `https://backend-airbnb-stqx.onrender.com/api/locations/${id}`,
-        formData
+      const res = await axios.patch(
+          `https://backend-airbnb-stqx.onrender.com/api/locations/${id}`,
+          formData,
       );
       setEdit((prev) => !prev);
 
@@ -123,7 +123,7 @@ const Analytics = () => {
     <>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent bg={"black"} color={"white"}>
+        <ModalContent bg={'black'} color={'white'}>
           <ModalHeader>Delete</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -146,69 +146,69 @@ const Analytics = () => {
           <ModalHeader>Edit Item</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-           
-            <form  className="max-w-md mx-auto" >
-       
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-              <input
-                id="name"
-                type="text"
-                value={title}
-                onChange={(e) => setName(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="rating" className="block text-sm font-medium text-gray-700">Rating</label>
-              <input
-                id="rating"
-                type="number"
-                step="0.1"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price</label>
-              <input
-                id="price"
-                type="text"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                required
-              />
-            </div>
 
-            <div className="mb-4">
-        <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images</label>
-        <input
-        type="url"
-          id="images"
-          accept="image/*"
-          onChange={(e) => setImages(e.target.value)}
-            value={image}
-          multiple
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          required
-        />
-        </div>
-            
-          </form>
+            <form className="max-w-md mx-auto" >
+
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  value={title}
+                  onChange={(e) => setName(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="rating" className="block text-sm font-medium text-gray-700">Rating</label>
+                <input
+                  id="rating"
+                  type="number"
+                  step="0.1"
+                  value={rating}
+                  onChange={(e) => setRating(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
+                <textarea
+                  id="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price</label>
+                <input
+                  id="price"
+                  type="text"
+                  value={price}
+                  onChange={(e) => setPrice(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="images" className="block text-sm font-medium text-gray-700">Images</label>
+                <input
+                  type="url"
+                  id="images"
+                  accept="image/*"
+                  onChange={(e) => setImages(e.target.value)}
+                  value={image}
+                  multiple
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required
+                />
+              </div>
+
+            </form>
 
           </ModalBody>
           <ModalFooter>
@@ -246,9 +246,9 @@ const Analytics = () => {
           <div
             key={i}
             className={`mb-8 ${
-              selectedCardIndex !== null && selectedCardIndex !== i
-                ? "hidden"
-                : "block"
+              selectedCardIndex !== null && selectedCardIndex !== i ?
+                'hidden' :
+                'block'
             } relative h-[33rem]`}
           >
             <div className="rounded-lg overflow-hidden relative">
@@ -290,7 +290,7 @@ const Analytics = () => {
 
             <div className=" flex absolute bottom-0 justify-between">
               <button
-                className=" px-3 py-1 bg-slate-400 rounded-lg	text-white  "
+                className=" px-3 py-1 bg-slate-400 rounded-lg text-white  "
                 onClick={(e) => handleEdit(el)}
               >
                 Edit

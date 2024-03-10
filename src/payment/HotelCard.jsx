@@ -1,37 +1,34 @@
-import React from "react";
+/* eslint-disable max-len */
+/* eslint-disable react/prop-types */
+export default function HotelCard({data, checkOut, checkIn}) {
+  const year = 2024; // You need to specify the year
 
-export default function HotelCard({ data,checkOut,checkIn }) {
-  let year = 2024; // You need to specify the year
-  
   // Convert to a Date object
-  let ChecKIdate = new Date(`${year}-${checkIn}`);
-  let ChecKOdate = new Date(`${year}-${checkOut}`);
+  const ChecKIdate = new Date(`${year}-${checkIn}`);
+  const ChecKOdate = new Date(`${year}-${checkOut}`);
   // Format the date as YYYY-MM-DD
-  let formattedCheckINDate = ChecKIdate.toISOString().split('T')[0];
-  let formattedCheckOutDate = ChecKOdate.toISOString().split('T')[0];
- 
-
-  var checkInDate = new Date(formattedCheckINDate);
-  var checkOutDate = new Date(formattedCheckOutDate);
-  
-
-  var timeDifference = checkOutDate.getTime() - checkInDate.getTime();
-  var daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  const formattedCheckINDate = ChecKIdate.toISOString().split('T')[0];
+  const formattedCheckOutDate = ChecKOdate.toISOString().split('T')[0];
 
 
+  const checkInDate = new Date(formattedCheckINDate);
+  const checkOutDate = new Date(formattedCheckOutDate);
 
 
+  const timeDifference = checkOutDate.getTime() - checkInDate.getTime();
+  const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
-  let totalP = data.price * daysDifference;
- 
+
+  const totalP = data.price * daysDifference;
+
   const servceFees = 2910;
   let totalPayment = totalP + servceFees;
-  totalPayment = totalPayment.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+  totalPayment = totalPayment.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
   return (
-   
+
     <div className="lg:h-auto md:h-auto  py-3">
-     
+
       <div className="flex justify-between  items-center  gap-5  ">
         {data && data.images && data.images.length > 0 && (
           <img
@@ -46,8 +43,8 @@ export default function HotelCard({ data,checkOut,checkIn }) {
           <p>{data.nearBy}</p>
           {data.rating && (
             <h3 className="font-semibold">
-              ★{data.rating}{" "}
-              <span>({data.reviews && data.reviews.length + "Reviews"})</span>
+              ★{data.rating}{' '}
+              <span>({data.reviews && data.reviews.length + 'Reviews'})</span>
             </h3>
           )}
         </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import {useState} from 'react';
 import {
   Button,
   Modal,
@@ -9,15 +10,11 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Box,
-  Flex,
-  Spacer,
-  Text,
-} from "@chakra-ui/react";
-import Guest from "./Guest";
+} from '@chakra-ui/react';
+import Guest from './Guest';
 
 export default function EditGuest({setGuest}) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isOpen, onOpen, onClose} = useDisclosure();
   const [guestCounts, setGuestCounts] = useState({
     adults: 1,
     children: 0,
