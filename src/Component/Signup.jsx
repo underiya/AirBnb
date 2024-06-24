@@ -36,7 +36,7 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    PostUsers('https://backend-airbnb-stqx.onrender.com/api/users', form);
+    postUsers('https://backend-airbnb-stqx.onrender.com/api/users', form);
     console.log(form);
     onClose();
   };
